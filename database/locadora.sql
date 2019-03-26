@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema locadoraDB
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema locadoraDB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `locadoraDB` DEFAULT CHARACTER SET utf8 ;
+USE `locadoraDB` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`user`
+-- Table `locadoraDB`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`user` (
   `iduser` INT ZEROFILL NOT NULL,
   `nome` VARCHAR(50) NULL,
   `email` VARCHAR(45) NULL,
@@ -32,9 +32,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Estado`
+-- Table `locadoraDB`.`Estado`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Estado` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`Estado` (
   `idEstado` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`idEstado`))
@@ -42,9 +42,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Cidade`
+-- Table `locadoraDB`.`Cidade`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Cidade` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`Cidade` (
   `idCidade` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
   `longitude` DECIMAL NULL,
@@ -54,16 +54,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Cidade` (
   INDEX `fk_Cidade_Estado_idx` (`Estado_idEstado` ASC) VISIBLE,
   CONSTRAINT `fk_Cidade_Estado`
     FOREIGN KEY (`Estado_idEstado`)
-    REFERENCES `mydb`.`Estado` (`idEstado`)
+    REFERENCES `locadoraDB`.`Estado` (`idEstado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Endereco`
+-- Table `locadoraDB`.`Endereco`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Endereco` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`Endereco` (
   `idEndereco` INT NOT NULL AUTO_INCREMENT,
   `rua` VARCHAR(45) NULL,
   `bairro` VARCHAR(45) NULL,
@@ -74,16 +74,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Endereco` (
   INDEX `fk_Endereco_Cidade1_idx` (`Cidade_idCidade` ASC) VISIBLE,
   CONSTRAINT `fk_Endereco_Cidade1`
     FOREIGN KEY (`Cidade_idCidade`)
-    REFERENCES `mydb`.`Cidade` (`idCidade`)
+    REFERENCES `locadoraDB`.`Cidade` (`idCidade`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`imagens`
+-- Table `locadoraDB`.`imagens`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`imagens` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`imagens` (
   `idimagens` INT NOT NULL,
   `caminho` VARCHAR(45) NULL,
   PRIMARY KEY (`idimagens`))
@@ -91,9 +91,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`pessoaJuridica`
+-- Table `locadoraDB`.`pessoaJuridica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`pessoaJuridica` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`pessoaJuridica` (
   `idPJ` VARCHAR(16) NOT NULL,
   `razaoSocial` VARCHAR(45) NULL,
   `Endereco_idEndereco` INT NOT NULL,
@@ -105,26 +105,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`pessoaJuridica` (
   INDEX `fk_pessoaJuridica_imagens1_idx` (`imagens_idimagens` ASC) VISIBLE,
   CONSTRAINT `fk_pessoaJuridica_Endereco1`
     FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `mydb`.`Endereco` (`idEndereco`)
+    REFERENCES `locadoraDB`.`Endereco` (`idEndereco`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pessoaJuridica_user1`
     FOREIGN KEY (`user_iduser`)
-    REFERENCES `mydb`.`user` (`iduser`)
+    REFERENCES `locadoraDB`.`user` (`iduser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pessoaJuridica_imagens1`
     FOREIGN KEY (`imagens_idimagens`)
-    REFERENCES `mydb`.`imagens` (`idimagens`)
+    REFERENCES `locadoraDB`.`imagens` (`idimagens`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`locadora`
+-- Table `locadoraDB`.`locadora`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`locadora` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`locadora` (
   `idLocadora` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `Endereco_idEndereco` INT NOT NULL,
@@ -137,21 +137,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`locadora` (
   INDEX `fk_locadora_pessoaJuridica1_idx` (`pessoaJuridica_idPJ` ASC) VISIBLE,
   CONSTRAINT `fk_locadora_Endereco1`
     FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `mydb`.`Endereco` (`idEndereco`)
+    REFERENCES `locadoraDB`.`Endereco` (`idEndereco`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_locadora_pessoaJuridica1`
     FOREIGN KEY (`pessoaJuridica_idPJ`)
-    REFERENCES `mydb`.`pessoaJuridica` (`idPJ`)
+    REFERENCES `locadoraDB`.`pessoaJuridica` (`idPJ`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`pessoaFisica`
+-- Table `locadoraDB`.`pessoaFisica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`pessoaFisica` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`pessoaFisica` (
   `idpessoaFisica` VARCHAR(11) NOT NULL,
   `Endereco_idEndereco` INT NOT NULL,
   `user_iduser` INT ZEROFILL NOT NULL,
@@ -165,26 +165,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`pessoaFisica` (
   INDEX `fk_pessoaFisica_imagens1_idx` (`imagens_idimagens` ASC) VISIBLE,
   CONSTRAINT `fk_pessoaFisica_Endereco1`
     FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `mydb`.`Endereco` (`idEndereco`)
+    REFERENCES `locadoraDB`.`Endereco` (`idEndereco`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pessoaFisica_user1`
     FOREIGN KEY (`user_iduser`)
-    REFERENCES `mydb`.`user` (`iduser`)
+    REFERENCES `locadoraDB`.`user` (`iduser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pessoaFisica_imagens1`
     FOREIGN KEY (`imagens_idimagens`)
-    REFERENCES `mydb`.`imagens` (`idimagens`)
+    REFERENCES `locadoraDB`.`imagens` (`idimagens`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`habilitacao`
+-- Table `locadoraDB`.`habilitacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`habilitacao` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`habilitacao` (
   `idhabilitacao` INT NOT NULL,
   `nCNH` VARCHAR(45) NULL,
   `nRegistro` VARCHAR(45) NULL,
@@ -196,21 +196,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`habilitacao` (
   INDEX `fk_habilitacao_pessoaFisica1_idx` (`pessoaFisica_idpessoaFisica` ASC) VISIBLE,
   CONSTRAINT `fk_habilitacao_Estado1`
     FOREIGN KEY (`Estado_idEstado`)
-    REFERENCES `mydb`.`Estado` (`idEstado`)
+    REFERENCES `locadoraDB`.`Estado` (`idEstado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_habilitacao_pessoaFisica1`
     FOREIGN KEY (`pessoaFisica_idpessoaFisica`)
-    REFERENCES `mydb`.`pessoaFisica` (`idpessoaFisica`)
+    REFERENCES `locadoraDB`.`pessoaFisica` (`idpessoaFisica`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`pagamento`
+-- Table `locadoraDB`.`pagamento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`pagamento` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`pagamento` (
   `idpagamento` INT NOT NULL,
   `nCartao` VARCHAR(45) NULL,
   `vcc` VARCHAR(45) NULL,
@@ -221,16 +221,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`pagamento` (
   INDEX `fk_pagamento_pessoaFisica1_idx` (`pessoaFisica_idpessoaFisica` ASC) VISIBLE,
   CONSTRAINT `fk_pagamento_pessoaFisica1`
     FOREIGN KEY (`pessoaFisica_idpessoaFisica`)
-    REFERENCES `mydb`.`pessoaFisica` (`idpessoaFisica`)
+    REFERENCES `locadoraDB`.`pessoaFisica` (`idpessoaFisica`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`classificacaoCarro`
+-- Table `locadoraDB`.`classificacaoCarro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`classificacaoCarro` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`classificacaoCarro` (
   `idclassificacao` INT NOT NULL,
   `tipo` VARCHAR(45) NULL,
   PRIMARY KEY (`idclassificacao`))
@@ -238,9 +238,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`carros`
+-- Table `locadoraDB`.`carros`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`carros` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`carros` (
   `idcarro` INT NOT NULL,
   `placa` VARCHAR(45) NULL,
   `valor` DOUBLE NULL,
@@ -258,21 +258,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carros` (
   INDEX `fk_carros_classificacaoCarro1_idx` (`idClassificacao` ASC) VISIBLE,
   CONSTRAINT `fk_carros_locadora1`
     FOREIGN KEY (`locadora_idLocadora`)
-    REFERENCES `mydb`.`locadora` (`idLocadora`)
+    REFERENCES `locadoraDB`.`locadora` (`idLocadora`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_carros_classificacaoCarro1`
     FOREIGN KEY (`idClassificacao`)
-    REFERENCES `mydb`.`classificacaoCarro` (`idclassificacao`)
+    REFERENCES `locadoraDB`.`classificacaoCarro` (`idclassificacao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`locacao`
+-- Table `locadoraDB`.`locacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`locacao` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`locacao` (
   `carros_idcarro` INT NOT NULL,
   `carros_locadora_idLocadora` INT NOT NULL,
   `pessoaFisica_idpessoaFisica` INT NOT NULL,
@@ -284,26 +284,26 @@ CREATE TABLE IF NOT EXISTS `mydb`.`locacao` (
   INDEX `fk_localentrega_idx` (`localEntrega` ASC) VISIBLE,
   CONSTRAINT `fk_locacao_carros1`
     FOREIGN KEY (`carros_idcarro` , `carros_locadora_idLocadora`)
-    REFERENCES `mydb`.`carros` (`idcarro` , `locadora_idLocadora`)
+    REFERENCES `locadoraDB`.`carros` (`idcarro` , `locadora_idLocadora`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_locacao_pessoaFisica1`
     FOREIGN KEY (`pessoaFisica_idpessoaFisica`)
-    REFERENCES `mydb`.`pessoaFisica` (`idpessoaFisica`)
+    REFERENCES `locadoraDB`.`pessoaFisica` (`idpessoaFisica`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_localentrega`
     FOREIGN KEY (`localEntrega`)
-    REFERENCES `mydb`.`locadora` (`idLocadora`)
+    REFERENCES `locadoraDB`.`locadora` (`idLocadora`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`acessorio`
+-- Table `locadoraDB`.`acessorio`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`acessorio` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`acessorio` (
   `idacessorio` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`idacessorio`))
@@ -311,9 +311,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`carros_has_acessorio`
+-- Table `locadoraDB`.`carros_has_acessorio`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`carros_has_acessorio` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`carros_has_acessorio` (
   `carros_idcarro` INT NOT NULL,
   `acessorio_idacessorio` INT NOT NULL,
   PRIMARY KEY (`carros_idcarro`, `acessorio_idacessorio`),
@@ -321,21 +321,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carros_has_acessorio` (
   INDEX `fk_carros_has_acessorio_carros1_idx` (`carros_idcarro` ASC) VISIBLE,
   CONSTRAINT `fk_carros_has_acessorio_carros1`
     FOREIGN KEY (`carros_idcarro`)
-    REFERENCES `mydb`.`carros` (`idcarro`)
+    REFERENCES `locadoraDB`.`carros` (`idcarro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_carros_has_acessorio_acessorio1`
     FOREIGN KEY (`acessorio_idacessorio`)
-    REFERENCES `mydb`.`acessorio` (`idacessorio`)
+    REFERENCES `locadoraDB`.`acessorio` (`idacessorio`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`avaliacao`
+-- Table `locadoraDB`.`avaliacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`avaliacao` (
   `idavaliacao` INT NOT NULL,
   `avaliacao` VARCHAR(45) NULL,
   `pessoaFisica_idpessoaFisica` INT NOT NULL,
@@ -347,21 +347,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`avaliacao` (
   INDEX `fk_avaliacao_carros1_idx` (`carros_idcarro` ASC, `carros_locadora_idLocadora` ASC) VISIBLE,
   CONSTRAINT `fk_avaliacao_pessoaFisica1`
     FOREIGN KEY (`pessoaFisica_idpessoaFisica`)
-    REFERENCES `mydb`.`pessoaFisica` (`idpessoaFisica`)
+    REFERENCES `locadoraDB`.`pessoaFisica` (`idpessoaFisica`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_avaliacao_carros1`
     FOREIGN KEY (`carros_idcarro` , `carros_locadora_idLocadora`)
-    REFERENCES `mydb`.`carros` (`idcarro` , `locadora_idLocadora`)
+    REFERENCES `locadoraDB`.`carros` (`idcarro` , `locadora_idLocadora`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`carros_has_imagens`
+-- Table `locadoraDB`.`carros_has_imagens`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`carros_has_imagens` (
+CREATE TABLE IF NOT EXISTS `locadoraDB`.`carros_has_imagens` (
   `carros_idcarro` INT NOT NULL,
   `imagens_idimagens` INT NOT NULL,
   PRIMARY KEY (`carros_idcarro`, `imagens_idimagens`),
@@ -369,12 +369,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carros_has_imagens` (
   INDEX `fk_carros_has_imagens_carros1_idx` (`carros_idcarro` ASC) VISIBLE,
   CONSTRAINT `fk_carros_has_imagens_carros1`
     FOREIGN KEY (`carros_idcarro`)
-    REFERENCES `mydb`.`carros` (`idcarro`)
+    REFERENCES `locadoraDB`.`carros` (`idcarro`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_carros_has_imagens_imagens1`
     FOREIGN KEY (`imagens_idimagens`)
-    REFERENCES `mydb`.`imagens` (`idimagens`)
+    REFERENCES `locadoraDB`.`imagens` (`idimagens`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
