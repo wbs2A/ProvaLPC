@@ -7,7 +7,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+//vendor
+@import "single_responsive";
 @import "main";
+@import "main_styles";
+@import "responsive";
 /*
 .navbar-laravel {
   background-color: #fff;

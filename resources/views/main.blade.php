@@ -4,71 +4,79 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CarRent</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/jquery.DonutWidget.min.css">
-    <link rel="stylesheet" href="css/jquerysctipttop.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/main.css">
+    <title>Locadora de Carros</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/app.css">
 </head>
     <body>
-        <header id="header" id="home">
-            <div class="container">
-                <div class="row align-items-center justify-content-between d-flex">
-                    <div id="logo">
-                        <a href="index.html">AE AE</a>
-                    </div>
-                    <nav id="nav-menu-container">
-                        <ul class="nav-menu">
-                            <li class="menu-active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="cars.html">Cars</a></li>
-                            <li><a href="service.html">Service</a></li>
-                            <li><a href="team.html">Team</a></li>
-                            <li><a href="blog-home.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li class="menu-has-children"><a href="">Pages</a>
-                                <ul>
-                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header trans_300">
+
+            <!-- Main Navigation -->
+
+            <div class="main_nav_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                    <a href="index.php">Locadora<span>Dahora</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <ul class="navbar_menu">
+                                    <li><a href="index.php">Início</a></li>
+                                    <li><a href="contact.php">Contato</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </nav><!-- #nav-menu-container -->
+                                <ul class="navbar_user">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link  " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="login.php"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
+                                            <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="registrar.php"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="hamburger_container">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </header>
-        <div id="app" class="container-fluid">
+
+        <div class="fs_menu_overlay"></div>
+        <div class="hamburger_menu">
+            <div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li class="menu_item has-children">
+                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
+                        <ul class="menu_selection">
+                            <li>
+                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="login.php"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
+                                <a id="navUserBase" class="text-center" href="registrar.php"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="index.php">Início</a></li>
+                    <li class="menu_item"><a href="contact.php">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <div id="app" class="container-fluid" style="padding-top: 100px">
             @yield('content')
         </div>
-
-        <script src="js/app.js"></script>
         <script src="js/jquery-2.2.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="js/easing.min.js"></script>
-        <script src="js/hoverIntent.js"></script>
-        <script src="js/superfish.min.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/jquery.nice-select.min.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/parallax.min.js"></script>
-        <script src="js/mail-script.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/single_custom.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 </html>
