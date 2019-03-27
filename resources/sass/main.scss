@@ -8,6 +8,30 @@
 /* =================================== */
 
 
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+//
+// Grid mixins
+//
+
+@import "bootstrap/mixins/breakpoints";
+
+
+// including variables and mixins
+@import "theme/variables";
+@import "theme/mixins";
+@import "theme/flexbox";
+@import "theme/reset";
+
+
+// Custom Scss
+@import "theme/elements";
+@import "theme/header";
+@import "theme/home";
+@import "theme/pages";
+@import "theme/footer";
+
 
 
 ::-moz-selection {
@@ -1560,7 +1584,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-checkbox input:checked + label {
- //background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+ background: url(../img/elements/primary-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -1598,7 +1622,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-checkbox input:checked + label {
-  //background: url(../img/elements/success-check.png) no-repeat center center/cover;
+  background: url(../img/elements/success-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -1641,7 +1665,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-checkbox input:checked + label {
- // background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -1679,7 +1703,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-radio input:checked + label {
-  //background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -1717,7 +1741,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-radio input:checked + label {
-  //background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -1760,7 +1784,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-radio input:checked + label {
-  //background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
   border: none;
 }
 
@@ -2267,7 +2291,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area {
-  //background: url(../img/header-bg.jpg) center;
+  background: url(../img/header-bg.jpg) center;
   background-size: cover;
 }
 
@@ -2641,7 +2665,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .callaction-area {
-  //background: url(../img/callaction-bg.jpg) center;
+  background: url(../img/callaction-bg.jpg) center;
   background-size: cover;
   text-align: center;
   color: #fff;
@@ -3129,7 +3153,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 ################
 */
 .blog-banner-area {
-  //background: url(../img/elements/blog/blog-banner.jpg) center;
+  background: url(../img/blog/blog-banner.jpg) center;
   background-size: cover;
 }
 

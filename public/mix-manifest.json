@@ -5,7 +5,6 @@
     "/js/hoverIntent.js": "/js/hoverIntent.js",
     "/js/imagesloaded.pkgd.min.js": "/js/imagesloaded.pkgd.min.js",
     "/js/jquery-2.2.4.min.js": "/js/jquery-2.2.4.min.js",
-    "/css/app.css": "/css/app.css",
     "/css/animate.min.css": "/css/animate.min.css",
     "/css/font-awesome.min.css": "/css/font-awesome.min.css",
     "/css/jquery.DonutWidget.min.css": "/css/jquery.DonutWidget.min.css",
@@ -26,5 +25,6 @@
     "/js/parallax.min.js": "/js/parallax.min.js",
     "/js/slick.js": "/js/slick.js",
     "/js/superfish.js": "/js/superfish.js",
-    "/js/waypoints.min.js": "/js/waypoints.min.js"
+    "/js/waypoints.min.js": "/js/waypoints.min.js",
+    "/css/app.css": "/css/app.css"
 }

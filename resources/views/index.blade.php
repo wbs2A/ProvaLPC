@@ -24,7 +24,7 @@
                     <h4 class="text-white pb-30">Book Your Car Today!</h4>
                     <form class="form" role="form" autocomplete="off">
                         <div class="form-group">
-                            <div class="default-select" id="default-select"">
+                            <div class="default-select" id="default-select">
                             <select>
                                 <option value="" disabled selected hidden>Select Your Car</option>
                                 <option value="1">BMW</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 wrap-left">
-                        <div class="default-select" id="default-select"">
+                        <div class="default-select" id="default-select">
                         <select>
                             <option value="" disabled selected hidden>Pickup</option>
                             <option value="1">Pickup One</option>
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-6 wrap-left">
-                    <div class="default-select" id="default-select"">
+                    <div class="default-select" id="default-select">
                     <select>
                         <option value="" disabled selected hidden>Drop off</option>
                         <option value="1">Drop off One</option>
@@ -560,4 +560,6 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div></footer>
 @stop
