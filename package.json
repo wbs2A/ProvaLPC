@@ -25,7 +25,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "vue-resource": "^1.5.1",
-        "laravel-elixir": "^6.0.0-18"
+        "laravel-elixir": "^6.0.0-18",
+        "vue-date-picker": "^2.4.0",
+        "vue-resource": "^1.5.1"
     }
 }

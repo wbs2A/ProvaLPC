@@ -6,6 +6,7 @@
 
     <title>Locadora de Carros</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
     <body>
@@ -71,7 +72,7 @@
             </div>
         </div>
         </div>
-        <div id="app" class="container-fluid" style="padding-top: 100px">
+        <div id="app" class="container-fluid" style="padding-top: 150px">
             @yield('content')
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>
