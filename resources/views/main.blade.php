@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <title>Locadora de Carros</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
     <body>
@@ -27,8 +30,8 @@
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="index.php">Início</a></li>
-                                    <li><a href="contact.php">Contato</a></li>
+                                    <li><a href="{{ route('/') }}">Início</a></li>
+                                    <li><a href="">Contato</a></li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li class="nav-item dropdown">
@@ -36,8 +39,14 @@
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="login.php"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
-                                            <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="registrar.php"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                           
+                                           
+                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
+                                                <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                          
+                                            
+                                    
+                                    
                                         </div>
                                     </li>
                                 </ul>
@@ -72,7 +81,7 @@
             </div>
         </div>
         </div>
-        <div id="app" class="container-fluid" style="padding-top: 150px">
+        <div id="app" class="container-fluid" style="padding-top: 100px">
             @yield('content')
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>
