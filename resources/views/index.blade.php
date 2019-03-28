@@ -1,5 +1,7 @@
 @extends('main' )
 
 @section('content')
-    <search></search>
+    <div id="index">
+        <search></search>
+    </div>
 @stop

@@ -51129,7 +51129,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app',
+  el: '#index',
   components: {
     VcUsers: _components_users_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Search: _components_search_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
