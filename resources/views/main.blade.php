@@ -39,14 +39,13 @@
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                           
-                                           
+                                            @if(\Illuminate\Support\Facades\Auth::check())
+                                                    <span>{{\Illuminate\Support\Facades\Auth::user()->name }}</span>
+                                            @else
                                                 <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
                                                 <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
-                                          
-                                            
-                                    
-                                    
+                                            @endif
+
                                         </div>
                                     </li>
                                 </ul>

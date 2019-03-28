@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'user',
+        'passwords' => 'users',
     ],
 
     /*
@@ -38,16 +38,16 @@ return [
     'guards' => [
             'user' => [
             'driver' => 'session',
-            'provider' => 'user',
+            'provider' => 'users',
         ],
         'web' => [
             'driver' => 'session',
-            'provider' => 'user',
+            'provider' => 'users',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'user',
+            'provider' => 'users',
             'hash' => false,
         ],
     ],
@@ -98,7 +98,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'user',
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],

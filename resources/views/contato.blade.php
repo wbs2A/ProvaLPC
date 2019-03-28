@@ -21,6 +21,10 @@
                     <p>Domingo: fechado</p>
                 </div>
             </div>
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <h1>O usuário está logado</h1>
+            @endif
+
 
 
         </div>
