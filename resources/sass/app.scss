@@ -169,9 +169,10 @@ $black			: #222;
 }
 
 .header-right{
-  background-color:rgba(#202e45,.4);
+  background-color:rgba(#202e45,.2);
   border:1px solid #4b5263;
   padding:50px;
+  box-shadow: 5px 5px #888888;
   @media(max-width:413px){
     padding:20px;
   }

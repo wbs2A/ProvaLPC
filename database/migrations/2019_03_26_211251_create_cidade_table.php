@@ -15,12 +15,11 @@ class CreateCidadeTable extends Migration {
 	{
 		Schema::create('cidade', function(Blueprint $table)
 		{
-			$table->integer('idCidade');
+			$table->integer('idCidade', 1);
 			$table->string('nome', 45)->nullable();
 			$table->decimal('longitude', 10, 0)->nullable();
 			$table->decimal('latitude', 10, 0)->nullable();
 			$table->integer('Estado_idEstado')->index('fk_Cidade_Estado_idx');
-			$table->primary('idCidade');
 		});
 	}
 

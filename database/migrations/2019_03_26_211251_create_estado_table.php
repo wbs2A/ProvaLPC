@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 
 class CreateEstadoTable extends Migration {
 
@@ -16,6 +17,7 @@ class CreateEstadoTable extends Migration {
 		{
 			$table->integer('idEstado', true);
 			$table->string('nome', 45)->nullable();
+			DB::table('Estado')->raw('ALTER TABLE  `Estado` ADD idEstado INT PRIMARY KEY AUTO_INCREMENT;');
 		});
 	}
 
