@@ -10,58 +10,58 @@
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8 pb-40 header-text">
-                        <h1>What Services we offer to our clients</h1>
+                        <h1>Quais serviços oferecemos a nossos clientes?</h1>
                         <p>
-                            Who are in extremely love with eco friendly system.
+                            Nós somos apaixonados por um sistema amigável!
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-user"></span>Expert Technicians</h4>
+                            <h4><span class="lnr lnr-user"></span>Experts Técnicos</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                O uso da Internet está se tornando mais comum devido ao rápido avanço da tecnologia e do poder.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-license"></span>Professional Service</h4>
+                            <h4><span class="lnr lnr-license"></span>Serviço Profissional</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                Nem é por fama, ou obrigação. É amor à profissão. Servimos bem para servir sempre.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-phone"></span>Great Support</h4>
+                            <h4><span class="lnr lnr-phone"></span>Suporte incrível</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                Melhor falar de caminhão do que falar da vida dos outros.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
+                            <h4><span class="lnr lnr-rocket"></span>Habilidades técnicas</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                Eu só paro de engordar quando você parar de se preocupar com a minha vida.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
+                            <h4><span class="lnr lnr-diamond"></span>Altamente recomendado</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                Não sou detetive, mas só ando na pista.
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-feature">
-                            <h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
+                            <h4><span class="lnr lnr-bubble"></span>Avaliações positivas</h4>
                             <p>
-                                Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                                A vida, como os dados, tem os pontos marcados.
                             </p>
                         </div>
                     </div>
