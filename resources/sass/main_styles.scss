@@ -814,7 +814,7 @@ section
 }
 .logo_container a span
 {
-	color: #fe4c50;
+	color: #fab700;//rgba(76,220,209,0.56);
 }
 
 /*********************************
@@ -889,11 +889,7 @@ section
 4. Banner
 *********************************/
 
-.banner
-{
-	width: 100%;
-	margin-top: 30px;
-}
+
 .banner_item
 {
 	display: -webkit-box;

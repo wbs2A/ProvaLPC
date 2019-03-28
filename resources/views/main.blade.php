@@ -26,12 +26,12 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                    <a href="index.php">Locadora<span>Dahora</span></a>
+                                    <a href="{{ route('/') }}">Locadora<span>Dahora</span></a>
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
                                     <li><a href="{{ route('/') }}">Início</a></li>
-                                    <li><a href="">Contato</a></li>
+                                    <li><a href="{{ route('contact') }}">Contato</a></li>
                                 </ul>
                                 <ul class="navbar_user">
                                     <li class="nav-item dropdown">
@@ -70,13 +70,13 @@
                         <a href="#"><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
                         <ul class="menu_selection">
                             <li>
-                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="login.php"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
-                                <a id="navUserBase" class="text-center" href="registrar.php"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="{{ route('login') }}"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
+                                <a id="navUserBase" class="text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu_item"><a href="index.php">Início</a></li>
-                    <li class="menu_item"><a href="contact.php">Contato</a></li>
+                    <li class="menu_item"><a href="{{ route('/') }}">Início</a></li>
+                    <li class="menu_item"><a href="{{ route('contact') }}">Contato</a></li>
                 </ul>
             </div>
         </div>

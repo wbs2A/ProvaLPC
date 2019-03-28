@@ -1796,7 +1796,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selected: ''
+    };
+  }
+});
 
 /***/ }),
 
@@ -38797,31 +38803,19 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm.selected === "Fisica"
-      ? _c(
-          "div",
-          {
-            staticClass: "form-group row",
-            staticStyle: { display: "none" },
-            attrs: { id: "fisico" }
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3)
-          ]
-        )
+      ? _c("div", { staticClass: "form-group row", attrs: { id: "fisico" } }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
       : _vm.selected === "Jurídica"
       ? _c(
           "div",
-          {
-            staticClass: "form-group row",
-            staticStyle: { display: "none" },
-            attrs: { id: "juridico" }
-          },
+          { staticClass: "form-group row", attrs: { id: "juridico" } },
           [_vm._m(4), _vm._v(" "), _vm._m(5)]
         )
       : _vm._e()

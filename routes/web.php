@@ -5,6 +5,8 @@ Route::prefix('user')->middleware('auth')->namespace('User')->group(function(){
 });
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('/');
-
+Route::get('/contact', function (){
+   return view('contato');
+})->name('contact');
 // Route::get('/home', 'HomeController@index')->name('home');
 

@@ -1,17 +1,21 @@
 <script>
     export default{
-
+        data(){
+            return {
+                selected: ''
+            }
+        }
     }
 
 </script>
 
 <template>
     <div>
-        <select id="tipo" v-model="selected" type="tipo" class="form-control" name="tipo" value="" required>
+        <select v-model="selected" id="tipo" type="tipo" class="form-control" name="tipo" value="" required>
         <option>Fisica</option>
         <option>Jurídica</option>
     </select>
-    <div v-if="selected === 'Fisica'" id='fisico' class="form-group row" style="display: none;">
+    <div id='fisico' v-if="selected === 'Fisica'" class="form-group row">
                             <div class="col-3 mb-3">
                                 <label for="cpf" class="col-form-label text-md-right">CPF</label>
                                 <input type="number" class="form-control" id="cpf" maxlength="14" name="cpf" placeholder="CPF" value="" required>
@@ -30,7 +34,7 @@
                             </div>
 
                         </div>
-                        <div id='juridico' v-else-if="selected === 'Jurídica'" class="form-group row" style="display: none;">
+                        <div id='juridico' v-else-if="selected === 'Jurídica'" class="form-group row">
                             <div class="col-4 mb-3">
                                 <label for="cnpj" class="col-form-label text-md-right">CNPJ</label>
                                 <input type="number" class="form-control" id="cnpj" maxlength="14" name="cnpj" placeholder="CNPJ" value="" required>

@@ -23,7 +23,12 @@ $white			: #fff;
 $offwhite		: #f9f9ff;
 $black			: #222;
 
-
+#search{
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: white;
+}
 .section-gap {
   padding: 120px 0;
 }
@@ -103,11 +108,13 @@ $black			: #222;
 
 //--------- Start Banner Area -------------//
 
-.banner-area {
+#banner {
   background-size:cover;
-  .overlay-bg{
-    background-color:rgba(#000,.8);
-  }
+  background-color:rgba(#fff,.8);
+  width: 100%;
+  margin-top: 30px;
+  height: 600px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/img29131040-1468352847755.jpg");
 }
 
 @media(max-width:767px){
@@ -169,10 +176,10 @@ $black			: #222;
 }
 
 .header-right{
-  background-color:rgba(#202e45,.2);
+  background-color:rgba(#000,.4);
   border:1px solid #4b5263;
   padding:50px;
-  box-shadow: 5px 5px #888888;
+  box-shadow: 5px 5px rgba(22, 136, 132, 0.21);
   @media(max-width:413px){
     padding:20px;
   }
