@@ -57,7 +57,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember))
         {
 
-//            dd(Auth::user());
+            session()->put('user', Auth::user());
             return view('index');
 //            return redirect('/perfil');
         }

@@ -1,5 +1,5 @@
 <h1>ôh nois ae</h1>
-@if(Auth::check())
+@if(session('user'))
     // The user is authenticated...
 @else
     // The user is not authenticated...
