@@ -5,7 +5,7 @@
         <div id="banner" class="container-fluid">
             <search id="search"></search>
         </div>
-        <!-- Start feature Area -->
+        <!-- Area dos cards-->
         <section class="feature-area section-gap" id="service">
             <div class="container">
                 <div class="row d-flex justify-content-center">

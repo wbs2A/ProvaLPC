@@ -20,7 +20,7 @@ class CreatePessoafisicaTable extends Migration {
 			$table->string('sexo', 45)->nullable();
 			$table->string('rg', 45)->nullable();
 			$table->date('dataNascimento')->nullable();
-			$table->integer('imagens_idimagens')->index('fk_pessoaFisica_imagens1_idx');
+			$table->integer('imagens_idimagens')->index('fk_pessoaFisica_imagens1_idx')->nullable();
 			$table->primary(['idpessoaFisica']);
 		});
 	}

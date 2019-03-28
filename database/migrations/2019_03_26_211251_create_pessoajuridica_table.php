@@ -18,7 +18,7 @@ class CreatePessoajuridicaTable extends Migration {
 			$table->string('razaoSocial', 45)->nullable();
 			$table->integer('Endereco_idEndereco')->index('fk_pessoaJuridica_Endereco1_idx');
 			$table->integer('user_iduser')->unsigned()->index('fk_pessoaJuridica_user1_idx');
-			$table->integer('imagens_idimagens')->index('fk_pessoaJuridica_imagens1_idx');
+			$table->integer('imagens_idimagens')->index('fk_pessoaJuridica_imagens1_idx')->nullable();
 			$table->primary(['idPJ']);
 		});
 	}

@@ -14,13 +14,12 @@ class CreateEnderecoTable extends Migration {
 	{
 		Schema::create('endereco', function(Blueprint $table)
 		{
-			$table->integer('idEndereco');
+			$table->integer('idEndereco',1);
 			$table->string('rua', 45)->nullable();
 			$table->string('bairro', 45)->nullable();
 			$table->string('cep', 45)->nullable();
 			$table->integer('numero')->nullable();
 			$table->integer('Cidade_idCidade')->index('fk_Endereco_Cidade1_idx');
-			$table->primary(['idEndereco']);
 		});
 	}
 
