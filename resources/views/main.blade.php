@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
 
     <title>Locadora de Carros</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -15,13 +13,10 @@
     <body>
     <div class="super_container">
 
-        <!-- Header -->
-
         <header class="header trans_300">
 
-            <!-- Main Navigation -->
-
             <div class="main_nav_container">
+
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-right">
@@ -39,10 +34,14 @@
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            @if(\Illuminate\Support\Facades\Auth::check())
-                                                    <span>{{\Illuminate\Support\Facades\Auth::user()->name }}</span>
+                                            @if(session('user'))
+                                                <a id="navUserTopo" class="row text-center" style="padding-left: 100px" href="{{route('perfil')}}">{{session('user')['name'] }}</a>
+                                                <hr class="half-rule"/>
+                                                <a id="navUserBase" class="row text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
+
                                             @else
                                                 <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
+                                                <hr class="half-rule"/>
                                                 <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
                                             @endif
 
@@ -85,6 +84,7 @@
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="js/dashboard.js"></script>
         <script src="js/single_custom.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>

@@ -1,6 +1,13 @@
-<h1>ôh nois ae</h1>
-@if(session('user'))
-    // The user is authenticated...
-@else
-    // The user is not authenticated...
-@endif
+@extends('main' )
+
+@section('content')
+    <div id="index">
+        <div id="dashboard">
+            @if(!session('user')['tipo'])
+                <dashboardapp></dashboardapp>
+            @else
+                <empresadash></empresadash>
+            @endif
+        </div>
+    </div>
+@stop

@@ -16864,6 +16864,12 @@ td {
   bottom: 0;
 }
 
+.half-rule {
+  margin-left: 0;
+  text-align: left;
+  width: 100%;
+}
+
 #banner {
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.8);
