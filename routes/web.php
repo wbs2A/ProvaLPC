@@ -10,4 +10,5 @@ Route::group(['middleware'=>["web"]], function (){
         return view('contato');
     })->name('contact');
 });
+Route::get('/', 'HomeController@index')->name('/');
 Auth::routes();

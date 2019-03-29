@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Model\PessoaJuridica;
+use App\Model\Endereco;
 
 class RegisterController extends Controller
 {
@@ -48,11 +49,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        $validate = Validator::make($data, [
+            'cpf_or_cnpj' => 'cpf_cnpj|unique:users',
+            'name' => ['required', 'string', 'max:50'],
+            'email' => 'max:45',
+            'telefone'=>'required',
+            'password' => 'min:6|required',
+            'password-confirm' => 'min:6|same:password',
+            'tipo'=> 'required',
+            'email' => 'max:45',
         ]);
+         if($validate->fails())
+        {
+            dd($validate->errors());
+        }
+        return $validate;
     }
 
     /**
@@ -63,12 +74,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        if ($data['tipo'] == 'Fisica') {
+            $tipo = 0;
+        }else{
+            $tipo = 1;
+        }
+        $user=User::firstOrCreate([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
             'telefone'=> $data['telefone'],
-            'tipo' => $data['tipo']
+            'tipo' => $tipo,
+            'password' => Hash::make($data['password'])
         ]);
+        $data['user']=$user->id;
+        $endereco=Endereco::insert($data);
+        $data['endereco']=$endereco->id;
+        if ($tipo) {
+            PessoaJuridica::inserir($data);
+        }else{
+            PessoaFisica::inserir($data);
+        }
+        return;
     }
 }

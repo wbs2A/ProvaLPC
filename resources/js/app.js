@@ -11,6 +11,8 @@ window.Vue = require('vue');
 import VcUsers from './components/users.vue'
 import Search from './components/search.vue';
 import CreateUser from './components/createuser.vue';
+import BuscaCep from './components/buscacep.vue';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24,6 +26,7 @@ import CreateUser from './components/createuser.vue';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('createuser', require('./components/createuser.vue').default);
+Vue.component('buscacep', require('./components/buscacep.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -36,7 +39,8 @@ const app = new Vue({
     components:{
         'vcusers':VcUsers,
         'search': Search,
-        'createuser': CreateUser
+        'createuser': CreateUser,
+        'buscacep':BuscaCep,
     },
     data: {
         message: "O VUE JS ESTÁ FUNCIONANDO"
