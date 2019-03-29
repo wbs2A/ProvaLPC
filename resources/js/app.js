@@ -12,6 +12,8 @@ import VcUsers from './components/users.vue'
 import Search from './components/search.vue';
 import CreateUser from './components/createuser.vue';
 import BuscaCep from './components/buscacep.vue';
+import EmpresaDash from './components/empresadash';
+import UserDashboard from './components/userdashboard';
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,6 +34,7 @@ Vue.component('buscacep', require('./components/buscacep.vue').default);
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
+ *
  */
 
 const app = new Vue({
@@ -41,6 +44,8 @@ const app = new Vue({
         'search': Search,
         'createuser': CreateUser,
         'buscacep':BuscaCep,
+        'empresadash': EmpresaDash,
+        'userdashboard': UserDashboard
     },
     data: {
         message: "O VUE JS ESTÁ FUNCIONANDO"
