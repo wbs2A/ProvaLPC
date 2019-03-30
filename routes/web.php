@@ -11,7 +11,7 @@ Route::group(['middleware'=>["web"]], function (){
         return view('contato');
     })->name('contact');
     //Rotas do Dashboard
-    Route::get('/perfil/{any}', 'DashboardController@index')->where('any', '.*');
+    Route::get('/{any}', 'DashboardController@index')->where('any', '.*');
 });
 Route::get('/', 'HomeController@index')->name('/');
 Auth::routes();

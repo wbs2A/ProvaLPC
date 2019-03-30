@@ -51376,8 +51376,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_search_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/search.vue */ "./resources/js/components/search.vue");
 /* harmony import */ var _components_createuser_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/createuser.vue */ "./resources/js/components/createuser.vue");
 /* harmony import */ var _components_buscacep_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/buscacep.vue */ "./resources/js/components/buscacep.vue");
-/* harmony import */ var _components_empresadash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/empresadash */ "./resources/js/components/empresadash.vue");
-/* harmony import */ var _components_userdashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/userdashboard */ "./resources/js/components/userdashboard.vue");
+/* harmony import */ var _components_empresadash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/empresadash */ "./resources/js/components/empresadash.vue");
+/* harmony import */ var _components_userdashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/userdashboard */ "./resources/js/components/userdashboard.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -51386,6 +51386,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+
 
 
 
@@ -51416,9 +51418,9 @@ var app = new Vue({
     'vcusers': _components_users_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     'search': _components_search_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     'createuser': _components_createuser_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    'buscacep': _components_buscacep_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-    'empresadash': _components_empresadash__WEBPACK_IMPORTED_MODULE_3__["default"],
-    'userdashboard': _components_userdashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
+    'buscacep': _components_buscacep_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    'empresadash': _components_empresadash__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'userdashboard': _components_userdashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: {
     message: "O VUE JS ESTÁ FUNCIONANDO"

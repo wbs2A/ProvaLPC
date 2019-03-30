@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 import DashboardApp from '../assets/js/views/DashboardApp'
-import Options from '../assets/js/views/Options'
+import Comments from '../assets/js/views/comments'
 import Home from '../assets/js/views/Home'
+import Reservation from '../assets/js/views/reservation'
 
 const router = new VueRouter({
     mode: 'history',
@@ -16,10 +17,15 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/options',
-            name: 'options',
-            component: Options,
+            path: '/comments',
+            name: 'comments',
+            component: Comments,
         },
+        {
+            path: '/reservations',
+            name: 'reservations',
+            component: Reservation,
+        }
     ],
 });
 
