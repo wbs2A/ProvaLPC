@@ -22,7 +22,7 @@
                 </div>
             </div>
             @if(\Illuminate\Support\Facades\Auth::user())
-                <h1>O usuário está logado</h1>
+                <h4>O usuário está logado</h4>
             @endif
 
 

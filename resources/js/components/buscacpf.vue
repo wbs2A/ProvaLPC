@@ -2,8 +2,11 @@
     export default{
         methods: {
             getCpf(){
-              var a 
-              a= document.getElementById('index').action.replace('register','userInsert')+'/0'+'/'+document.getElementById("cpf").value;
+              var a;
+              var res = document.getElementById("cpf").value.replace('.', "");
+              res = res.replace('-', ""); 
+              res =res.replace('.', "");
+              a= document.getElementById('register').action.replace('register','userInsert')+'/0'+'/'+res;
                 $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -42,7 +45,7 @@
 <template>
     <div  class="col  p-0 mr-1 ml-1 mb-3">
         <label for="cpf" class="col-form-label text-md-right">CPF</label>
-        <input type="number" class="form-control" id="cpf" maxlength="11" @blur="getCpf" name="cpf" placeholder="CPF" value="">
+        <input type="text" class="form-control" data-mask="000.000.000-00" id="cpf" maxlength="11" @blur="getCpf" name="cpf" placeholder="CPF" value="">
     </div>
 </template>
 

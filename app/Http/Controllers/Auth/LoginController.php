@@ -71,7 +71,7 @@ class LoginController extends Controller
     // }
 
     public function logout(Request $request){
-        session()->remove('user');
+        // session()->remove('user');
         Auth::logout();
         return redirect('/');
     }

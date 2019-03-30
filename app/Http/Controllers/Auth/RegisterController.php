@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Model\PessoaJuridica;
 use App\Model\PessoaFisica;
 use App\Model\Endereco;
+use Validator;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -50,16 +50,54 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $validate = Validator::make($data, [
-            'cpf_or_cnpj' => 'cpf_cnpj|unique:users',
-            'name' => ['required', 'string', 'max:50'],
-            'email' => 'max:45',
-            'telefone'=>'required',
-            'password' => 'min:6|required',
-            'password-confirm' => 'min:6|same:password',
-            'tipo'=> 'required',
-            'email' => 'max:45',
-        ]);
+        $validate;
+        $data['telefone']=preg_replace("/[^0-9]/", "", $data['telefone']);
+        $data['cep']=preg_replace("/[^0-9]/", "", $data['cep']);
+        if ($data['tipo'] == 'Fisica') {
+            $data['cpf']=preg_replace("/[^0-9]/", "", $data['cpf']);
+            $data['rg']=preg_replace("/[^0-9]/", "", $data['rg']);
+            $validate = Validator::make($data, [
+                'name' => ['required', 'string', 'max:50'],
+                'email' => 'max:45',
+                'telefone'=>'required',
+                'tipo'=> 'required',
+                'idpessoaFisica' => 'cpf|unique:pessoafisica',
+                'password' => 'min:6|required',
+                'password-confirm' => 'min:6|same:password',
+                'email' => 'max:45',
+                'nascimento'=>'required',
+                'sexo'=>'required',
+                'nCNH'=>'required|cnh',
+                'nRegistro'=>'required',
+                'dataValidade'=>'required',
+                'estadoCNH'=>'required',
+                'cep'=>'required',
+                'numero'=>'required',
+                'cidade'=>'required',
+                'bairro'=>'required',
+                'rua'=>'required',
+                'estado'=>'required'
+            ]);
+        }else{
+            $data['cnpj']=preg_replace("/[^0-9]/", "", $data['cnpj']);
+            $validate = Validator::make($data, [
+                'name' => ['required', 'string', 'max:50'],
+                'email' => 'max:45',
+                'telefone'=>'required',
+                'tipo'=> 'required',
+                'password' => 'min:6|required',
+                'password-confirm' => 'min:6|same:password',
+                'email' => 'max:45',
+                'idPJ'=>'cnpj|unique:pessoajuridica',
+                'razaoSocial'=>'required',
+                'cep'=>'required',
+                'numero'=>'required',
+                'cidade'=>'required',
+                'bairro'=>'required',
+                'rua'=>'required',
+                'estado'=>'required'
+            ]);
+        }
          if($validate->fails())
         {
             dd($validate->errors());
@@ -75,11 +113,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $data['telefone']=preg_replace("/[^0-9]/", "", $data['telefone']);
+        $data['cep']=preg_replace("/[^0-9]/", "", $data['cep']);
         if ($data['tipo'] == 'Fisica') {
+            $data['cpf']=preg_replace("/[^0-9]/", "", $data['cpf']);
+            $data['rg']=preg_replace("/[^0-9]/", "", $data['rg']);
             $tipo = 0;
         }else{
+            $data['cnpj']=preg_replace("/[^0-9]/", "", $data['cnpj']);
             $tipo = 1;
         }
+
         $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -96,6 +141,7 @@ class RegisterController extends Controller
             PessoaFisica::inserir($data);
         }
         // session()->put('user', Auth::user());
+        
         return $user;
     }
 }

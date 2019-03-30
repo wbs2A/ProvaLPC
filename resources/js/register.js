@@ -8,10 +8,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VcUsers from './components/users.vue'
-import Search from './components/search.vue';
-import EmpresaDash from './components/empresadash';
-import UserDashboard from './components/userdashboard';
+import CreateUser from './components/createuser.vue';
+import BuscaCep from './components/buscacep.vue';
+import BuscaCpf from './components/buscacpf';
+import BuscaCnpj from './components/buscacnpj';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -23,9 +23,9 @@ import UserDashboard from './components/userdashboard';
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('createuser', require('./components/createuser.vue').default);
-Vue.component('buscacep', require('./components/buscacep.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('createuser', require('./components/createuser.vue').default);
+// Vue.component('buscacep', require('./components/buscacep.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,22 +34,12 @@ Vue.component('buscacep', require('./components/buscacep.vue').default);
  *
  */
 
-const app = new Vue({
-    el: '#index',
+new Vue({
+    el:"#register",
     components:{
-        'vcusers':VcUsers,
-        'search': Search,
-        'empresadash': EmpresaDash,
-        'userdashboard': UserDashboard,
+        'createuser': CreateUser,
+        'buscacep':BuscaCep,
+        'buscacnpj': BuscaCnpj,
+        'buscacpf': BuscaCpf
     },
-    data: {
-        message: "O VUE JS ESTÁ FUNCIONANDO"
-    }
 });
-
-// new Vue({
-// 	el:"#register",
-// 	components:{
-//         CreateUser
-// 	}
-// });

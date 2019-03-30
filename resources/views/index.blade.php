@@ -69,4 +69,5 @@
             </div>
         </section>
     </div>
+    <script src="js/app.js"></script>
 @stop

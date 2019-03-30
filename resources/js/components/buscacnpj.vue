@@ -7,7 +7,11 @@
       },
         methods: {
             getCnpj(){
-                this.a= document.getElementById('index').action.replace('register','userInsert')+'/1'+'/'+document.getElementById("cnpj").value;
+              var res = document.getElementById("cnpj").value.replace('.', "");
+              res = res.replace('-', ""); 
+              res =res.replace('.', "");
+              res =res.replace('/', "");
+                this.a= document.getElementById('register').action.replace('register','userInsert')+'/1'+'/'+res;
                 $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -46,7 +50,7 @@
 <template>
     <div class="col mb-3">
         <label for="cnpj" class="col-form-label text-md-right">CNPJ</label>
-        <input type="number" class="form-control" id="cnpj" maxlength="14" name="cnpj" placeholder="CNPJ"  @blur="getCnpj" value="">
+        <input type="text" data-mask="00.000.000/0000-00" class="form-control" id="cnpj" maxlength="14" name="cnpj" placeholder="CNPJ"  @blur="getCnpj" value="">
     </div>
 </template>
 

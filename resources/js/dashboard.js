@@ -7,22 +7,23 @@ import DashboardApp from '../assets/js/views/DashboardApp'
 import Comments from '../assets/js/views/comments'
 import Home from '../assets/js/views/Home'
 import Reservation from '../assets/js/views/reservation'
+import EmpresaDash from './components/empresadash';
 
 const router = new VueRouter({
     mode: 'history',
     routes:[
         {
-            path: '/perfil',
+            path: window.location.pathname+'/perfil',
             name: 'home',
             component: Home
         },
         {
-            path: '/comments',
+            path: window.location.pathname+'/comments',
             name: 'comments',
             component: Comments,
         },
         {
-            path: '/reservations',
+            path: window.location.pathname+'/reservations',
             name: 'reservations',
             component: Reservation,
         }
@@ -31,6 +32,9 @@ const router = new VueRouter({
 
 const dashapp = new Vue({
     el:'#dashboard',
-    components: {'dashboardapp':DashboardApp},
+    components: {
+        'dashboardapp':DashboardApp,
+        'empresadash':EmpresaDash
+    },
     router,
 });

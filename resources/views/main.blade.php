@@ -30,7 +30,7 @@
                                 </ul>
                                 <ul class="navbar_user">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link  " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -40,7 +40,7 @@
                                                 <a id="navUserBase" class="row text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
 
                                             @else
-                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt" aria-hidden="true"></i>Acessar</a>
+                                                <a id="navUserTopo" class="dropdown-item row" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt ml-1 mr-2" aria-hidden="true"></i>Acessar</a>
                                                 <hr class="half-rule"/>
                                                 <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
                                             @endif
@@ -65,7 +65,7 @@
             <div class="hamburger_menu_content text-right">
                 <ul class="menu_top_nav">
                     <li class="menu_item has-children">
-                        <a href="#"><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
+                       a><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
                         <ul class="menu_selection">
                             <li>
                                 @if(Auth::check())
@@ -91,8 +91,8 @@
             @yield('content')
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/jquery.mask.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/dashboard.js"></script>
         <script src="js/single_custom.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
