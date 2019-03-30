@@ -12,7 +12,7 @@ Route::group(['middleware'=>["web"]], function (){
         return view('contato');
     })->name('contact');
     //Rotas do Dashboard
-    Route::get('/perfil/{any}', 'DashboardController@index')->where('any', '.*');
+    Route::get('/{any}', 'DashboardController@index')->where('any', '.*');
 });
 Route::get('/userInsert/{tipo}/{id}', 'UserController@show');
 Auth::routes();

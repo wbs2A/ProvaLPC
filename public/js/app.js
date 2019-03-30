@@ -51582,8 +51582,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -51615,6 +51613,7 @@ var app = new Vue({
     'userdashboard': _components_userdashboard__WEBPACK_IMPORTED_MODULE_5__["default"],
     'buscacnpj': _components_buscacnpj__WEBPACK_IMPORTED_MODULE_7__["default"],
     'buscacpf': _components_buscacpf__WEBPACK_IMPORTED_MODULE_6__["default"]
+    'userdashboard': _components_userdashboard__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: {
     message: "O VUE JS ESTÁ FUNCIONANDO"

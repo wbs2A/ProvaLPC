@@ -87,7 +87,7 @@
             </div>
         </div>
         </div>
-        <div id="app" class="container-fluid" style="padding-top: 100px">
+        <div id="app" class="container-fluid" style="padding-top: 110px">
             @yield('content')
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>

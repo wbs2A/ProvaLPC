@@ -16789,6 +16789,14 @@ td {
   }
 }
 
+.nav > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 20px;
+}
+
 .primary-btn {
   background-color: #fab700;
   line-height: 42px;
