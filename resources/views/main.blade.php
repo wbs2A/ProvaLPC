@@ -34,8 +34,8 @@
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            @if(session('user'))
-                                                <a id="navUserTopo" class="row text-center" style="padding-left: 100px" href="{{route('perfil')}}">{{session('user')['name'] }}</a>
+                                            @if(Auth::check())
+                                                <a id="navUserTopo" class="row text-center" style="padding-left: 100px" href="{{route('perfil')}}">{{Auth::user()->name }}</a>
                                                 <hr class="half-rule"/>
                                                 <a id="navUserBase" class="row text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
 
@@ -68,8 +68,16 @@
                         <a href="#"><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
                         <ul class="menu_selection">
                             <li>
-                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="{{ route('login') }}"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
-                                <a id="navUserBase" class="text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                @if(Auth::check())
+                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" style="padding-left: 100px" href="{{route('perfil')}}">{{Auth::user()->name }}</a>
+                                                <hr class="half-rule"/>
+                                                <a id="navUserBase" class="text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
+
+                                            @else
+                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="{{ route('login') }}"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
+                                                <a id="navUserBase" class="text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
+                                            @endif
+
                             </li>
                         </ul>
                     </li>

@@ -15,14 +15,19 @@ class PessoaFisica extends Model
     	$pessoa->idpessoaFisica=$data['cpf'];
     	$pessoa->sexo=$data['sexo'];
     	$pessoa->rg=$data['rg'];
-    	$pessoa->dataNascimento=$data['dataNascimento'];
+    	$pessoa->dataNascimento=$data['nascimento'];
     	$pessoa->Endereco_idEndereco=$data['endereco'];
     	$pessoa->user_iduser=$data['user'];
-    	$pessoa->save();
-    	if (empty($pessoa)) {
-    		return 405;
-    	}
-    	return 200;
+        try{
+                $pessoa->save();
+                
+        }catch (\Exception $e) {
+            throw new \Exception($e,1);
+        }
+        if(empty($pessoa)){
+            return 405;
+        }
+    	return $pessoa;
     }
     public static function atualizar($request, $id){}
 }

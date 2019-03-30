@@ -14,7 +14,8 @@ import CreateUser from './components/createuser.vue';
 import BuscaCep from './components/buscacep.vue';
 import EmpresaDash from './components/empresadash';
 import UserDashboard from './components/userdashboard';
-
+import BuscaCpf from './components/buscacpf';
+import BuscaCnpj from './components/buscacnpj';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -45,7 +46,9 @@ const app = new Vue({
         'createuser': CreateUser,
         'buscacep':BuscaCep,
         'empresadash': EmpresaDash,
-        'userdashboard': UserDashboard
+        'userdashboard': UserDashboard,
+        'buscacnpj': BuscaCnpj,
+        'buscacpf': BuscaCpf
     },
     data: {
         message: "O VUE JS ESTÁ FUNCIONANDO"

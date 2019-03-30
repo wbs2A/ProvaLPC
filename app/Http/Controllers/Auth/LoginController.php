@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -56,9 +56,7 @@ class LoginController extends Controller
         $remember = $request->input('remember_me');
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember))
         {
-
-            session()->put('user', Auth::user());
-            return view('index');
+            return redirect()->intended('/');
 //            return redirect('/perfil');
         }
         else
@@ -67,14 +65,14 @@ class LoginController extends Controller
         }
     }
 
-    public function showLoginForm()
-    {
-        return view('auth/login');
-    }
+    // public function showLoginForm()
+    // {
+    //     return view('auth/login');
+    // }
 
     public function logout(Request $request){
         session()->remove('user');
-        return view('index');
+        Auth::logout();
+        return redirect('/');
     }
-
 }

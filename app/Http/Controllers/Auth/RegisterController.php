@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Model\PessoaJuridica;
+use App\Model\PessoaFisica;
 use App\Model\Endereco;
 
 class RegisterController extends Controller
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -79,14 +80,14 @@ class RegisterController extends Controller
         }else{
             $tipo = 1;
         }
-        $user=User::firstOrCreate([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'telefone'=> $data['telefone'],
             'tipo' => $tipo,
             'password' => Hash::make($data['password'])
         ]);
-        $data['user']=$user->id;
+        $data['user']=$user->iduser;
         $endereco=Endereco::insert($data);
         $data['endereco']=$endereco->id;
         if ($tipo) {
@@ -94,6 +95,7 @@ class RegisterController extends Controller
         }else{
             PessoaFisica::inserir($data);
         }
-        return;
+        // session()->put('user', Auth::user());
+        return $user;
     }
 }

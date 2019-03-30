@@ -10,7 +10,6 @@
                 <div class="card-body">
                     <form id="index" method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="form-group row">
                             <div class="col-5">
                                 <label for="name" class="col-form-label text-md-right">Nome</label>
@@ -53,15 +52,13 @@
                                         <strong>{{ $errors->first('tipo') }}</strong>
                                     </span>
                                 @endif
-                                <div  class=" fisica col-2 p-0 mr-1 ml-1 mb-3" style="display: none">
-                                    <label for="cpf" class="col-form-label text-md-right">CPF</label>
-                                    <input type="number" class="form-control" id="cpf" maxlength="11" name="cpf" placeholder="CPF" value="">
-                                     @if ($errors->has('cpf'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('cpf') }}</strong>
-                                        </span>
-                                    @endif
+                                <div class="col fisica" style="display: none">
+                                    <buscacpf></buscacpf>
+                                    <span class="invalid-feedback" role="alert" style="display: none">
+                                        <strong id="fisica-cpf"></strong>
+                                    </span>
                                 </div>
+                                    
                                 <div class=" fisica col-2 p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="rg" class="col-form-label text-md-right">RG</label>
                                     <input type="text" class="form-control" name="rg" id="rg" placeholder="RG" value="">
@@ -89,15 +86,14 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="col-5 juridica mb-3" style="display: none">
-                                    <label for="cnpj" class="col-form-label text-md-right">CNPJ</label>
-                                    <input type="number" class="form-control" id="cnpj" maxlength="14" name="cnpj" placeholder="CNPJ" value="">
+                                <div class="col juridica" style="display: none">
+                                    <buscacnpj></buscacnpj>
+                                    <span class="invalid-feedback ml-3" role="alert" style="display: none">
+                                        <strong id="juridica-cnpj"></strong>
+                                    </span>
                                 </div>
-                                     @if ($errors->has('cnpj'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('cnpj') }}</strong>
-                                        </span>
-                                    @endif
+                                
+                                
                                 <div class="col-5 juridica mb-3" style="display: none">
                                     <label for="razaoSocial" class="col-form-label text-md-right" >Razão Social</label>
                                     <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="">
@@ -124,10 +120,7 @@
                                     <label for="rua" class="col-form-label text-md-right">Rua</label>
                                     <input type="text" class="form-control" id="rua" name="rua" placeholder="">
                                   </div>
-                                <div class="col-4 mb-3">
-                                    <label for="pais" class="col-form-label text-md-right">Pais</label>
-                                    <input class="form-control" id="pais" value="Pais" name="pais">
-                                  </div>
+                                
                                   <div class="col-4 mb-3">
                                     <label for="estado" class="col-form-label text-md-right">Estado</label>
                                     <input type="text" class="form-control" id="estado" name="estado" placeholder="">
