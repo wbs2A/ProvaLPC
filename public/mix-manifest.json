@@ -1,10 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/css/bootstrap.css": "/css/bootstrap.css",
-    "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/dashboard.js": "/js/dashboard.js",
-    "/js/jquery.mask.js": "/js/jquery.mask.js",
-    "/js/register.js": "/js/register.js",
-    "/js/single_custom.js": "/js/single_custom.js",
-    "/css/app.css": "/css/app.css"
+    "/js/single_custom.js": "/js/single_custom.js"
 }
