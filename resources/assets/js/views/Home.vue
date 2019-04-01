@@ -5,6 +5,11 @@
         padding: 100px;
         padding-left: 20%;
     }
+
+    .edit{
+        position: relative;
+        float: right;
+    }
     .swapping-squares-spinner, .swapping-squares-spinner * {
     box-sizing: border-box;
 }
@@ -89,9 +94,46 @@
         <div v-if="error" class="error">
             <h1>{{ error }}</h1>
         </div>
+        <div v-if="user">
+            <div class="row">
+                <div class="card col">
+                    <div class="card-header">Dados Pessoais <a class="edit" href="#"> <i class="fas fa-edit"></i> Editar dados</a></div>
+                    <div class="card-body">
+                        <ul>
+                            <li>nome: {{user['user_info']['name']}}</li>
+                            <li>sexo: {{user['pf_info']['sexo']}}</li>
+                            <li>telefone: {{user['user_info']['telefone']}}</li>
+                            <li>RG: {{user['pf_info']['rg']}}</li>
+                            <li>Data de Nascimento: {{user['pf_info']['dataNascimento']}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card col">
+                    <div class="card-header">Endereço <a class="edit" href="#"><i class="fas fa-edit"></i> Editar dados</a></div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Rua: {{user['endereco_info']['rua']}}</li>
+                            <li>Bairro: {{user['endereco_info']['bairro']}}</li>
+                            <li>Número: {{user['endereco_info']['numero']}}</li>
+                            <li>CEP: {{user['endereco_info']['cep']}}</li>
+                            <li>Cidade: {{user['cidade_info']['nome']}}</li>
+                            <li>Estado: {{user['estado_info']['nome']}}</li>
+                        </ul>
 
-        <p> {{user}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card col">
+                <div class="card-header">Dados de acesso à conta <a class="edit"  href="#"><i class="fas fa-edit"></i> Editar dados</a></div>
+                <div class="card-body">
+                    <ul>
+                        <li>e-mail: {{user['user_info']['email']}}</li>
+                        <li>Senha: *********</li>
+                    </ul>
+                </div>
+            </div>
     </div>
+        </div>
 </template>
 
 <script>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Cidade;
+use App\Model\Endereco;
+use App\Model\Estado;
 use App\Model\PessoaFisica;
 use App\User;
 use Illuminate\Http\Request;
@@ -50,7 +53,10 @@ class PessoaFisicaController extends Controller
     {
         $pf = PessoaFisica::find($cpf);
         $user = User::find($pf->user_iduser);
-        return array("pf_info"=>$pf, "user_info"=>$user);
+        $endereco = Endereco::find($pf->Endereco_idEndereco);
+        $cidade = Cidade::find($endereco->Cidade_idCidade);
+        $estado = Estado::find($cidade->Estado_idEstado);
+        return array("pf_info"=>$pf, "user_info"=>$user, "endereco_info"=>$endereco, "cidade_info"=>$cidade, "estado_info"=>$estado);
     }
 
     /**

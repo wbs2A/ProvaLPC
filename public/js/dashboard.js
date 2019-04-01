@@ -223,6 +223,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -285,7 +327,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.center[data-v-6c0a33b2] {\n        margin: auto;\n        width: 50%;\n        padding: 100px;\n        padding-left: 20%;\n}\n.swapping-squares-spinner[data-v-6c0a33b2], .swapping-squares-spinner *[data-v-6c0a33b2] {\n    box-sizing: border-box;\n}\n.swapping-squares-spinner[data-v-6c0a33b2] {\n    height: 65px;\n    width: 65px;\n    position: relative;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2] {\n    height: calc(150px * 0.25 / 1.3);\n    width:  calc(150px * 0.25 / 1.3);\n    -webkit-animation-duration: 1000ms;\n            animation-duration: 1000ms;\n    border: calc(65px * 0.04 / 1.3) solid #000000;\n    margin-right: auto;\n    margin-left: auto;\n    position: absolute;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(1) {\n    -webkit-animation-name: swapping-squares-animation-child-1-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-1-data-v-6c0a33b2;\n    -webkit-animation-delay: 500ms;\n            animation-delay: 500ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(2) {\n    -webkit-animation-name: swapping-squares-animation-child-2-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-2-data-v-6c0a33b2;\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(3) {\n    -webkit-animation-name: swapping-squares-animation-child-3-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-3-data-v-6c0a33b2;\n    -webkit-animation-delay: 500ms;\n            animation-delay: 500ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(4) {\n    -webkit-animation-name: swapping-squares-animation-child-4-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-4-data-v-6c0a33b2;\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms;\n}\n@-webkit-keyframes swapping-squares-animation-child-1-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,150%) scale(2,2);\n                transform: translate(150%,150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-1-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,150%) scale(2,2);\n                transform: translate(150%,150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-2-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,150%) scale(2,2);\n                transform: translate(-150%,150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-2-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,150%) scale(2,2);\n                transform: translate(-150%,150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-3-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,-150%) scale(2,2);\n                transform: translate(-150%,-150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-3-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,-150%) scale(2,2);\n                transform: translate(-150%,-150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-4-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,-150%) scale(2,2);\n                transform: translate(150%,-150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-4-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,-150%) scale(2,2);\n                transform: translate(150%,-150%) scale(2,2);\n}\n}\n", ""]);
+exports.push([module.i, "\n.center[data-v-6c0a33b2] {\n        margin: auto;\n        width: 50%;\n        padding: 100px;\n        padding-left: 20%;\n}\n.edit[data-v-6c0a33b2]{\n        position: relative;\n        float: right;\n}\n.swapping-squares-spinner[data-v-6c0a33b2], .swapping-squares-spinner *[data-v-6c0a33b2] {\n    box-sizing: border-box;\n}\n.swapping-squares-spinner[data-v-6c0a33b2] {\n    height: 65px;\n    width: 65px;\n    position: relative;\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2] {\n    height: calc(150px * 0.25 / 1.3);\n    width:  calc(150px * 0.25 / 1.3);\n    -webkit-animation-duration: 1000ms;\n            animation-duration: 1000ms;\n    border: calc(65px * 0.04 / 1.3) solid #000000;\n    margin-right: auto;\n    margin-left: auto;\n    position: absolute;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(1) {\n    -webkit-animation-name: swapping-squares-animation-child-1-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-1-data-v-6c0a33b2;\n    -webkit-animation-delay: 500ms;\n            animation-delay: 500ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(2) {\n    -webkit-animation-name: swapping-squares-animation-child-2-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-2-data-v-6c0a33b2;\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(3) {\n    -webkit-animation-name: swapping-squares-animation-child-3-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-3-data-v-6c0a33b2;\n    -webkit-animation-delay: 500ms;\n            animation-delay: 500ms;\n}\n.swapping-squares-spinner .square[data-v-6c0a33b2]:nth-child(4) {\n    -webkit-animation-name: swapping-squares-animation-child-4-data-v-6c0a33b2;\n            animation-name: swapping-squares-animation-child-4-data-v-6c0a33b2;\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms;\n}\n@-webkit-keyframes swapping-squares-animation-child-1-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,150%) scale(2,2);\n                transform: translate(150%,150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-1-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,150%) scale(2,2);\n                transform: translate(150%,150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-2-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,150%) scale(2,2);\n                transform: translate(-150%,150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-2-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,150%) scale(2,2);\n                transform: translate(-150%,150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-3-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,-150%) scale(2,2);\n                transform: translate(-150%,-150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-3-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(-150%,-150%) scale(2,2);\n                transform: translate(-150%,-150%) scale(2,2);\n}\n}\n@-webkit-keyframes swapping-squares-animation-child-4-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,-150%) scale(2,2);\n                transform: translate(150%,-150%) scale(2,2);\n}\n}\n@keyframes swapping-squares-animation-child-4-data-v-6c0a33b2 {\n50% {\n        -webkit-transform: translate(150%,-150%) scale(2,2);\n                transform: translate(150%,-150%) scale(2,2);\n}\n}\n", ""]);
 
 // exports
 
@@ -1524,7 +1566,94 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("p", [_vm._v(" " + _vm._s(_vm.user))])
+    _vm.user
+      ? _c("div", [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "card col" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("ul", [
+                  _c("li", [
+                    _vm._v("nome: " + _vm._s(_vm.user["user_info"]["name"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("sexo: " + _vm._s(_vm.user["pf_info"]["sexo"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v(
+                      "telefone: " + _vm._s(_vm.user["user_info"]["telefone"])
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("RG: " + _vm._s(_vm.user["pf_info"]["rg"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v(
+                      "Data de Nascimento: " +
+                        _vm._s(_vm.user["pf_info"]["dataNascimento"])
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card col" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("ul", [
+                  _c("li", [
+                    _vm._v("Rua: " + _vm._s(_vm.user["endereco_info"]["rua"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v(
+                      "Bairro: " + _vm._s(_vm.user["endereco_info"]["bairro"])
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v(
+                      "Número: " + _vm._s(_vm.user["endereco_info"]["numero"])
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("CEP: " + _vm._s(_vm.user["endereco_info"]["cep"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Cidade: " + _vm._s(_vm.user["cidade_info"]["nome"]))
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Estado: " + _vm._s(_vm.user["estado_info"]["nome"]))
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card col" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("ul", [
+                _c("li", [
+                  _vm._v("e-mail: " + _vm._s(_vm.user["user_info"]["email"]))
+                ]),
+                _vm._v(" "),
+                _c("li", [_vm._v("Senha: *********")])
+              ])
+            ])
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -1540,6 +1669,42 @@ var staticRenderFns = [
       _c("div", { staticClass: "square" }),
       _vm._v(" "),
       _c("div", { staticClass: "square" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("Dados Pessoais "),
+      _c("a", { staticClass: "edit", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-edit" }),
+        _vm._v(" Editar dados")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("Endereço "),
+      _c("a", { staticClass: "edit", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-edit" }),
+        _vm._v(" Editar dados")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("Dados de acesso à conta "),
+      _c("a", { staticClass: "edit", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fas fa-edit" }),
+        _vm._v(" Editar dados")
+      ])
     ])
   }
 ]

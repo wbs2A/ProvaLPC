@@ -9,6 +9,7 @@ use App\Model\Cidade;
 class Endereco extends Model
 {
     protected $table = 'endereco';
+    protected $primaryKey = 'idEndereco';
     public $incrementing = true;
     public $timestamps = false;
     public static function insert($dados){
