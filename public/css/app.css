@@ -16884,7 +16884,7 @@ td {
   width: 100%;
   margin-top: 30px;
   height: 600px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/img29131040-1468352847755.jpg?4858cee1ca2d895d5e6a5c77cae78770);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 @media (max-width: 767px) {

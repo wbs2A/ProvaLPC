@@ -118,6 +118,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/empresadash.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/empresadash.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -764,6 +777,39 @@ var render = function() {
   return _c("p", [_vm._v("Essas são suas reservas")])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("h1", [_vm._v("Essa mensagem é do meu lindo empresario")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -15732,6 +15778,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/empresadash.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/empresadash.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./empresadash.vue?vue&type=template&id=c4247dc0&scoped=true& */ "./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true&");
+/* harmony import */ var _empresadash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./empresadash.vue?vue&type=script&lang=js& */ "./resources/js/components/empresadash.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _empresadash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "c4247dc0",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/empresadash.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/empresadash.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/empresadash.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_empresadash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./empresadash.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/empresadash.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_empresadash_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./empresadash.vue?vue&type=template&id=c4247dc0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/empresadash.vue?vue&type=template&id=c4247dc0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_empresadash_vue_vue_type_template_id_c4247dc0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/dashboard.js":
 /*!***********************************!*\
   !*** ./resources/js/dashboard.js ***!
@@ -15748,6 +15863,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_views_comments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/js/views/comments */ "./resources/assets/js/views/comments.vue");
 /* harmony import */ var _assets_js_views_Home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/js/views/Home */ "./resources/assets/js/views/Home.vue");
 /* harmony import */ var _assets_js_views_reservation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/js/views/reservation */ "./resources/assets/js/views/reservation.vue");
+/* harmony import */ var _components_empresadash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/empresadash */ "./resources/js/components/empresadash.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -15755,18 +15871,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
-    path: '/perfil',
+    path: window.location.pathname + '/perfil',
     name: 'home',
     component: _assets_js_views_Home__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/comments',
+    path: window.location.pathname + '/comments',
     name: 'comments',
     component: _assets_js_views_comments__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/reservations',
+    path: window.location.pathname + '/reservations',
     name: 'reservations',
     component: _assets_js_views_reservation__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
@@ -15774,7 +15891,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 var dashapp = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#dashboard',
   components: {
-    'dashboardapp': _assets_js_views_DashboardApp__WEBPACK_IMPORTED_MODULE_2__["default"]
+    'dashboardapp': _assets_js_views_DashboardApp__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'empresadash': _components_empresadash__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   router: router
 });
