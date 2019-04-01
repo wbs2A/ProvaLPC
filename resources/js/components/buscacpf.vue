@@ -6,7 +6,7 @@
               var res = document.getElementById("cpf").value.replace('.', "");
               res = res.replace('-', ""); 
               res =res.replace('.', "");
-              a= document.getElementById('register').action.replace('register','userInsert')+'/0'+'/'+res;
+              a= document.getElementById('register').action.replace('register','api/userInsert')+'/0'+'/'+res;
                 $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')

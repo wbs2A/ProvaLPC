@@ -11,7 +11,7 @@
               res = res.replace('-', ""); 
               res =res.replace('.', "");
               res =res.replace('/', "");
-                this.a= document.getElementById('register').action.replace('register','userInsert')+'/1'+'/'+res;
+                this.a= document.getElementById('register').action.replace('register','api/userInsert')+'/1'+'/'+res;
                 $.ajaxSetup({
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')

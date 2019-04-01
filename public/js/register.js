@@ -1806,7 +1806,7 @@ __webpack_require__.r(__webpack_exports__);
       res = res.replace('-', "");
       res = res.replace('.', "");
       res = res.replace('/', "");
-      this.a = document.getElementById('register').action.replace('register', 'userInsert') + '/1' + '/' + res;
+      this.a = document.getElementById('register').action.replace('register', 'api/userInsert') + '/1' + '/' + res;
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -1858,7 +1858,7 @@ __webpack_require__.r(__webpack_exports__);
       var res = document.getElementById("cpf").value.replace('.', "");
       res = res.replace('-', "");
       res = res.replace('.', "");
-      a = document.getElementById('register').action.replace('register', 'userInsert') + '/0' + '/' + res;
+      a = document.getElementById('register').action.replace('register', 'api/userInsert') + '/0' + '/' + res;
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')

@@ -13,7 +13,7 @@ const router = new VueRouter({
     mode: 'history',
     routes:[
         {
-            path: window.location.pathname+'/perfil',
+            path: window.location.pathname+'/',
             name: 'home',
             component: Home
         },
@@ -32,6 +32,9 @@ const router = new VueRouter({
 
 const dashapp = new Vue({
     el:'#dashboard',
+    data:{
+        info: null
+    },
     components: {
         'dashboardapp':DashboardApp,
         'empresadash':EmpresaDash
