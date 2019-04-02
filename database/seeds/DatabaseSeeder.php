@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
+        $this->call(ClassificacaoCarroSeed::class);
+        $this->call(AcessorioSeed::class);
         $this->call(EnderecoSeeder::class);
         $this->call(UsersSeed::class);
+        $this->call(LocadoraSeed::class);
+        $this->call(CarroSeed::class);
     }
 }

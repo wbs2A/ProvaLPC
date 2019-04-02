@@ -14,8 +14,9 @@ class CreateAcessorioTable extends Migration {
 	{
 		Schema::create('acessorio', function(Blueprint $table)
 		{
-			$table->integer('idacessorio')->primary();
+			$table->integer('idacessorio', true);
 			$table->string('nome', 45)->nullable();
+			DB::table('acessorio')->raw('ALTER TABLE  `acessorio` ADD idacessorio INT PRIMARY KEY AUTO_INCREMENT;');
 		});
 	}
 

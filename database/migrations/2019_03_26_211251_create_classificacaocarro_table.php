@@ -14,8 +14,9 @@ class CreateClassificacaocarroTable extends Migration {
 	{
 		Schema::create('classificacaocarro', function(Blueprint $table)
 		{
-			$table->integer('idclassificacao')->primary();
+			$table->integer('idclassificacao',true);
 			$table->string('tipo', 45)->nullable();
+			DB::table('classificacaocarro')->raw('ALTER TABLE  `acessorio` ADD idclassificacao INT PRIMARY KEY AUTO_INCREMENT;');
 		});
 	}
 
