@@ -22,9 +22,6 @@ class Endereco extends Model
     	$endereco->numero=$dados['numero'];
     	$endereco->Cidade_idCidade=$cidade->idCidade;
     	$endereco->save();
-    	if (empty($endereco)) {
-    		return 405;
-    	}
     	return $endereco;
     }
     public static function select($id=null){
