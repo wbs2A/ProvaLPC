@@ -18,7 +18,7 @@ Route::group(['middleware'=>["web"]], function (){
     Route::get('/logout', 'Auth\LoginController@logout');
 
     //Rotas de Api
-    Route::group(['prefix'=>'api/'], function (){
+    Route::group(['prefix'=>'api/', 'middleware'=>'api'], function (){
         Route::get('getPFisica/', "PessoaFisicaController@getPessoaSessao");
         Route::get('pfisica/{cpf}', "PessoaFisicaController@show");
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');

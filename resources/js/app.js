@@ -11,7 +11,6 @@ window.Vue = require('vue');
 import VcUsers from './components/users.vue'
 import Search from './components/search.vue';
 import EmpresaDash from './components/empresadash';
-import UserDashboard from './components/userdashboard';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -40,7 +39,6 @@ const app = new Vue({
         'vcusers':VcUsers,
         'search': Search,
         'empresadash': EmpresaDash,
-        'userdashboard': UserDashboard,
     },
     data: {
         message: "O VUE JS ESTÁ FUNCIONANDO"

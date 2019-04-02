@@ -2,8 +2,9 @@
 
 @section('content')
     <div id="index">
+
         <div id="dashboard">
-            @if(!session('user')['tipo'])
+            @if(!Auth::user()['tipo'])
                 <dashboardapp></dashboardapp>
             @else
                 <empresadash></empresadash>

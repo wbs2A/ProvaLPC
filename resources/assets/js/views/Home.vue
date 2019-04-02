@@ -5,7 +5,7 @@
         padding: 100px;
         padding-left: 20%;
     }
-
+    
     .edit{
         position: relative;
         float: right;
@@ -166,24 +166,24 @@ button{
                             <div class="form-group row">
                                 <div class="form-group col">
                                     <label for="nome"> Nome</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" v-model="user.user_info.name" required/>
+                                    <input type="text" class="form-control text-body" id="nome" name="nome" v-model="user.user_info.name" required/>
                                 </div>
                                 <div class="form-group col">
                                     <label for="sexo"> Sexo</label>
-                                    <input type="text" class="form-control" id="sexo" name="sexo" v-model="user.pf_info.sexo" required/>
+                                    <input type="text" class="form-control text-body" id="sexo" name="sexo" v-model="user.pf_info.sexo" required/>
                                 </div>
                             </div>
                             <div class="form-group col">
                                 <label for="telefone"> Telefone</label>
-                                <input type="text" class="form-control" id="telefone" name="telefone" v-model="user.user_info.telefone" required/>
+                                <input type="text" class="form-control text-body" id="telefone" name="telefone" v-model="user.user_info.telefone" required/>
                             </div>
                             <div class="form-group col">
                                 <label for="rg"> RG</label>
-                                <input type="text" class="form-control" id="rg" name="rg" v-model="user.pf_info.rg" required/>
+                                <input type="text" class="form-control text-body" id="rg" name="rg" v-model="user.pf_info.rg" required/>
                             </div>
                             <div class="form-group col">
                                 <label for="dataNascimento"> Data de Nascimento</label>
-                                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" v-model="user.pf_info.dataNascimento" required/>
+                                <input type="date" class="form-control text-body" id="dataNascimento" name="dataNascimento" v-model="user.pf_info.dataNascimento" required/>
                         </div>
                         </form>
                     </div>
@@ -225,8 +225,37 @@ button{
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <form method="post" :action="'api/updateDadosPessoais/'+cpf" id="formConta">
+                            <input type="hidden" name="_token" :value="csrf">
+                            <div class="form-group input-group">
+                                <div class="col">
+                                    <label for="email"> E-mail</label>
+                                    <input type="email" class="form-control text-body" id="email" name="email" v-model="user.user_info.email" required/>
+                                </div>
+
+                                <div class="input-fields row">
+                                    <div class="form-group col">
+                                        <label for="senha"> Senha</label>
+                                        <input type="password" v-validate="'required'" class="form-control" id="senha" ref="password" name="password" required placeholder="Insira sua nova senha"/>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="confirmarsenha">Confirmar Senha</label>
+                                        <input type="password"  v-validate="'required|confirmed:password'" class="form-control" id="confirmarsenha" name="password_confirmation" data-vv-as="password"  placeholder="Insira a senha novamente"  required/>
+                                    </div>
+                                </div>
+                                    <!-- ERRORS -->
+                                    <div class="alert alert-danger" v-show="errors.any()">
+                                        <div class="col" v-if="errors.has('password')">
+                                            O campo de senha é obrigatório!
+                                        </div>
+                                        <div class="col" v-if="errors.has('password_confirmation')">
+                                            As senhas não coincidem.
+                                        </div>
+                                    </div>
+                            </div>
+                        </form>
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" class="btn btn-success">Atualizar</button>
@@ -234,6 +263,8 @@ button{
                 </div>
             </div>
         </div>
+
+
         </div>
     </div>
 </template>

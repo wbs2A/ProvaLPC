@@ -16880,11 +16880,10 @@ td {
 
 #banner {
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.8);
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
   height: 600px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-image: url(/images/car-rental-stock.jpg?677918e67d02fda4b9ae04471abd9ccb);
 }
 
 @media (max-width: 767px) {

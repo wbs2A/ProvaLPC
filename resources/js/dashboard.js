@@ -8,17 +8,18 @@ import Comments from '../assets/js/views/comments'
 import Home from '../assets/js/views/Home'
 import Reservation from '../assets/js/views/reservation'
 import EmpresaDash from './components/empresadash';
-import moment from 'moment'
+import moment from 'moment';
 import Vue2Filters from 'vue2-filters'
+import  VeeValidate from 'vee-validate'
 
-Vue.use(Vue2Filters)
-Vue.config.productionTip = false
+Vue.use(Vue2Filters);
+Vue.use(VeeValidate);
+Vue.config.productionTip = false;
 Vue.filter('formatDate', function(value) {
     if (value) {
         return moment(String(value)).format('MM/DD/YYYY')
     }
 });
-
 Vue.filter('formatTelefone', function(value) {
     if (value) {
         value = "("+value;
