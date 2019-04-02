@@ -18,16 +18,8 @@ class PessoaFisica extends Model
     	$pessoa->dataNascimento=$data['nascimento'];
     	$pessoa->Endereco_idEndereco=$data['endereco'];
     	$pessoa->user_iduser=$data['user'];
-        try{
-                $pessoa->save();
-                
-        }catch (\Exception $e) {
-            throw new \Exception($e,1);
-        }
-        if(empty($pessoa)){
-            return 405;
-        }
-    	return $pessoa;
+        $pessoa->save();
+        return $pessoa;
     }
     public static function atualizar($request, $id){}
 }

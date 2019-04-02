@@ -63,7 +63,7 @@
                                     
                                 <div class=" fisica col-2 p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="rg" class="col-form-label text-md-right">RG</label>
-                                    <input type="text" class="form-control" data-mask="000.000.000" name="rg" id="rg" placeholder="RG" value="">
+                                    <input type="text" class="form-control" data-mask="000.000.000" name="rg" id="rg" placeholder="RG" value="{{ old('rg') }}">
                                     <small id="rgHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
                                      @if ($errors->has('rg'))
                                         <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
 
                                 <div class="col-3  fisica  p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="nascimento" class="col-form-label text-md-right" >Data de nascimento</label>
-                                    <input type="date" class="form-control" id="nascimento" name="nascimento" placeholder="">
+                                    <input type="date" class="form-control" id="nascimento" name="nascimento" placeholder="" value="{{ old('nascimento') }}">
                                     @if ($errors->has('nascimento'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('nascimento') }}</strong>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-2 fisica  p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="sexo" class="col-form-label text-md-right" >Sexo</label>
-                                    <input type="text" class="form-control" id="sexo" name="sexo" placeholder="">
+                                    <input type="text" class="form-control" id="sexo" name="sexo" placeholder="" value="{{ old('sexo') }}">
                                      @if ($errors->has('sexo'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('sexo') }}</strong>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class=" fisica col-3 p-0 mr-1 ml-3 mb-3" style="display: none">
                                     <label for="nCNH" class="col-form-label text-md-right">nº CNH</label>
-                                    <input type="text" class="form-control"  name="nCNH" id="nCNH" placeholder="" value="">
+                                    <input type="text" class="form-control"  name="nCNH" id="nCNH" placeholder="" value="{{ old('nCNH') }}">
                                     <small id="nCNHHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
                                      @if ($errors->has('nCNH'))
                                         <span class="invalid-feedback" role="alert">
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class=" fisica col-2 p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="nRegistro" class="col-form-label text-md-right">nº Registro</label>
-                                    <input type="text" class="form-control" name="nRegistro" id="nRegistro" placeholder="" value="">
+                                    <input type="text" class="form-control" name="nRegistro" id="nRegistro" placeholder="" value="{{ old('nRegistro') }}">
                                     <small id="nREgistroHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
                                      @if ($errors->has('nRegistro'))
                                         <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class=" fisica col-2 p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="dataValidade" class="col-form-label text-md-right">Data Validade</label>
-                                    <input type="date" class="form-control" name="dataValidade" id="dataValidade" placeholder="" value="">
+                                    <input type="date" class="form-control" name="dataValidade" id="dataValidade" placeholder="" value="{{ old('dataValidade') }}">
                                      @if ($errors->has('dataValidade'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('dataValidade') }}</strong>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class=" fisica col-4 p-0 mr-1 ml-1 mb-3" style="display: none">
                                     <label for="estadoCNH" class="col-form-label text-md-right">Estado da CNH</label>
-                                    <input type="text" class="form-control" name="estadoCNH" id="estadoCNH" placeholder="" value="">
+                                    <input type="text" class="form-control" name="estadoCNH" id="estadoCNH" placeholder="" value="{{ old('estadoCNH') }}">
                                     <small id="estadoCNHHelp" class="form-text text-muted">Por favor, o nome completo.</small>
                                      @if ($errors->has('estadoCNH'))
                                         <span class="invalid-feedback" role="alert">
@@ -140,7 +140,7 @@
                                 
                                 <div class="col-5 juridica mb-3" style="display: none">
                                     <label for="razaoSocial" class="col-form-label text-md-right" >Razão Social</label>
-                                    <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="">
+                                    <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="" value="{{ old('razaoSocial') }}">
                                 </div>
                                      @if ($errors->has('razaoSocial'))
                                         <span class="invalid-feedback" role="alert">
@@ -154,34 +154,29 @@
                                   <buscacep></buscacep>
                                   <div class="col-2 mb-3">
                                     <label for="numero" class="col-form-label text-md-right">Numero</label>
-                                    <input type="number" class="form-control" id="numero" name="numero" placeholder="">
+                                    <input type="number" class="form-control" id="numero" name="numero" placeholder="" value="{{ old('numero') }}">
                                     <small id="numroHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
                                   </div>
                                   <div class="col-4 mb-3">
                                     <label for="bairro" class="col-form-label text-md-right">Bairro</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="">
+                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" value="{{ old('bairro') }}">
                                   </div>
                                   <div class="col-4 mb-3">
                                     <label for="rua" class="col-form-label text-md-right">Rua</label>
-                                    <input type="text" class="form-control" id="rua" name="rua" placeholder="">
+                                    <input type="text" class="form-control" id="rua" name="rua" placeholder="" value="{{ old('rua') }}">
                                   </div>
                                 
                                   <div class="col-6 mb-3">
                                     <label for="estado" class="col-form-label text-md-right">Estado</label>
-                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="">
+                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="" value="{{ old('estado') }}">
                                     <small id="estadoHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
                                   </div>
                                   <div class="col-6 mb-3">
                                     <label for="cidade" class="col-form-label text-md-right">Cidade</label>
-                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="">
+                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" value="{{ old('cidade') }}">
                                     <small id="cidadeHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
                                   </div>
                         </div>
-
-                        
-                        
-
-
                         <div class="form-group row">
 
                             <div class="col-6 mb-3">
@@ -212,11 +207,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function(){
-         $('#cpf').mask('000.000.000-00', {reverse: true});
-         $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
-    });
-</script>
 <script src="js/register.js"></script>
 @endsection

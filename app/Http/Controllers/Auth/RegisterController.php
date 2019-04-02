@@ -62,8 +62,8 @@ class RegisterController extends Controller
                 'telefone'=>'required',
                 'tipo'=> 'required',
                 'idpessoaFisica' => 'cpf|unique:pessoafisica',
-                'password' => 'min:6|required',
-                'password-confirm' => 'min:6|same:password',
+                'password' => 'min:6|required|confirmed',
+                'password-confirm' => 'same:password|required_with:password',
                 'email' => 'max:45',
                 'nascimento'=>'required',
                 'sexo'=>'required',
@@ -85,8 +85,8 @@ class RegisterController extends Controller
                 'email' => 'max:45',
                 'telefone'=>'required',
                 'tipo'=> 'required',
-                'password' => 'min:6|required',
-                'password-confirm' => 'min:6|same:password',
+                'password-confirm' => 'sometimes|required_with:password',
+                'password' => 'min:6|required|confirmed',
                 'email' => 'max:45',
                 'idPJ'=>'cnpj|unique:pessoajuridica',
                 'razaoSocial'=>'required',
@@ -97,10 +97,6 @@ class RegisterController extends Controller
                 'rua'=>'required',
                 'estado'=>'required'
             ]);
-        }
-         if($validate->fails())
-        {
-            dd($validate->errors());
         }
         return $validate;
     }
@@ -134,11 +130,12 @@ class RegisterController extends Controller
         ]);
         $data['user']=$user->iduser;
         $endereco=Endereco::insert($data);
-        $data['endereco']=$endereco->id;
+        $data['endereco']=$endereco->idEndereco;
         if ($tipo) {
             PessoaJuridica::inserir($data);
         }else{
-            PessoaFisica::inserir($data);
+            $pessoa = PessoaFisica::inserir($data);
+
         }
         // session()->put('user', Auth::user());
         
