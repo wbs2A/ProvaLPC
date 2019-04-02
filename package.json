@@ -29,10 +29,12 @@
         "chartist": "^0.11.0",
         "es6-promise": "^4.2.4",
         "laravel-elixir": "^6.0.0-18",
+        "moment": "^2.24.0",
         "vue-clickaway": "^2.1.0",
         "vue-date-picker": "^2.4.0",
         "vue-notifyjs": "^0.3.0",
         "vue-resource": "^1.5.1",
-        "vue-router": "^3.0.1"
+        "vue-router": "^3.0.1",
+        "vue2-filters": "^0.6.0"
     }
 }

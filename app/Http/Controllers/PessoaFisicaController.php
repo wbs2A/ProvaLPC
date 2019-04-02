@@ -98,4 +98,17 @@ class PessoaFisicaController extends Controller
         return $p[0]->idpessoaFisica;
 
     }
+
+    public function updateDados(Request $request, $cpf){
+        $userFisico = PessoaFisica::find($cpf);
+        $user = User::find($userFisico->user_iduser);
+        $userFisico->sexo = $request->sexo;
+        $userFisico->dataNascimento = $request->dataNascimento;
+        $userFisico->rg = $request->rg;
+        $user->name = $request->nome;
+        $user->telefone = $request->telefone;
+        $userFisico->save();
+        $user->save();
+        return redirect()->route('perfil');
+    }
 }

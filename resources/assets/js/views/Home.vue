@@ -78,6 +78,19 @@
         transform: translate(150%,-150%) scale(2,2);
     }
 }
+button{
+    color: #eee;
+}
+    .head{
+        font-size: 25px;
+    }
+    .cardbody{
+        font-size: 17px;
+
+    }
+    b{
+        color: #0b0b0b;
+    }
 </style>
 
 <template>
@@ -97,52 +110,144 @@
         <div v-if="user">
             <div class="row">
                 <div class="card col">
-                    <div class="card-header">Dados Pessoais <a class="edit" href="#"> <i class="fas fa-edit"></i> Editar dados</a></div>
-                    <div class="card-body">
+                    <div class="card-header head ">Dados Pessoais <button type="button" class="btn btn-info edit" data-toggle="modal" data-target="#updateDados" data-backdrop="static" data-keyboard="false">
+                        <i class="fas fa-edit"></i> Editar dados
+                    </button></div>
+                    <div class="card-body cardbody">
                         <ul>
-                            <li>nome: {{user['user_info']['name']}}</li>
-                            <li>sexo: {{user['pf_info']['sexo']}}</li>
-                            <li>telefone: {{user['user_info']['telefone']}}</li>
-                            <li>RG: {{user['pf_info']['rg']}}</li>
-                            <li>Data de Nascimento: {{user['pf_info']['dataNascimento']}}</li>
+                            <li><b>nome:</b>  {{user.user_info.name}}</li>
+                            <li><b>sexo:</b> {{user.pf_info.sexo}}</li>
+                            <li><b>telefone:</b>{{user.user_info.telefone | formatTelefone}}</li>
+                            <li><b>RG:</b> {{user.pf_info.rg}}</li>
+                            <li><b>Data de Nascimento:</b> {{user.pf_info.dataNascimento | formatDate}}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="card col">
-                    <div class="card-header">Endereço <a class="edit" href="#"><i class="fas fa-edit"></i> Editar dados</a></div>
-                    <div class="card-body">
+                    <div class="card-header head">Endereço <button type="button" class="btn btn-info edit" data-toggle="modal" data-target="#updateEndereco">
+                        <i class="fas fa-edit"></i> Editar dados
+                    </button></div>
+                    <div class="card-body cardbody">
                         <ul>
-                            <li>Rua: {{user['endereco_info']['rua']}}</li>
-                            <li>Bairro: {{user['endereco_info']['bairro']}}</li>
-                            <li>Número: {{user['endereco_info']['numero']}}</li>
-                            <li>CEP: {{user['endereco_info']['cep']}}</li>
-                            <li>Cidade: {{user['cidade_info']['nome']}}</li>
-                            <li>Estado: {{user['estado_info']['nome']}}</li>
+                            <li><b>Rua: </b>{{user['endereco_info']['rua'] | capitalize}}</li>
+                            <li><b>Bairro: </b>{{user['endereco_info']['bairro'] | capitalize}}</li>
+                            <li><b>Número: </b>{{user['endereco_info']['numero']}}</li>
+                            <li><b>CEP: </b>{{user['endereco_info']['cep']}}</li>
+                            <li><b>Cidade: </b>{{user['cidade_info']['nome']}}</li>
+                            <li><b>Estado: </b>{{user['estado_info']['nome']}}</li>
                         </ul>
 
                     </div>
                 </div>
             </div>
             <div class="card col">
-                <div class="card-header">Dados de acesso à conta <a class="edit"  href="#"><i class="fas fa-edit"></i> Editar dados</a></div>
-                <div class="card-body">
+                <div class="card-header head">Dados de acesso à conta <button type="button" class="btn btn-info edit" data-toggle="modal" data-target="#updateConta">
+                    <i class="fas fa-edit"></i> Editar dados
+                </button></div>
+                <div class="card-body cardbody">
                     <ul>
-                        <li>e-mail: {{user['user_info']['email']}}</li>
-                        <li>Senha: *********</li>
+                        <li><b>e-mail:</b> {{user['user_info']['email']}}</li>
+                        <li><b>Senha:</b> *********</li>
                     </ul>
                 </div>
             </div>
-    </div>
+        <div class="modal fade" id="updateDados" tabindex="-1" role="dialog" aria-labelledby="dadosLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dadosLabel">Atualizar dados pessoais</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" :action="'api/updateDadosPessoais/'+cpf" id="formDados">
+                            <input type="hidden" name="_token" :value="csrf">
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <label for="nome"> Nome</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" v-model="user.user_info.name" required/>
+                                </div>
+                                <div class="form-group col">
+                                    <label for="sexo"> Sexo</label>
+                                    <input type="text" class="form-control" id="sexo" name="sexo" v-model="user.pf_info.sexo" required/>
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <label for="telefone"> Telefone</label>
+                                <input type="text" class="form-control" id="telefone" name="telefone" v-model="user.user_info.telefone" required/>
+                            </div>
+                            <div class="form-group col">
+                                <label for="rg"> RG</label>
+                                <input type="text" class="form-control" id="rg" name="rg" v-model="user.pf_info.rg" required/>
+                            </div>
+                            <div class="form-group col">
+                                <label for="dataNascimento"> Data de Nascimento</label>
+                                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" v-model="user.pf_info.dataNascimento" required/>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success" @click="submitItem($event, 'formDados')">Atualizar</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="modal fade" id="updateEndereco" tabindex="-1" role="dialog" aria-labelledby="enderecoLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enderecoLabel">Atualizar Endereço</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="updateConta" tabindex="-1" role="dialog" aria-labelledby="contaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="contaLabel">Atualizar dados da Conta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </template>
 
 <script>
+
     export default {
         data() {
             return {
                 loading: false,
                 user: null,
                 error: null,
+                cpf: '',
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             };
         },
         created() {
@@ -154,6 +259,7 @@
                 this.loading = true;
                 axios
                  .get('/api/getPFisica/').then(res=> {
+                     this.cpf = res.data;
                     axios.get('/api/pfisica/' + res.data)
                         .then(
                             response => {
@@ -172,7 +278,23 @@
                         this.error = error;
                         this.loading = false;
                     })
+            },
+            submitItem(evt, formid){
+                evt.preventDefault();
+                document.getElementById(formid).submit();
+            },
+            formatDate(data, formato) {
+                if (formato == 'pt-br') {
+                    return (data.substr(0, 10).split('-').reverse().join('/'));
+                } else {
+                    return (data.substr(0, 10).split('/').reverse().join('-'));
+                }
             }
         }
     }
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    });
+
 </script>
