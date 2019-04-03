@@ -17,6 +17,7 @@ import EmpresaDash from './components/empresadash';
  * components and automatically register them with their "basename".
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * <script src="js/dashboard.js"></script>
  */
 
 // const files = require.context('./', true, /\.vue$/i);
