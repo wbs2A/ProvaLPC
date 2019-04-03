@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Model\Classificacao;
+use App\Model\Carros;
+use App\Model\Locadora;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+
+        $todos= Classificacao::todos();
+        return view('index', ['categorias'=> $todos]);
+    }
+    public function getLocadora($categoria){
+        $data=Carros::join('locadora','carros.locadora_idLocadora','=','locadora.idLocadora')
+        ->join('classificacaocarro', 'carros.idClassificacao', '=','classificacaocarro.idclassificacao')
+        ->select('locadora.nome')
+        ->where('classificacaocarro.tipo','=',$categoria)
+        ->get();
+        return $data;
     }
 }

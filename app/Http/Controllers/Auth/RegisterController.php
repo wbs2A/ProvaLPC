@@ -85,7 +85,7 @@ class RegisterController extends Controller
                 'email' => 'max:45',
                 'telefone'=>'required',
                 'tipo'=> 'required',
-                'password-confirm' => 'sometimes|required_with:password',
+                'password-confirm' => 'same:password|required_with:password',
                 'password' => 'min:6|required|confirmed',
                 'email' => 'max:45',
                 'idPJ'=>'cnpj|unique:pessoajuridica',
@@ -97,6 +97,10 @@ class RegisterController extends Controller
                 'rua'=>'required',
                 'estado'=>'required'
             ]);
+        }
+         if($validacao->fails())
+        {
+            return back()->with('errors', $validacao->errors());
         }
         return $validate;
     }

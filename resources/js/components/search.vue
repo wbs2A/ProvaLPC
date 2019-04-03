@@ -2,6 +2,7 @@
     import datepicker from 'vue-date-picker';
 
     export default{
+         props: ['categorias'],
         components:{
             datepicker
         }
@@ -17,9 +18,7 @@
                     <label for="categoria" class="mr-sm-2">Selecione a categoria do seu carro</label>
                     <select class="custom-select" id="categoria" name="categoria">
                         <option value="" disabled selected hidden>...</option>
-                        <option value="1">BMW</option>
-                        <option value="1">Farrari</option>
-                        <option value="1">Toyota</option>
+                        <option v-for="categoria in categorias" v-bind:value="categoria.id" >{{ categoria.tipo }}</option>
                     </select>
                 </div>
 

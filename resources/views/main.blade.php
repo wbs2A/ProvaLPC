@@ -40,7 +40,7 @@
                                                 <a id="navUserBase" class="row text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
 
                                             @else
-                                                <a id="navUserTopo" class="dropdown-item row" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt ml-1 mr-2" aria-hidden="true"></i>Acessar</a>
+                                                <a id="navUserTopo" class="dropdown-item row" href=" {{ route('login') }}"><i class="fas fa-sign-in-alt mr-2" aria-hidden="true"></i>Acessar</a>
                                                 <hr class="half-rule"/>
                                                 <a id="navUserBase" class="dropdown-item row p-0 m-0 text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
                                             @endif
@@ -65,7 +65,7 @@
             <div class="hamburger_menu_content text-right">
                 <ul class="menu_top_nav">
                     <li class="menu_item has-children">
-                       a><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
+                       <a><i class="fa fa-user" aria-hidden="true"></i><i class="fa fa-angle-down"></i></a>
                         <ul class="menu_selection">
                             <li>
                                 @if(Auth::check())
@@ -74,7 +74,7 @@
                                                 <a id="navUserBase" class="text-center" style="padding-left: 100px" href="{{route('logout')}}"><i class="fas fa-walking"></i>Sair</a>
 
                                             @else
-                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="{{ route('login') }}"><i class="fa m-2 fa-sign-in" aria-hidden="true"></i>Acessar</a>
+                                                <a id="navUserTopo" class="dropdown-item row p-0 m-0 text-center" href="{{ route('login') }}"><i class="fas fa-sign-in-alt ml-1 mr-2" aria-hidden="true"></i>Acessar</a>
                                                 <a id="navUserBase" class="text-center" href="{{ route('register') }}"><i class="fa m-2 fa-user-plus" aria-hidden="true"></i>Registrar-se</a>
                                             @endif
 

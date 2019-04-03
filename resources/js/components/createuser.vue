@@ -1,10 +1,15 @@
 <script>
     export default{
+        props:['old'],
         data(){
             return {
                 selected: ''
             }
-        }, 
+        },
+        created() {
+            if (this.old) {
+            }
+        },
         methods: {
                 escolheu(){
                     if (this.selected == 'Fisica') {

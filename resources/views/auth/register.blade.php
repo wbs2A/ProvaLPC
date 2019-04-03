@@ -47,7 +47,7 @@
                             
                         </div>
                             <div  class="form-group row">
-                                <createuser class="ml-0"></createuser>
+                                <createuser class="ml-0" v-bind:old="{{ old('tipo') }}"></createuser>
                                 @if ($errors->has('tipo'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('tipo') }}</strong>

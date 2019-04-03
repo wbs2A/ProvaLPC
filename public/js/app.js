@@ -1828,10 +1828,14 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['old'],
   data: function data() {
     return {
       selected: ''
     };
+  },
+  created: function created() {
+    if (this.old) {}
   },
   methods: {
     escolheu: function escolheu() {
@@ -1886,6 +1890,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_date_picker__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['categorias'],
   components: {
     datepicker: vue_date_picker__WEBPACK_IMPORTED_MODULE_0___default.a
   }
@@ -38983,10 +38988,38 @@ var render = function() {
       "form",
       { staticClass: "form", attrs: { role: "form", autocomplete: "off" } },
       [
-        _vm._m(1),
+        _c("div", { staticClass: "form-group col-auto" }, [
+          _c("label", { staticClass: "mr-sm-2", attrs: { for: "categoria" } }, [
+            _vm._v("Selecione a categoria do seu carro")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              staticClass: "custom-select",
+              attrs: { id: "categoria", name: "categoria" }
+            },
+            [
+              _c(
+                "option",
+                {
+                  attrs: { value: "", disabled: "", selected: "", hidden: "" }
+                },
+                [_vm._v("...")]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.categorias, function(categoria) {
+                return _c("option", { domProps: { value: categoria.id } }, [
+                  _vm._v(_vm._s(categoria.tipo))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6 wrap-right" }, [
             _c(
@@ -39014,7 +39047,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
-          _vm._m(3),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6 wrap-right" }, [
             _c(
@@ -39041,7 +39074,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(3)
       ]
     )
   ])
@@ -39055,37 +39088,6 @@ var staticRenderFns = [
       _vm._v("Alugue seu carro "),
       _c("b", [_vm._v("agora")]),
       _vm._v("!")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-auto" }, [
-      _c("label", { staticClass: "mr-sm-2", attrs: { for: "categoria" } }, [
-        _vm._v("Selecione a categoria do seu carro")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "custom-select",
-          attrs: { id: "categoria", name: "categoria" }
-        },
-        [
-          _c(
-            "option",
-            { attrs: { value: "", disabled: "", selected: "", hidden: "" } },
-            [_vm._v("...")]
-          ),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("BMW")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Farrari")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Toyota")])
-        ]
-      )
     ])
   },
   function() {
