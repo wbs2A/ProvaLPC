@@ -23,6 +23,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('pfisica/{cpf}', "PessoaFisicaController@show");
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');
         Route::post('updateDadosPessoais/{cpf}', 'PessoaFisicaController@updateDados');
+        Route::get('locadoraClassificacao/{categoria}', 'HomeController@getLocadora');
     });
 });
 Auth::routes();

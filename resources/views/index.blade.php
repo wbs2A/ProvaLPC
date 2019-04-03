@@ -3,7 +3,7 @@
 @section('content')
     <div id="index">
         <div id="banner" class="container-fluid">
-            <search id="search"></search>
+            <search id="search" :categorias='@json($categorias)'></search>
         </div>
         <!-- Area dos cards-->
         <section class="feature-area section-gap" id="service">
