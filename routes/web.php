@@ -20,10 +20,13 @@ Route::group(['middleware'=>["web"]], function (){
     //Rotas de Api
     Route::group(['prefix'=>'api/', 'middleware'=>'api'], function (){
         Route::get('getPFisica/', "PessoaFisicaController@getPessoaSessao");
+        Route::get('getPJuridica/', "PessoaJuridicaController@getPessoaSessao");
         Route::get('pfisica/{cpf}', "PessoaFisicaController@show");
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');
         Route::post('updateDadosPessoais/{cpf}', 'PessoaFisicaController@updateDados');
-        Route::get('locadoraClassificacao/{categoria}', 'HomeController@getLocadora');
+        Route::get('tipoUser/', "UserController@getTipo");
+        Route::get('getpjuridica/{cnpj}', "PessoaJuridicaController@show");
+        Route::get('getCar/{id}', 'LocadoraController@getCars');
     });
 });
 Auth::routes();

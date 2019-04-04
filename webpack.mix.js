@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/dashboard.js', 'public/js')
     .js('resources/js/jquery.mask.js', 'public/js')
     .js('resources/js/register.js', 'public/js')
+    .js('resources/js/jquery-2.2.4.min.js', 'public/js')
     .js('resources/js/bootstrap.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 

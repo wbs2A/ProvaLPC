@@ -87,14 +87,14 @@
             </div>
         </div>
         </div>
-        <div id="app" class="container-fluid" style="padding-top: 110px">
+        <div class="container-fluid" style="padding-top: 110px">
             @yield('content')
         </div>
         <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/jquery.mask.js"></script>
-        <script src="js/app.js"></script>
+        @yield('scripts')
         <script src="js/single_custom.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="js/dashboard.js"></script>
+
     </body>
 </html>

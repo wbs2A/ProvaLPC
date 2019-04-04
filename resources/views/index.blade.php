@@ -69,5 +69,7 @@
             </div>
         </section>
     </div>
-    <script src="js/app.js"></script>
 @stop
+    @section('scripts')
+        <script src="js/app.js" defer></script>
+    @stop

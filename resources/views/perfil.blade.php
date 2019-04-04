@@ -11,6 +11,8 @@
             @endif
         </div>
     </div>
-
-
 @stop
+    @section('scripts')
+        <script src="js/app.js"></script>
+        <script src="js/dashboard.js"></script>
+    @stop

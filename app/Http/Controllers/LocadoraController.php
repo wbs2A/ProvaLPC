@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Cidade;
-use App\Model\Endereco;
-use App\Model\Estado;
-use App\Model\Locadora;
-use App\Model\PessoaJuridica;
-use App\User;
+use App\Model\Carros;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PessoaJuridicaController extends Controller
+class LocadoraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,15 +44,9 @@ class PessoaJuridicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($cnpj)
+    public function show($id)
     {
-        $pf = PessoaJuridica::find($cnpj);
-        $user = User::find($pf->user_iduser);
-        $endereco = Endereco::find($pf->Endereco_idEndereco);
-        $cidade = Cidade::find($endereco->Cidade_idCidade);
-        $estado = Estado::find($cidade->Estado_idEstado);
-        $locadoras = Locadora::where('pessoaJuridica_idPJ','=',$cnpj)->get();
-        return array("p_info"=>$pf, "user_info"=>$user, "endereco_info"=>$endereco, "cidade_info"=>$cidade, "estado_info"=>$estado, "locadoras"=>$locadoras);
+        //
     }
 
     /**
@@ -95,8 +83,8 @@ class PessoaJuridicaController extends Controller
         //
     }
 
-    public function getPessoaSessao(){
-        $p = PessoaJuridica::where('user_iduser', Auth::user()->iduser)->get();
-        return $p[0]->idPJ;
+    public function getCars($id){
+        $carros = Carros::where('locadora_idLocadora','=',$id)->get();
+        return array('carros'=>$carros);
     }
 }
