@@ -41,7 +41,8 @@ Vue.filter('formatTelefone', function(value) {
 const bus = new Vue({
     data(){
         return {
-            info: null
+            info: null,
+            name:null
         }
     }
 });

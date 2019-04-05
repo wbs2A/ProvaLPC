@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Acessorio;
 use App\Model\Carros;
+use App\Model\Classificacao;
+use App\Model\Imagem;
 use Illuminate\Http\Request;
 
 class LocadoraController extends Controller
@@ -85,6 +88,21 @@ class LocadoraController extends Controller
 
     public function getCars($id){
         $carros = Carros::where('locadora_idLocadora','=',$id)->get();
-        return array('carros'=>$carros);
+        $ret = array();
+        $tmp = array();
+        foreach ($carros as $car){
+            $tmp["carro"]= $car;
+            $tmp['classificacao'] = Classificacao::find($car->idClassificacao);
+            $tmp["acessorios"] = Acessorio::join('carros_acessorio', function($q) use ($car) {
+                                    $q->on('carros_acessorio.acessorio_idacessorio', '=', 'acessorio.idacessorio')
+                                        ->where('carros_acessorio.carros_idcarro', '=', "$car->idcarro");
+                                 })->get();
+            $tmp["imagens"] = Imagem::join('carros_has_imagens', function($q) use ($car) {
+                                $q->on('carros_has_imagens.imagens_idimagens', '=', 'imagens.idimagens')
+                                    ->where('carros_has_imagens.carros_idcarro', '=', "$car->idcarro");
+                              })->get();
+            array_push($ret,$tmp);
+        }
+        return $ret;
     }
 }

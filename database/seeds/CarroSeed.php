@@ -94,6 +94,22 @@ class CarroSeed extends Seeder
          		array('carros_idcarro' => 6, 'acessorio_idacessorio' => 16)
          	)
          );
+		DB::table('imagens')->insert(array(
+		    array('caminho'=>'images/cars/mobi1.png'),
+            array('caminho'=>'images/cars/mobi2.png'),
+            array('caminho'=>'images/cars/mobi3.png'),
+            array('caminho'=>'images/cars/logan1.jpg'),
+            array('caminho'=>'images/cars/logan2.jpg'),
+            array('caminho'=>'images/cars/logan3.jpg')
+        ));
+		DB::table('carros_has_imagens')->insert(array(
+            array('carros_idcarro'=>1, 'imagens_idimagens'=>1),
+            array('carros_idcarro'=>1, 'imagens_idimagens'=>2),
+            array('carros_idcarro'=>1, 'imagens_idimagens'=>3),
+            array('carros_idcarro'=>2, 'imagens_idimagens'=>4),
+            array('carros_idcarro'=>2, 'imagens_idimagens'=>5),
+            array('carros_idcarro'=>2, 'imagens_idimagens'=>6)
+        ));
         	// 	array('placa' =>'KLR-7465', 'valor'=> 1.018,79, 'locadora_idLocadora'=> 1, 'nome' => 'Renault Duster', 'modelo' =>'Duster', 'marca' =>'Renault', 'direcao' =>'Hidráulica', 'cambio' =>'Manual', 'passageiros' => 5, 'idClassificacao' =>6),
         	// 	array('placa' =>, 'valor'=>, 'locadora_idLocadora'=> 1, 'nome' =>, 'modelo' =>, 'marca' =, 'direcao' =>, 'cambio' =>, 'passageiros' => , 'idClassificacao' =>),
         	// 	array('placa' =>, 'valor'=>, 'locadora_idLocadora'=> 1, 'nome' =>, 'modelo' =>, 'marca' =, 'direcao' =>, 'cambio' =>, 'passageiros' => , 'idClassificacao' =>),

@@ -140,11 +140,11 @@
                             <th>Tipo de proteção</th>
                             <th>Idade média da frota</th>
                             <th>Horário de Atendimento</th>
-                            <th></th>
+                            <th>Ações</th>
                         </thead>
                         <tbody >
                         <tr v-for="value in user.locadoras">
-                            <td> <input type="radio" v-model="locadora" v-bind:value="value.idLocadora" v-on:click.stop="hasChange(value.idLocadora)"></td>
+                            <td> <input type="radio" v-model="locadora" v-bind:value="value.idLocadora" v-on:click.stop="hasChange(value.idLocadora,value.nome)"></td>
                             <td>{{value.nome}}</td>
                             <td> {{value.tipoProtecao}}</td>
                             <td>{{value.idadeMediaFrota}}</td>
@@ -216,8 +216,9 @@
                     return (data.substr(0, 10).split('/').reverse().join('-'));
                 }
             },
-            hasChange(v) {
+            hasChange(v,n) {
                 bus.info = v;
+                bus.name = n;
             }
         }
     }

@@ -14,7 +14,7 @@ class CreateImagensTable extends Migration {
 	{
 		Schema::create('imagens', function(Blueprint $table)
 		{
-			$table->integer('idimagens')->primary();
+			$table->integer('idimagens',1);
 			$table->string('caminho', 45)->nullable();
 		});
 	}

@@ -15,6 +15,7 @@ class EnderecoSeeder extends Seeder
         DB::table('endereco')->insert(array('rua'=> 'rua lá de casa', 'bairro'=> 'de cima', 'cep'=> '00011-220', 'numero'=>13, 'Cidade_idCidade'=> 19));
         DB::table('endereco')->insert(array('rua'=> 'rua lá da empresa', 'bairro'=> 'de baixo', 'cep'=> '01011-220', 'numero'=>18, 'Cidade_idCidade'=> 19));
         DB::table('endereco')->insert(array('rua'=> 'rua lá da locadora', 'bairro'=> 'de baixo2', 'cep'=> '01101-220', 'numero'=>20, 'Cidade_idCidade'=> 19));
+        DB::table('endereco')->insert(array('rua'=> 'rua lá da outra locadora', 'bairro'=> 'outro bairro de baixo', 'cep'=> '01101-220', 'numero'=>20, 'Cidade_idCidade'=> 19));
 
     }
 }
