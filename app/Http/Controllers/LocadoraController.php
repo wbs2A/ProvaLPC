@@ -6,6 +6,7 @@ use App\Model\Acessorio;
 use App\Model\Carros;
 use App\Model\Classificacao;
 use App\Model\Imagem;
+use App\Model\Locadora;
 use Illuminate\Http\Request;
 
 class LocadoraController extends Controller
@@ -104,5 +105,18 @@ class LocadoraController extends Controller
             array_push($ret,$tmp);
         }
         return $ret;
+    }
+
+    public function reserva(Request $request){
+        $retirada = Locadora::find($request->localentrega);
+        $entrega = Locadora::find($request->localretirada);
+        return redirect('reserva')->with(["imagens"       => $request->imagens,
+                                              "carro"         => $request->carro,
+                                              "usuario"       => $request->user,
+                                              "quantdias"     => $request->quantdias,
+                                              "dataentrega"   => $request->dataentrega,
+                                              "dataretirada"  => $request->dataretirada,
+                                              "localentrega"  => $entrega,
+                                              "localretirada" => $retirada]);
     }
 }

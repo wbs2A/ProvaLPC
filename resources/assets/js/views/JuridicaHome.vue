@@ -116,6 +116,7 @@
         </div><br>
         <div class="card col">
             <div class="card-header head">Dados de acesso à conta <button type="button" class="btn btn-info edit" data-toggle="modal" data-target="#updateConta">
+                <!--#TODO-->
                 <i class="fas fa-edit"></i> Editar dados
             </button></div>
             <div class="card-body cardbody">
@@ -150,6 +151,7 @@
                             <td>{{value.idadeMediaFrota}}</td>
                             <td>{{value.horarioAtendimento}}</td>
                             <td><button class="btn btn-info"><i class="fas fa-edit"></i> Editar</button>
+                                <!--#TODO-->
                                 <button class="btn btn-danger">Remover</button></td>
                         </tr>
                         </tbody>

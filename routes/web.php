@@ -16,13 +16,17 @@ Route::group(['middleware'=>["web"]], function (){
 
     //Rota de logout personalizado
     Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/reserva', function (){
+        return view('reserva',['dados'=>session('data')]);
+    })->name('reserva');
+
     //Rotas de Api
     Route::group(['prefix'=>'api/', 'middleware'=>'api'], function (){
         Route::get('getPFisica/', "PessoaFisicaController@getPessoaSessao");
         Route::post('locacao','LocacaoController@setPredados');
 
         Route::post('getcarrosAcessorio','LocacaoController@setgetCarLocacaoAcessorio');
-        
+
         Route::get('getPJuridica/', "PessoaJuridicaController@getPessoaSessao");
         Route::get('pfisica/{cpf}', "PessoaFisicaController@show");
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');
@@ -32,6 +36,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('getCar/{id}', 'LocadoraController@getCars');
         Route::get('getLocadora/{categoria}', 'HomeController@getLocadora');
         Route::post('setCarLocacao', 'LocacaoController@setCarLocacao');
+        Route::post('efetuarReserva/','LocadoraController@reserva');
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });
