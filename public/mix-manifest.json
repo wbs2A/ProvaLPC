@@ -6,6 +6,7 @@
     "/js/dashboard.js": "/js/dashboard.js",
     "/js/jquery-2.2.4.min.js": "/js/jquery-2.2.4.min.js",
     "/js/jquery.mask.js": "/js/jquery.mask.js",
+    "/js/locacao.js": "/js/locacao.js",
     "/js/register.js": "/js/register.js",
     "/js/single_custom.js": "/js/single_custom.js"
 }
