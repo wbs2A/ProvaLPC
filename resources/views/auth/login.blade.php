@@ -9,7 +9,13 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        @if(isset($data))
+                            <input type="hidden" name="categoria" value="{{$data['categoria']}}">
+                            <input type="hidden" name="locadora-retirada" value="{{$data['locadora-retirada']}}">
+                            <input type="hidden" name="dateinicio" value="{{$data['dateinicio']}}">
+                            <input type="hidden" name="locadora-entrega" value="{{$data['locadora-entrega']}}">
+                            <input type="hidden" name="datefim" value="{{$data['datefim']}}">
+                        @endif
                         <div class="form-group row justify-content-center">
                             <div class="col-9">
                                 <label for="email" class="col-form-label text-md-right">{{ __('E-Mail') }}</label>

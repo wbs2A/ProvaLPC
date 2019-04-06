@@ -35,4 +35,7 @@ Route::group(['middleware'=>["web"]], function (){
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });
+Route::get('/login',function(){
+    dd($request->session()->all());
+});
 Auth::routes();

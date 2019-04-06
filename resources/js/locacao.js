@@ -35,10 +35,3 @@ const app = new Vue({
         'locacao': Locacao,
     }
 });
-
-// new Vue({
-// 	el:"#register",
-// 	components:{
-//         CreateUser
-// 	}
-// });

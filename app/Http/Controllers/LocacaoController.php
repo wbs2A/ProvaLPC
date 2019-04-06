@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Classificacao;
 use App\Model\Carros;
+use Illuminate\Support\Facades\Auth;
 use App\Model\Acessorio;
+use App\Model\Imagem;
 use App\Model\Locadora;
-
+use App\Model\PessoaFisica;
 class LocacaoController extends Controller
 {
     /**
@@ -18,15 +20,38 @@ class LocacaoController extends Controller
     public function index(Request $request)
     {
         $value = $request->session()->get('data');
-        $request->session()->forget('data');
-        $acessorios=Acessorio::all();
-        $todos= Classificacao::todos();
-        $data=Carros::join('locadora','carros.locadora_idLocadora','=','locadora.idLocadora')
-        ->join('classificacaocarro', 'carros.idClassificacao', '=','classificacaocarro.idclassificacao')
-        ->where('classificacaocarro.idclassificacao','=',$value['categoria'])
-        ->where('carros.locadora_idLocadora','=',(int) $value['locadora-retirada'])
-        ->get();
-        return view('locacao',[ 'carros' => $data, 'acessorios' =>$acessorios, 'preDados' =>$value, 'categorias' => $todos]);
+        if (isset($value)) {
+            if (Auth::check()) {
+                $user = Auth::user();
+                $pessoa = PessoaFisica::where('user_iduser', $user->iduser)->get();
+                $cpf = $pessoa[0]->idpessoaFisica;
+                $request->session()->forget('data');
+                $acessorios=Acessorio::all();
+                $todos= Classificacao::todos();
+                $carros=Carros::where('locadora_idLocadora','=',$value['locadora-retirada'])->get();
+                $data = array();
+                $tmp = array();
+                foreach ($carros as $car){
+                    $tmp["carro"]= $car;
+                    $tmp['classificacao'] = Classificacao::find($car->idClassificacao);
+                    $tmp["acessorios"] = Acessorio::join('carros_acessorio', function($q) use ($car, $value) {
+                                            $q->on('carros_acessorio.acessorio_idacessorio', '=', 'acessorio.idacessorio')
+                                                ->where('carros_acessorio.carros_idcarro', '=', "$car->idcarro");
+                                         })->get();
+                    $tmp["imagens"] = Imagem::join('carros_has_imagens', function($q) use ($car) {
+                                        $q->on('carros_has_imagens.imagens_idimagens', '=', 'imagens.idimagens')
+                                            ->where('carros_has_imagens.carros_idcarro', '=', "$car->idcarro");
+                                      })->get();
+                    array_push($data,$tmp);
+                }
+
+                return view('locacao',[ 'cpf'=> $cpf, 'carros' => $data, 'acessorios' =>$acessorios, 'preDados' =>$value, 'categorias' => $todos]);
+            }else{
+                return redirect()->route('login')->with(['data' => $value]);    
+            }
+        }else{
+            return redirect()->route('/');
+        }
     }
 
     /**
@@ -98,13 +123,30 @@ class LocacaoController extends Controller
         $data=$request->all();
         return redirect('locacao')->with('data', $data);
     }
-    public function getCarLocacaoAcessorio(Request $request){
+    public function setgetCarLocacaoAcessorio(Request $request){
         $value=$request->all();
-        dd($value);
-        $data = Carros::join('locadora','carros.locadora_idLocadora','=','locadora.idLocadora')
-        ->join('classificacaocarro', 'carros.idClassificacao', '=','classificacaocarro.idclassificacao')
-        ->where('classificacaocarro.idclassificacao','=',$value['categoria'])
-        ->where('carros.locadora_idLocadora','=',(int) $value['locadora-retirada'])
-        ->get();
+        $carros = Carros::join('carros_acessorio', function($q) use ($value) {
+                $q->on('carros_acessorio.carros_idcarro', '=', 'idcarro')
+                ->where('carros_acessorio.acessorio_idacessorio', '=', (int) $value['acessorio']);
+            })
+            ->where('locadora_idLocadora','=',$value['predados']['locadora-retirada'])
+            ->get();
+        $ret = array();
+        $tmp = array();
+        foreach ($carros as $car){
+            $tmp["carro"]= $car;
+            $tmp['classificacao'] = Classificacao::find($car->idClassificacao);
+            $tmp["acessorios"] = Acessorio::join('carros_acessorio', function($q) use ($car, $value) {
+                                    $q->on('carros_acessorio.acessorio_idacessorio', '=', 'acessorio.idacessorio')
+                                        ->where('carros_acessorio.carros_idcarro', '=', "$car->idcarro");
+                                 })->get();
+            $tmp["imagens"] = Imagem::join('carros_has_imagens', function($q) use ($car) {
+                                $q->on('carros_has_imagens.imagens_idimagens', '=', 'imagens.idimagens')
+                                    ->where('carros_has_imagens.carros_idcarro', '=', "$car->idcarro");
+                              })->get();
+            array_push($ret,$tmp);
+        }
+        return $ret;
+
     }
 }
