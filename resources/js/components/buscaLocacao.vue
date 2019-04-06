@@ -78,6 +78,9 @@ export default {
    			console.log(date.getTime());
 	      	return date.getTime() < Date.now()
 	    }
+   	}, 
+   	created(){
+   		console.log(this.mycategorias);
    	}
 }
 </script>

@@ -12,6 +12,6 @@ class Classificacao extends Model
 
 
 	public static function todos(){
-		return Classificacao::all();
+		return Classificacao::rightJoin('carros', 'carros.idClassificacao', '=','classificacaocarro.idclassificacao')->select('classificacaocarro.idclassificacao', 'classificacaocarro.tipo')->get();
 	}
 }
