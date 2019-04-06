@@ -58,6 +58,10 @@ export default {
    		console.log(this.predados);
    		console.log(this.usercpf);
    		this.acessorio= this.aces;
+   		this.dias=new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
+   		console.log(this.dias);
+   		console.log(this.acessorio);
+
    	},
    	methods:{
    		setAcessorio(acessorio){

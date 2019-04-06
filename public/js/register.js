@@ -1795,6 +1795,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    cnpj: String
+  },
   data: function data() {
     return {
       a: ''
@@ -1816,6 +1819,8 @@ __webpack_require__.r(__webpack_exports__);
         url: this.a,
         method: 'get',
         success: function success(result) {
+          console.log(result['resposta']);
+
           if (result['resposta']) {
             var te;
             var te2;
@@ -1852,6 +1857,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    cpf: String
+  },
   methods: {
     getCpf: function getCpf() {
       var a;
@@ -1903,19 +1911,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_buscacpf__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/buscacpf */ "./resources/js/components/buscacpf.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['old'],
+  components: {
+    buscacpf: _components_buscacpf__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      selected: ''
+      escolhe: ''
     };
-  },
-  created: function created() {
-    if (this.old) {}
   },
   methods: {
     escolheu: function escolheu() {
-      if (this.selected == 'Fisica') {
+      console.log(this.escolhe);
+
+      if (this.old) {
+        this.escolhe = this.old;
+      }
+
+      if (this.escolhe == 'Fisica') {
         $(".fisica").each(function () {
           $(this).css('display', 'block');
           $(this).attr('required', true);
@@ -1924,7 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
           $(this).css('display', 'none');
           $(this).attr('required', false);
         });
-      } else if (this.selected == 'Jurídica') {
+      } else if (this.escolhe == 'Jurídica') {
         $(".fisica").each(function () {
           $(this).css('display', 'none');
           $(this).attr('required', false);
@@ -1934,6 +1950,13 @@ __webpack_require__.r(__webpack_exports__);
           $(this).attr('required', true);
         });
       }
+    }
+  },
+  created: function created() {
+    console.log(this.old);
+
+    if (this.old) {
+      this.escolhe = this.old;
     }
   }
 });
@@ -37042,6 +37065,7 @@ var render = function() {
         placeholder: "CNPJ",
         value: ""
       },
+      domProps: { value: _vm.cnpj },
       on: { blur: _vm.getCnpj }
     })
   ])
@@ -37072,7 +37096,7 @@ var render = function() {
     _c(
       "label",
       { staticClass: "col-form-label text-md-right", attrs: { for: "cpf" } },
-      [_vm._v("CPF")]
+      [_vm._v("CPF ")]
     ),
     _vm._v(" "),
     _c("input", {
@@ -37086,6 +37110,7 @@ var render = function() {
         placeholder: "CPF",
         value: ""
       },
+      domProps: { value: _vm.cpf },
       on: { blur: _vm.getCpf }
     })
   ])
@@ -37116,7 +37141,7 @@ var render = function() {
     _c(
       "label",
       { staticClass: "col-form-label text-md-right", attrs: { for: "tipo" } },
-      [_vm._v("Tipo de conta")]
+      [_vm._v("Tipo de conta  " + _vm._s(_vm.old) + " ")]
     ),
     _vm._v(" "),
     _c(
@@ -37126,18 +37151,12 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.selected,
-            expression: "selected"
+            value: _vm.escolhe,
+            expression: "escolhe"
           }
         ],
         staticClass: "form-control",
-        attrs: {
-          id: "tipo",
-          type: "tipo",
-          name: "tipo",
-          value: "",
-          required: ""
-        },
+        attrs: { id: "tipo", type: "tipo", name: "tipo", required: "" },
         on: {
           change: [
             function($event) {
@@ -37149,7 +37168,7 @@ var render = function() {
                   var val = "_value" in o ? o._value : o.value
                   return val
                 })
-              _vm.selected = $event.target.multiple
+              _vm.escolhe = $event.target.multiple
                 ? $$selectedVal
                 : $$selectedVal[0]
             },
