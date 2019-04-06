@@ -24,7 +24,7 @@
 			<div class="col-9 col-sm-9 col-md-9 pl-5 pt-2 pb-2 pr-5" v-if="carros.length">
                 <ul>
                     <li v-for="(item, id) in carros">
-						<cardcar :car="item" :user="usercpf" :id="id" :quantDias="dias"></cardcar><br>
+						          <cardcar :car="item" :user="usercpf" :id="id" :quant-dias="dias" :data-entrega="predados.datefim" :local-entrega="predados.locadora-entrega" :data-retirada="predados.dateinicio" :local-retirada="predados.locadora-retirada"></cardcar><br>
                     </li>
                 </ul>
             </div>
@@ -54,14 +54,8 @@ export default {
    		}
    	},
    	created(){
-   		// this.dias = 
-   		console.log(this.predados);
-   		console.log(this.usercpf);
    		this.acessorio= this.aces;
    		this.dias=new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
-   		console.log(this.dias);
-   		console.log(this.acessorio);
-
    	},
    	methods:{
    		setAcessorio(acessorio){
@@ -71,7 +65,6 @@ export default {
    				acessorio : acessorio
    			}).then(
    				 res => {
-   				 	console.log(res.data);
    				 	this.carros = res.data;
    				 },
    				 (error) => {

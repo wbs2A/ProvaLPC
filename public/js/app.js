@@ -1811,6 +1811,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var state = {
+  disabledDates: {
+    to: new Date(),
+    // Disable all dates up to specific date
+    customPredictor: function customPredictor(date) {
+      // disables the date if it is a multiple of 5
+      if (date.getDate() % 5 == 0) {
+        return true;
+      }
+    }
+  }
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['mycategorias'],
   components: {
@@ -1824,7 +1836,12 @@ __webpack_require__.r(__webpack_exports__);
       data: null,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       dateNow1: new Date().toLocaleDateString(),
-      dateNow2: new Date().toLocaleDateString()
+      dateNow2: new Date().toLocaleDateString(),
+      ObjectDate: {
+        now: function now() {
+          console.log('teste');
+        }
+      }
     };
   },
   methods: {
@@ -1833,7 +1850,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/getLocadora/' + this.selectCategoria).then(function (res) {
         _this.data = res.data;
-        console.log(_this.data);
       }, function (error) {
         console.log(error);
       });
@@ -1846,9 +1862,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log(date.getTime());
       return date.getTime() < Date.now();
     }
-  },
-  created: function created() {
-    console.log(this.mycategorias);
   }
 });
 
@@ -39470,7 +39483,7 @@ var render = function() {
               _vm._v(" "),
               _c("datepicker", {
                 attrs: {
-                  "disabled-date": _vm.disabledDate,
+                  disabledDates: "state.disabledDates",
                   "input-class": { "col-7": true },
                   value: _vm.dateNow1,
                   readonly: true,

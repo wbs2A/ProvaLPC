@@ -1856,7 +1856,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['rios'],
   methods: {
     myCick: function myCick(event) {
-      console.log(event.target.value);
       this.$emit('Click', event.target.value);
     }
   }
@@ -1921,6 +1920,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var state = {
+  disabledDates: {
+    to: new Date(),
+    // Disable all dates up to specific date
+    customPredictor: function customPredictor(date) {
+      // disables the date if it is a multiple of 5
+      if (date.getDate() % 5 == 0) {
+        return true;
+      }
+    }
+  }
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['mycategorias'],
   components: {
@@ -1934,7 +1945,12 @@ __webpack_require__.r(__webpack_exports__);
       data: null,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       dateNow1: new Date().toLocaleDateString(),
-      dateNow2: new Date().toLocaleDateString()
+      dateNow2: new Date().toLocaleDateString(),
+      ObjectDate: {
+        now: function now() {
+          console.log('teste');
+        }
+      }
     };
   },
   methods: {
@@ -1943,7 +1959,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/getLocadora/' + this.selectCategoria).then(function (res) {
         _this.data = res.data;
-        console.log(_this.data);
       }, function (error) {
         console.log(error);
       });
@@ -1956,9 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log(date.getTime());
       return date.getTime() < Date.now();
     }
-  },
-  created: function created() {
-    console.log(this.mycategorias);
   }
 });
 
@@ -2058,13 +2070,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    // this.dias = 
-    console.log(this.predados);
-    console.log(this.usercpf);
     this.acessorio = this.aces;
     this.dias = new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
-    console.log(this.dias);
-    console.log(this.acessorio);
   },
   methods: {
     setAcessorio: function setAcessorio(acessorio) {
@@ -2075,7 +2082,6 @@ __webpack_require__.r(__webpack_exports__);
         predados: this.predados,
         acessorio: acessorio
       }).then(function (res) {
-        console.log(res.data);
         _this.carros = res.data;
       }, function (error) {
         console.log(error);
@@ -39964,7 +39970,7 @@ var render = function() {
               _vm._v(" "),
               _c("datepicker", {
                 attrs: {
-                  "disabled-date": _vm.disabledDate,
+                  disabledDates: "state.disabledDates",
                   "input-class": { "col-7": true },
                   value: _vm.dateNow1,
                   readonly: true,
@@ -40203,7 +40209,11 @@ var render = function() {
                           car: item,
                           user: _vm.usercpf,
                           id: id,
-                          quantDias: _vm.dias
+                          "quant-dias": _vm.dias,
+                          "data-entrega": _vm.predados.datefim,
+                          "local-entrega": _vm.predados.locadora - _vm.entrega,
+                          "data-retirada": _vm.predados.dateinicio,
+                          "local-retirada": _vm.predados.locadora - _vm.retirada
                         }
                       }),
                       _c("br")

@@ -11,7 +11,6 @@ export default {
 	props:['rios'], 
     methods:{
         myCick(event){
-        	console.log(event.target.value);
             this.$emit('Click', event.target.value);
         }
     }
