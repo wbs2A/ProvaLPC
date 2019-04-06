@@ -11,7 +11,7 @@
 			<div class="col-6 wrap-right">
 				<div class="input-group dates-wrap mb-3">
 					<label class="col-form-label text-md-right mb-1" for="dateinicio">Data de início</label>
-					<datepicker input-class="col-7 form-input" :value="dateNow"  :readonly="true" format="DD/MM/YYYY" id="dateinicio" name="dateinicio" required></datepicker>
+					<datepicker  :value="dateNow"  :readonly="true" format="DD/MM/YYYY" id="dateinicio" name="dateinicio" required></datepicker>
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 			<div class="col-6 wrap-right mb-3">
 				<div class="input-group dates-wrap">
 					<label class="col-form-label text-md-right mb-1" for="datefim">Data de entrega</label>
-					<datepicker input-class="col-7 form-input" :value="dateNow" :readonly="true" format="DD/MM/YYYY" id="datefim" name="datefim" required></datepicker>
+					<datepicker :value="dateNow" :readonly="true" format="DD/MM/YYYY" id="datefim" name="datefim" required></datepicker>
 				</div>
 			</div>
 		</div>
