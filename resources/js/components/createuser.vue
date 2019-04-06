@@ -1,18 +1,22 @@
 <script>
+    import buscacpf from '../components/buscacpf';
     export default{
         props:['old'],
-        data(){
-            return {
-                selected: ''
-            }
+        components:{
+            buscacpf
         },
-        created() {
-            if (this.old) {
+        data(){
+            return{
+                escolhe:''
             }
         },
         methods: {
                 escolheu(){
-                    if (this.selected == 'Fisica') {
+                    console.log(this.escolhe);
+                    if(this.old){
+                        this.escolhe=this.old;
+                    }
+                    if (this.escolhe == 'Fisica') {
                         $(".fisica").each(function(){
                             $(this).css('display','block');
                             $(this).attr('required',true);
@@ -21,7 +25,7 @@
                             $(this).css('display','none');
                             $(this).attr('required',false);
                         });
-                    }else if (this.selected == 'Jurídica') {
+                    }else if (this.escolhe == 'Jurídica') {
                         $(".fisica").each(function(){
                             $(this).css('display','none');
                             $(this).attr('required',false);
@@ -32,16 +36,22 @@
                         });
                     }
                 }
-        }
+        },
+        created:function(){
+            console.log(this.old);
+            if(this.old){
+                this.escolhe=this.old;
+            }
 
+        }
     }
 
 </script>
 
 <template>
         <div class="col-2  mb-3">                            
-            <label for="tipo" class="col-form-label text-md-right">Tipo de conta</label>
-            <select v-model="selected" id="tipo" type="tipo" class="form-control" name="tipo" value="" @change="escolheu" required>
+            <label for="tipo" class="col-form-label text-md-right">Tipo de conta  {{ old }} </label>
+            <select id="tipo" type="tipo" class="form-control" name="tipo"  v-model="escolhe" @change="escolheu" required>
                 <option>Fisica</option>
                 <option>Jurídica</option>
             </select>

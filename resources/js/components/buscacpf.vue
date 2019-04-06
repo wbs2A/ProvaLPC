@@ -1,5 +1,8 @@
 <script>
     export default{
+        props: {
+          cpf: String
+        },
         methods: {
             getCpf(){
               var a;
@@ -44,8 +47,9 @@
 
 <template>
     <div  class="col  p-0 mr-1 ml-1 mb-3">
-        <label for="cpf" class="col-form-label text-md-right">CPF</label>
-        <input type="text" class="form-control" data-mask="000.000.000-00" id="cpf" maxlength="11" @blur="getCpf" name="cpf" placeholder="CPF" value="">
+        <label for="cpf" class="col-form-label text-md-right">CPF </label>
+        <input type="text" class="form-control" data-mask="000.000.000-00" v-bind:value="cpf" id="cpf" maxlength="11" @blur="getCpf" name="cpf" placeholder="CPF" value="">
+        
     </div>
 </template>
 

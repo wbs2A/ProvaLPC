@@ -1,9 +1,12 @@
 @extends('main' )
 
 @section('content')
-    <div id="index">
+    <div>
         <div id="banner" class="container-fluid">
-            <search id="search" :categorias='@json($categorias)'></search>
+            <div class="col-lg-5 col-md-6 header-right ml-auto">
+                <h4 class="text-white pb-30">Alugue seu carro <b>agora</b>!</h4>
+                <buscalocacao :mycategorias='@json($categorias)'></buscalocacao>
+            </div>
         </div>
         <!-- Area dos cards-->
         <section class="feature-area section-gap" id="service">
@@ -69,7 +72,5 @@
             </div>
         </section>
     </div>
+    <script src="js/app.js"></script>
 @stop
-    @section('scripts')
-        <script src="js/app.js" defer></script>
-    @stop

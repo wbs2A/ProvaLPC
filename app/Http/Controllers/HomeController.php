@@ -25,15 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $todos= Classificacao::todos();
         return view('index', ['categorias'=> $todos]);
     }
     public function getLocadora($categoria){
         $data=Carros::join('locadora','carros.locadora_idLocadora','=','locadora.idLocadora')
         ->join('classificacaocarro', 'carros.idClassificacao', '=','classificacaocarro.idclassificacao')
-        ->select('locadora.nome')
-        ->where('classificacaocarro.tipo','=',$categoria)
+        ->select('locadora.nome', 'locadora.idLocadora')
+        ->where('classificacaocarro.idclassificacao','=',$categoria)
         ->get();
         return $data;
     }

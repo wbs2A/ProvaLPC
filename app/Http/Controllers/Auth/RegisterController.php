@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Model\PessoaJuridica;
 use App\Model\PessoaFisica;
 use App\Model\Endereco;
+use App\Model\Habilitacao;
 use Validator;
 use App\User;
 
@@ -63,7 +64,7 @@ class RegisterController extends Controller
                 'tipo'=> 'required',
                 'idpessoaFisica' => 'cpf|unique:pessoafisica',
                 'password' => 'min:6|required|confirmed',
-                'password-confirm' => 'same:password|required_with:password',
+                'password_confirmation' => 'same:password|required_with:password',
                 'email' => 'max:45',
                 'nascimento'=>'required',
                 'sexo'=>'required',
@@ -85,7 +86,7 @@ class RegisterController extends Controller
                 'email' => 'max:45',
                 'telefone'=>'required',
                 'tipo'=> 'required',
-                'password-confirm' => 'same:password|required_with:password',
+                'password_confirmation' => 'same:password|required_with:password',
                 'password' => 'min:6|required|confirmed',
                 'email' => 'max:45',
                 'idPJ'=>'cnpj|unique:pessoajuridica',
@@ -97,10 +98,6 @@ class RegisterController extends Controller
                 'rua'=>'required',
                 'estado'=>'required'
             ]);
-        }
-         if($validacao->fails())
-        {
-            return back()->with('errors', $validacao->errors());
         }
         return $validate;
     }
@@ -124,7 +121,6 @@ class RegisterController extends Controller
             $data['cnpj']=preg_replace("/[^0-9]/", "", $data['cnpj']);
             $tipo = 1;
         }
-
         $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -139,10 +135,9 @@ class RegisterController extends Controller
             PessoaJuridica::inserir($data);
         }else{
             $pessoa = PessoaFisica::inserir($data);
-
+            $data['pessoa']=$pessoa->idpessoaFisica;
+            Habilitacao::inserir($data);
         }
-        // session()->put('user', Auth::user());
-        
         return $user;
     }
 }

@@ -36,7 +36,7 @@
 
                             <div class="col-3">
                                 <label for="telefone" class="col-form-label text-md-right">Telefone</label>
-                                <input id="telefone" type="tel" data-mask="(000) 0000-0000" class="form-control{{ $errors->has('telefone') ? ' is-invalid' : '' }}" value="{{ old('telefone') }}" name="telefone" placeholder="00000000000" required>
+                                <input id="telefone" type="tel" data-mask="(000) 0000-0000" class="form-control{{ $errors->has('telefone') ? ' is-invalid' : '' }}" value="{{ old('telefone') }}" name="telefone" placeholder="(000) 0000-0000" required>
                                 <small id="telefoneHelp" class="form-text text-muted">Por favor, como ddd do seu estado. Apenas numeros.</small>
                                 @if ($errors->has('telefone'))
                                     <span class="invalid-feedback" role="alert">
@@ -47,14 +47,36 @@
                             
                         </div>
                             <div  class="form-group row">
-                                <createuser class="ml-0" v-bind:old="{{ old('tipo') }}"></createuser>
+                                @php
+                                    if(old('tipo')){
+                                        $tipo=old('tipo');
+                                    }
+                                @endphp
+                                @if (old('tipo'))
+                                    <createuser class="ml-0" :old="'{{$tipo}}'"></createuser>
+                                @else
+                                    <createuser class="ml-0" :old="''"></createuser>    
+                                @endif
+                                
                                 @if ($errors->has('tipo'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('tipo') }}</strong>
                                     </span>
                                 @endif
                                 <div class="col fisica" style="display: none">
-                                    <buscacpf></buscacpf>
+                                    @php
+                                        if(old('cpf')){
+                                            $cpf=old('cpf');
+                                            $cpf=preg_replace("/[^0-9]/", "", $cpf);
+                                        }
+                                    @endphp
+                                    @if (old('cpf'))
+
+                                        <buscacpf :cpf="'{{$cpf}}'"></buscacpf>
+                                    @else
+                                        <buscacpf></buscacpf>    
+                                    @endif
+                                    
                                     <small id="cpfHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
                                     <span class="invalid-feedback" role="alert" style="display: none">
                                         <strong id="fisica-cpf"></strong>
@@ -130,7 +152,17 @@
                                     @endif
                                 </div>
                                 <div class="col juridica" style="display: none">
-                                    <buscacnpj></buscacnpj>
+                                     @php
+                                        if(old('cnpj')){
+                                            $canpj=old('canpj');
+                                            $canpj=preg_replace("/[^0-9]/", "", $canpj);
+                                        }
+                                    @endphp
+                                    @if (old('canpj'))
+                                        <buscacanpj :canpj="'{{$canpj}}'"></buscacpf>
+                                    @else
+                                        <buscacnpj></buscacnpj>    
+                                    @endif
                                     <small id="cnpjHelp" class="form-text text-muted ml-3">Por favor, insira apenas numeros.</small>
                                     <span class="invalid-feedback ml-3" role="alert" style="display: none">
                                         <strong id="juridica-cnpj"></strong>

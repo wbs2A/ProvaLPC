@@ -24,9 +24,6 @@ $offwhite		: #f9f9ff;
 $black			: #222;
 
 #search{
-  position: absolute;
-  right: 20px;
-  top: 15px;
   color: white;
 }
 .section-gap {
@@ -188,10 +185,10 @@ $black			: #222;
 .header-right{
   background-color:rgba(#000,.4);
   border:1px solid #4b5263;
-  padding:50px;
+  padding:40px;
   box-shadow: 5px 5px rgba(22, 136, 132, 0.21);
   @media(max-width:413px){
-    padding:20px;
+    padding:30px;
   }
   .default-select .nice-select{
     width:100%;
