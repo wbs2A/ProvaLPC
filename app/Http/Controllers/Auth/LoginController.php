@@ -43,7 +43,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $data = $request->all();
-
         $validacao = Validator::make($data, [
             'email' => 'required|email|max:191',
             'password' => 'required|min:6',
@@ -56,7 +55,16 @@ class LoginController extends Controller
         $remember = $request->input('remember_me');
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember))
         {
-            return redirect()->intended('/');
+            if (isset($data['categoria'])) {
+                $predados['categoria']=$data['categoria'];
+                $predados['locadora-retirada']=$data['locadora-retirada'];
+                $predados['dateinicio']=$data['dateinicio'];
+                $predados['locadora-entrega']=$data['locadora-entrega'];
+                $predados['datefim']=$data['datefim'];
+                return redirect()->route('locacao')->with(['data' => $predados]);
+            }else{
+                return redirect()->intended('/');
+            }
 //            return redirect('/perfil');
         }
         else
@@ -65,10 +73,10 @@ class LoginController extends Controller
         }
     }
 
-    // public function showLoginForm()
-    // {
-    //     return view('auth/login');
-    // }
+    public function showLoginForm(Request $request)
+    {
+        return view('auth/login', ['data' => $request->session()->get('data')]);
+    }
 
     public function logout(Request $request){
         // session()->remove('user');

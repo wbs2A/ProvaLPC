@@ -14,17 +14,21 @@
 					  <div class="card-header">
 					    <h4 class="card-title "><b>Acessorios</b>!</h4>
 					  </div>
-					<div class="card-body p-0 pl-5 pb-1"  v-for="aces in aces">
-						<acessorios @Click="setAcessorio" :rios="aces"></acessorios>
+					<div class="card-body p-0 pl-5 pb-1">
+						<span class="col">
+							<acessorios @Click="setAcessorio" :rios="acessorio"></acessorios>
+						</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-9 col-sm-9 col-md-9">
-				<form class="form" role="form"  autocomplete="off" :action="'api/setCarLocacao'" method= "POST" >
-					<input type="hidden" name="_token" :value="csrf">
-					<span v-for="item in carros">{{item}}</span>
-				</form>
-			</div>
+			<div class="col-9 col-sm-9 col-md-9 pl-5 pt-2 pb-2 pr-5" v-if="carros.length">
+                <ul>
+                    <li v-for="(item, id) in carros">
+						          <cardcar :car="item" :user="usercpf" :id="id" :quant-dias="dias" :data-entrega="predados.datefim" :local-entrega="predados.locadora-entrega" :data-retirada="predados.dateinicio" :local-retirada="predados.locadora-retirada"></cardcar><br>
+                    </li>
+                </ul>
+            </div>
+            <h2 v-else> Nenhum carro com essas caracteristicas</h2>
 		</div>
 	</div>
 </template>
@@ -33,29 +37,35 @@ import Classificacao from '../components/classificacao.vue';
 import Locadora from '../components/locadora.vue';
 import Acessorios from '../components/acessorios.vue';
 import BuscaLocacao from '../components/buscaLocacao.vue';
-import DatePicker from 'vue-date-picker';
+import Cars from '../../assets/js/views/CardCar.vue'
 export default {
-	props:['cars', 'aces', 'predados', 'categorias'],
+	props:['cars', 'aces', 'predados', 'categorias', 'usercpf'],
 	components: {
 		acessorios: Acessorios,
-		buscalocacao: BuscaLocacao
+		buscalocacao: BuscaLocacao, 
+		cardcar : Cars
    	},
    	data() {
    		return{
    			carros: this.cars,
    			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-   			picked:null
+   			acessorio:null,
+   			dias:null
    		}
+   	},
+   	created(){
+   		this.acessorio= this.aces;
+   		this.dias=new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
    	},
    	methods:{
    		setAcessorio(acessorio){
+   			this.teste=acessorio;
    			axios.post('api/getcarrosAcessorio/', {
    				predados : this.predados,
    				acessorio : acessorio
    			}).then(
    				 res => {
-   				 	this.data = res.data;
-   				 	console.log(this.data);
+   				 	this.carros = res.data;
    				 },
    				 (error) => {
    				 	console.log(error);
