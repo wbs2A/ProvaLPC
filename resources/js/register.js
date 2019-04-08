@@ -10,8 +10,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 import CreateUser from './components/createuser.vue';
 import BuscaCep from './components/buscacep.vue';
-import BuscaCpf from './components/buscacpf';
-import BuscaCnpj from './components/buscacnpj';
+import BuscaCpf from './components/buscacpf.vue';
+import BuscaCnpj from './components/buscacnpj.vue';
+import BuscaEstadoCNH from './components/buscaestadoCnh.vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -40,6 +41,7 @@ new Vue({
         'createuser': CreateUser,
         'buscacep':BuscaCep,
         'buscacnpj': BuscaCnpj,
-        'buscacpf': BuscaCpf
+        'buscacpf': BuscaCpf,
+        'buscaestadoCNH': BuscaEstadoCNH
     },
 });

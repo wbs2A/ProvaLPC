@@ -14,13 +14,13 @@ class CreateHabilitacaoTable extends Migration {
 	{
 		Schema::create('habilitacao', function(Blueprint $table)
 		{
-			$table->integer('idhabilitacao');
+			$table->integer('idhabilitacao',true);
 			$table->string('nCNH', 45)->nullable();
 			$table->string('nRegistro', 45)->nullable();
 			$table->date('dataValidade')->nullable();
 			$table->integer('Estado_idEstado')->index('fk_habilitacao_Estado1_idx');
 			$table->string('pessoaFisica_idpessoaFisica', 13)->index('fk_habilitacao_pessoaFisica1_idx');
-			$table->primary('idhabilitacao');
+			DB::table('habilitacao')->raw('ALTER TABLE  `habilitacao` ADD idhabilitacao INT PRIMARY KEY AUTO_INCREMENT;');
 		});
 	}
 
