@@ -15,7 +15,7 @@ import Reservation from '../assets/js/views/reservation'
 import EmpresaDash from './components/empresadash';
 import Cars from '../assets/js/views/Cars';
 import moment from 'moment';
-
+import ConfirmReserv from './components/confirmReserv';
 import Vue2Filters from 'vue2-filters'
 import  VeeValidate from 'vee-validate'
 
@@ -81,7 +81,8 @@ const dashapp = new Vue({
     },
     components: {
         'dashboardapp':DashboardApp,
-        'empresadash':EmpresaDash
+        'empresadash':EmpresaDash,
+        'confirm-reserv': ConfirmReserv
     },
     router,
 });

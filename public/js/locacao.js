@@ -1828,9 +1828,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CardCar",
-  props: ['car', 'user', 'id', 'quantDias']
+  props: ['car', 'user', 'id', 'quantDias', 'dataEntrega', 'dataRetirada', 'localRetirada', 'localEntrega'],
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  methods: {
+    doReserva: function doReserva(evt, user, quantDias, dataEntrega, dataRetirada, localRetirada, localEntrega) {
+      evt.preventDefault();
+      var v = 1;
+
+      if (quantDias) {
+        v = quantDias;
+      }
+
+      axios({
+        method: 'post',
+        // verbo http
+        url: '/api/efetuarReserva',
+        // url
+        data: {
+          usuario: user,
+          valor: this.car.carro.valor * v,
+          carro: this.car.carro,
+          dataentrega: dataEntrega,
+          dataretirada: dataRetirada,
+          localR: localRetirada,
+          localE: localEntrega
+        }
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -1850,11 +1898,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['rios'],
   methods: {
     myCick: function myCick(event) {
-      console.log(event.target.value);
       this.$emit('Click', event.target.value);
     }
   }
@@ -1919,6 +1968,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var state = {
+  disabledDates: {
+    to: new Date(),
+    // Disable all dates up to specific date
+    customPredictor: function customPredictor(date) {
+      // disables the date if it is a multiple of 5
+      if (date.getDate() % 5 == 0) {
+        return true;
+      }
+    }
+  }
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['mycategorias'],
   components: {
@@ -1931,7 +1992,13 @@ __webpack_require__.r(__webpack_exports__);
       selectCategoria: '',
       data: null,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      dateNow: new Date().toLocaleDateString()
+      dateNow1: new Date().toLocaleDateString(),
+      dateNow2: new Date().toLocaleDateString(),
+      ObjectDate: {
+        now: function now() {
+          console.log('teste');
+        }
+      }
     };
   },
   methods: {
@@ -1940,7 +2007,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('api/getLocadora/' + this.selectCategoria).then(function (res) {
         _this.data = res.data;
-        console.log(_this.data);
       }, function (error) {
         console.log(error);
       });
@@ -1948,6 +2014,10 @@ __webpack_require__.r(__webpack_exports__);
     getCategoria: function getCategoria(mycategoria) {
       this.selectCategoria = mycategoria;
       this.getLocadora();
+    },
+    disabledDate: function disabledDate(date) {
+      console.log(date.getTime());
+      return date.getTime() < Date.now();
     }
   }
 });
@@ -1992,8 +2062,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_locadora_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/locadora.vue */ "./resources/js/components/locadora.vue");
 /* harmony import */ var _components_acessorios_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/acessorios.vue */ "./resources/js/components/acessorios.vue");
 /* harmony import */ var _components_buscaLocacao_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/buscaLocacao.vue */ "./resources/js/components/buscaLocacao.vue");
-/* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-date-picker */ "./node_modules/vue-date-picker/dist/datepicker.common.js");
-/* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_date_picker__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_js_views_CardCar_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/js/views/CardCar.vue */ "./resources/assets/js/views/CardCar.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -2030,28 +2103,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cars', 'aces', 'predados', 'categorias'],
+  props: ['cars', 'aces', 'predados', 'categorias', 'usercpf'],
   components: {
     acessorios: _components_acessorios_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    buscalocacao: _components_buscaLocacao_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    buscalocacao: _components_buscaLocacao_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    cardcar: _assets_js_views_CardCar_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
       carros: this.cars,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-      picked: null
+      acessorio: null,
+      dias: null
     };
+  },
+  created: function created() {
+    this.acessorio = this.aces;
+    this.dias = new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
   },
   methods: {
     setAcessorio: function setAcessorio(acessorio) {
       var _this = this;
 
+      this.teste = acessorio;
       axios.post('api/getcarrosAcessorio/', {
         predados: this.predados,
         acessorio: acessorio
       }).then(function (res) {
-        _this.data = res.data;
-        console.log(_this.data);
+        _this.carros = res.data;
       }, function (error) {
         console.log(error);
       });
@@ -6517,6 +6596,25 @@ __webpack_require__.r(__webpack_exports__);
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.carousel-inner[data-v-22fac1a1]{\n    width:100%;\n    max-height: 200px !important;\n}\n.myslide[data-v-22fac1a1]{\n    max-width: 200px !important;\n    width: 200px\n}\n.carousel-control-prev-icon[data-v-22fac1a1],\n.carousel-control-next-icon[data-v-22fac1a1] {\n    height: 100px;\n    width: 100px;\n    background-size: 100%, 100%;\n    background-image: none;\n}\n.carousel-control-next-icon[data-v-22fac1a1]:after\n{\n    content: '>';\n    font-size: 55px;\n    color: black;\n}\n.carousel-control-prev-icon[data-v-22fac1a1]:after {\n    content: '<';\n    font-size: 55px;\n    color: black;\n}\n.locate[data-v-22fac1a1]{\n    border: #0b0b0b;\n    border-style: solid;\n    border-width: 2px;\n}\n\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -37134,6 +37232,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--7-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/buscaLocacao.vue?vue&type=style&index=0&id=cdc8adc6&scoped=true&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/buscaLocacao.vue?vue&type=style&index=0&id=cdc8adc6&scoped=true&lang=css& ***!
@@ -39728,38 +39856,99 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "div",
+                  {
+                    staticClass: "col",
+                    staticStyle: { "padding-top": "20px" }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          action: "/api/efetuarReserva/",
+                          method: "post"
+                        }
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrf }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "user" },
+                          domProps: { value: _vm.user }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "carro" },
+                          domProps: { value: _vm.car.carro.idcarro }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "valor" },
+                          domProps: {
+                            value: _vm.car.carro.valor * _vm.quantDias
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "quantdias" },
+                          domProps: { value: _vm.quantDias }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "imagens" },
+                          domProps: { value: _vm.car.imagens }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "dataentrega" },
+                          domProps: { value: _vm.dataEntrega }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "dataretirada" },
+                          domProps: { value: _vm.dataRetirada }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "localentrega" },
+                          domProps: { value: _vm.localEntrega }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "localretirada" },
+                          domProps: { value: _vm.localRetirada }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-dark",
+                            staticStyle: { width: "130px", height: "50px" },
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("Reserve aqui")]
+                        )
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           : _vm._e()
       ]),
       _vm._v(" "),
       !_vm.user
-        ? _c("div", { staticClass: "card-footer" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "card-footer" }, [_vm._m(0)])
         : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col", staticStyle: { "padding-top": "20px" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-dark",
-            staticStyle: { width: "130px", height: "50px" }
-          },
-          [_vm._v("Reserve aqui")]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39791,18 +39980,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("input", {
-      staticClass: "col-1 mt-1 mb-1 mr-0",
-      attrs: { type: "radio", id: _vm.rios.nome },
-      domProps: { value: _vm.rios.idacessorio },
-      on: { click: _vm.myCick }
+  return _c(
+    "span",
+    _vm._l(_vm.rios, function(item) {
+      return _c("div", { staticClass: "row" }, [
+        _c("input", {
+          staticClass: "col-1 mt-1 mb-1 mr-0",
+          attrs: { type: "radio", id: item.nome },
+          domProps: { value: item.idacessorio },
+          on: { click: _vm.myCick }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "col", attrs: { for: item.nome } }, [
+          _vm._v(_vm._s(item.nome))
+        ])
+      ])
     }),
-    _vm._v(" "),
-    _c("label", { staticClass: "col", attrs: { for: _vm.rios.nome } }, [
-      _vm._v(_vm._s(_vm.rios.nome))
-    ])
-  ])
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39884,7 +40079,9 @@ var render = function() {
               _vm._v(" "),
               _c("datepicker", {
                 attrs: {
-                  value: _vm.dateNow,
+                  disabledDates: "state.disabledDates",
+                  "input-class": { "col-7": true },
+                  value: _vm.dateNow1,
                   readonly: true,
                   format: "DD/MM/YYYY",
                   id: "dateinicio",
@@ -39926,7 +40123,8 @@ var render = function() {
               _vm._v(" "),
               _c("datepicker", {
                 attrs: {
-                  value: _vm.dateNow,
+                  "input-class": { "col-7": true },
+                  value: _vm.dateNow2,
                   readonly: true,
                   format: "DD/MM/YYYY",
                   id: "datefim",
@@ -40085,55 +40283,58 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._l(_vm.aces, function(aces) {
-              return _c(
-                "div",
-                { staticClass: "card-body p-0 pl-5 pb-1" },
-                [
-                  _c("acessorios", {
-                    attrs: { rios: aces },
-                    on: { Click: _vm.setAcessorio }
-                  })
-                ],
-                1
-              )
-            })
-          ],
-          2
-        )
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body p-0 pl-5 pb-1" }, [
+            _c(
+              "span",
+              { staticClass: "col" },
+              [
+                _c("acessorios", {
+                  attrs: { rios: _vm.acessorio },
+                  on: { Click: _vm.setAcessorio }
+                })
+              ],
+              1
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-9 col-sm-9 col-md-9" }, [
-        _c(
-          "form",
-          {
-            staticClass: "form",
-            attrs: {
-              role: "form",
-              autocomplete: "off",
-              action: "api/setCarLocacao",
-              method: "POST"
-            }
-          },
-          [
-            _c("input", {
-              attrs: { type: "hidden", name: "_token" },
-              domProps: { value: _vm.csrf }
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.carros, function(item) {
-              return _c("span", [_vm._v(_vm._s(item))])
-            })
-          ],
-          2
-        )
-      ])
+      _vm.carros.length
+        ? _c(
+            "div",
+            { staticClass: "col-9 col-sm-9 col-md-9 pl-5 pt-2 pb-2 pr-5" },
+            [
+              _c(
+                "ul",
+                _vm._l(_vm.carros, function(item, id) {
+                  return _c(
+                    "li",
+                    [
+                      _c("cardcar", {
+                        attrs: {
+                          car: item,
+                          user: _vm.usercpf,
+                          id: id,
+                          "quant-dias": _vm.dias,
+                          "data-entrega": _vm.predados.datefim,
+                          "local-entrega": _vm.predados.locadora - _vm.entrega,
+                          "data-retirada": _vm.predados.dateinicio,
+                          "local-retirada": _vm.predados.locadora - _vm.retirada
+                        }
+                      }),
+                      _c("br")
+                    ],
+                    1
+                  )
+                }),
+                0
+              )
+            ]
+          )
+        : _c("h2", [_vm._v(" Nenhum carro com essas caracteristicas")])
     ])
   ])
 }
@@ -40200,6 +40401,12 @@ var render = function() {
         _c("option", {
           attrs: { value: "", disabled: "", selected: "", hidden: "" }
         }),
+        _vm._v(" "),
+        !_vm.locadoras
+          ? _c("option", { attrs: { value: "", disabled: "", selected: "" } }, [
+              _vm._v("escolha uma categoria")
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.locadoras, function(locadora) {
           return _c("option", { domProps: { value: locadora.idLocadora } }, [
@@ -52354,6 +52561,93 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/views/CardCar.vue":
+/*!***********************************************!*\
+  !*** ./resources/assets/js/views/CardCar.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./resources/assets/js/views/CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
+/* harmony import */ var _CardCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardCar.vue?vue&type=script&lang=js& */ "./resources/assets/js/views/CardCar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& */ "./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CardCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "22fac1a1",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/views/CardCar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/CardCar.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/assets/js/views/CardCar.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardCar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--7-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=style&index=0&id=22fac1a1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_style_index_0_id_22fac1a1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./resources/assets/js/views/CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
+  \*******************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/CardCar.vue?vue&type=template&id=22fac1a1&scoped=true&xmlns%3Abr=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardCar_vue_vue_type_template_id_22fac1a1_scoped_true_xmlns_3Abr_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -52710,15 +53004,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./resources/js/components/locadora.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locadora_vue_vue_type_template_id_5eb72734_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locadora.vue?vue&type=template&id=5eb72734&scoped=true& */ "./resources/js/components/locadora.vue?vue&type=template&id=5eb72734&scoped=true&");
 /* harmony import */ var _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./locadora.vue?vue&type=script&lang=js& */ "./resources/js/components/locadora.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -52748,7 +53041,7 @@ component.options.__file = "resources/js/components/locadora.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/locadora.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52818,12 +53111,7 @@ var app = new Vue({
   components: {
     'locacao': _components_locacao_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
-}); // new Vue({
-// 	el:"#register",
-// 	components:{
-//         CreateUser
-// 	}
-// });
+});
 
 /***/ }),
 

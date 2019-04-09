@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Cidade;
 use App\Model\Endereco;
 use App\Model\Estado;
+use App\Model\Pagamento;
 use App\Model\PessoaFisica;
 use App\User;
 use Illuminate\Http\Request;
@@ -110,5 +111,17 @@ class PessoaFisicaController extends Controller
         $userFisico->save();
         $user->save();
         return redirect()->route('perfil');
+    }
+
+    public function setConta(Request $request){
+        $conta = Pagamento::where('pessoaFisica_idpessoaFisica', '=', $this->getPessoaSessao());
+        if($conta)
+            return response('Já existe', 401);
+        try{
+           Pagamento::table('pagamento')->insert(array("nCartao"=>$request->cartao,"vcc"=>$request->vcc,"formaPagamento"=>$request->formapagamento,"dataValidade"=>$request->datav,"pessoaFisica_idpessoaFisica"=>$this->getPessoaSessao()));
+           return response('conta inserida com sucesso', 200);
+        }catch (\Exception $e){
+            return response($e, 500);
+        }
     }
 }

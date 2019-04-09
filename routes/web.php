@@ -37,10 +37,10 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('getLocadora/{categoria}', 'HomeController@getLocadora');
         Route::post('setCarLocacao', 'LocacaoController@setCarLocacao');
         Route::post('efetuarReserva/','LocadoraController@reserva');
+        Route::post('setconta/', 'PessoaFisicaController@setConta');
+        Route::post('generatePDF/', 'LocadoraController@generatePDF');
+
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
-});
-Route::get('/login',function(){
-    dd($request->session()->all());
 });
 Auth::routes();

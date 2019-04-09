@@ -52,7 +52,7 @@
                             <form action="/api/efetuarReserva/" method="post">
                                 <input type="hidden" name="_token" :value="csrf">
                                 <input type="hidden" name="user" :value="user">
-                                <input type="hidden" name="carro" :value="car.carro.nome">
+                                <input type="hidden" name="carro" :value="car.carro.idcarro">
                                 <input type="hidden" name="valor" :value="car.carro.valor*quantDias">
                                 <input type="hidden" name="quantdias" :value="quantDias">
                                 <input type="hidden" name="imagens" :value="car.imagens">
