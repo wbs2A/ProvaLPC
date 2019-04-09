@@ -6,6 +6,8 @@ use App\Model\Acessorio;
 use App\Model\Carros;
 use App\Model\Classificacao;
 use App\Model\Imagem;
+use App\Model\Locadora;
+use PDF;
 use Illuminate\Http\Request;
 
 class LocadoraController extends Controller
@@ -104,5 +106,29 @@ class LocadoraController extends Controller
             array_push($ret,$tmp);
         }
         return $ret;
+    }
+
+    public function reserva(Request $request){
+        $car = Carros::find($request->carro);
+        $imagens = Imagem::join('carros_has_imagens', function($q) use ($car) {
+            $q->on('carros_has_imagens.imagens_idimagens', '=', 'imagens.idimagens')
+                ->where('carros_has_imagens.carros_idcarro', '=', "$car->idcarro");
+        })->get();
+        $retirada = Locadora::find($request->localentrega);
+        $entrega = Locadora::find($request->localretirada);
+        return redirect('reserva')->with(["imagens"       => $imagens,
+                                              "carro"         => $car->nome,
+                                              "usuario"       => $request->user,
+                                              "quantdias"     => $request->quantdias,
+                                              "dataentrega"   => $request->dataentrega,
+                                              "dataretirada"  => $request->dataretirada,
+                                              "localentrega"  => $entrega,
+                                              "localretirada" => $retirada]);
+    }
+    public function generatePDF(){
+        $data = ['title' => 'Welcome to HDTuto.com'];
+        $pdf = PDF::loadView('myPDF', $data);
+
+        return $pdf->download('itsolutionstuff.pdf');
     }
 }

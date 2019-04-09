@@ -49,7 +49,20 @@
                             Pagamento no destino em R$</i>
                         </span>
                         <div class="col" style="padding-top:20px;">
-                            <button class="btn btn-dark" style="width: 130px; height: 50px">Reserve aqui</button>
+                            <form action="/api/efetuarReserva/" method="post">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <input type="hidden" name="user" :value="user">
+                                <input type="hidden" name="carro" :value="car.carro.idcarro">
+                                <input type="hidden" name="valor" :value="car.carro.valor*quantDias">
+                                <input type="hidden" name="quantdias" :value="quantDias">
+                                <input type="hidden" name="imagens" :value="car.imagens">
+                                <input type="hidden" name="dataentrega" :value="dataEntrega">
+                                <input type="hidden" name="dataretirada" :value="dataRetirada">
+                                <input type="hidden" name="localentrega" :value="localEntrega">
+                                <input type="hidden" name="localretirada" :value="localRetirada">
+
+                                <button class="btn btn-dark" style="width: 130px; height: 50px" type="submit">Reserve aqui</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -66,7 +79,41 @@
 <script>
     export default {
         name: "CardCar",
-        props: ['car','user', 'id', 'quantDias'],
+        props: ['car','user', 'id', 'quantDias', 'dataEntrega', 'dataRetirada', 'localRetirada', 'localEntrega'],
+        data: function(){
+            return {
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        },
+        methods:{
+            doReserva(evt, user, quantDias, dataEntrega, dataRetirada, localRetirada, localEntrega){
+                evt.preventDefault();
+                var v = 1;
+                if(quantDias){
+                    v = quantDias;
+                }
+
+                axios({
+                    method: 'post', // verbo http
+                    url: '/api/efetuarReserva', // url
+                    data: {
+                        usuario: user,
+                        valor: this.car.carro.valor*v,
+                        carro: this.car.carro,
+                        dataentrega: dataEntrega,
+                        dataretirada: dataRetirada,
+                        localR: localRetirada,
+                        localE: localEntrega
+                    }
+                })
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+            }
+        }
     }
 </script>
 

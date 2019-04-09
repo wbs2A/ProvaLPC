@@ -1892,6 +1892,123 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/confirmReserv.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "confirmReserv",
+  data: function data() {
+    return {
+      opt: '...',
+      formDados: true,
+      loading: false,
+      nc: '',
+      data: '',
+      nome: '',
+      vcc: '',
+      forma: '',
+      success: false,
+      erro: false
+    };
+  },
+  methods: {
+    checkForm: function checkForm(e) {
+      var _this = this;
+
+      e.preventDefault();
+      this.errors = [];
+      this.loading = true;
+      this.formDados = false;
+      axios.post('/api/setconta', {}).then(function (response) {
+        _this.loading = false;
+        _this.success = true;
+        _this.formDados = false;
+      }, function (error) {
+        _this.loading = false;
+        _this.erro = error.response.status;
+        _this.formDados = false;
+        console.log(JSON.stringify(error));
+      }).catch(function (error) {
+        console.log('aqui no catch: ' + error);
+        _this.loading = false;
+        _this.erro = error.response.status;
+        _this.formDados = false;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/locadora.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/locadora.vue?vue&type=script&lang=js& ***!
@@ -6365,6 +6482,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.btn-warning[data-v-cdc8adc6]{\n\tbackground-color: #fab700;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.center[data-v-57672eee] {\n    margin: auto;\n    width: 100%;\n    padding: 200px;\n    padding-left: 20%;\n}\n.orbit-spinner[data-v-57672eee], .orbit-spinner *[data-v-57672eee] {\n    box-sizing: border-box;\n}\n.orbit-spinner[data-v-57672eee] {\n    height: 155px;\n    width: 155px;\n    border-radius: 50%;\n    -webkit-perspective: 800px;\n            perspective: 800px;\n}\n.orbit-spinner .orbit[data-v-57672eee] {\n    position: absolute;\n    box-sizing: border-box;\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n.orbit-spinner .orbit[data-v-57672eee]:nth-child(1) {\n    left: 0%;\n    top: 0%;\n    -webkit-animation: orbit-spinner-orbit-one-animation-data-v-57672eee 1200ms linear infinite;\n            animation: orbit-spinner-orbit-one-animation-data-v-57672eee 1200ms linear infinite;\n    border-bottom: 3px solid #000;\n}\n.orbit-spinner .orbit[data-v-57672eee]:nth-child(2) {\n    right: 0%;\n    top: 0%;\n    -webkit-animation: orbit-spinner-orbit-two-animation-data-v-57672eee 1200ms linear infinite;\n            animation: orbit-spinner-orbit-two-animation-data-v-57672eee 1200ms linear infinite;\n    border-right: 3px solid #000;\n}\n.orbit-spinner .orbit[data-v-57672eee]:nth-child(3) {\n    right: 0%;\n    bottom: 0%;\n    -webkit-animation: orbit-spinner-orbit-three-animation-data-v-57672eee 1200ms linear infinite;\n            animation: orbit-spinner-orbit-three-animation-data-v-57672eee 1200ms linear infinite;\n    border-top: 3px solid #000;\n}\n@-webkit-keyframes orbit-spinner-orbit-one-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\n                transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\n                transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\n}\n}\n@keyframes orbit-spinner-orbit-one-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\n                transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\n                transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\n}\n}\n@-webkit-keyframes orbit-spinner-orbit-two-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\n                transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\n                transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\n}\n}\n@keyframes orbit-spinner-orbit-two-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\n                transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\n                transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\n}\n}\n@-webkit-keyframes orbit-spinner-orbit-three-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\n                transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\n                transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\n}\n}\n@keyframes orbit-spinner-orbit-three-animation-data-v-57672eee {\n0% {\n        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\n                transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\n}\n100% {\n        -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\n                transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -36995,6 +37131,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--7-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--7-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -39647,6 +39813,325 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.loading ? _c("div", { staticClass: "center" }, [_vm._m(0)]) : _vm._e(),
+    _vm._v(" "),
+    _vm.erro === 401
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("h4", [_vm._v(" A conta já existe em nosso sistema.")]),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fas fa-exclamation-triangle",
+            staticStyle: { color: "yellow" }
+          })
+        ])
+      : _vm.erro === 500
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("h4", [
+            _vm._v(
+              "Não foi possível inserir seus dados. Entre em contato para mais informações."
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "lead" }, [_vm._v("Informe o erro #330266")]),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fas fa-times",
+            staticStyle: { color: "red" }
+          })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.success
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("h4", [_vm._v("Conta inserida com Sucesso")]),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-check-circle" })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.formDados
+      ? _c("div", [
+          _c("h4", [_vm._v("Você deseja efetuar o pagamento agora?")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.opt,
+                  expression: "opt"
+                }
+              ],
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.opt = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("Não")])
+            ]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _vm.opt === "Sim"
+            ? _c("div", [
+                _c("h4", [_vm._v(" Insira seus dados bancários")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    attrs: { id: "formdata", method: "post" },
+                    on: { submit: _vm.checkForm }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "nome" } }, [
+                        _vm._v("Nome no Cartão")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nome,
+                            expression: "nome"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "nome",
+                          name: "nome",
+                          placeholder: "nome como consta no cartão",
+                          required: ""
+                        },
+                        domProps: { value: _vm.nome },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.nome = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "cartao" } }, [
+                        _vm._v("Nº do Cartão")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nc,
+                            expression: "nc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "cartao",
+                          name: "cartao",
+                          placeholder: "insira o nº de seu cartão",
+                          required: ""
+                        },
+                        domProps: { value: _vm.nc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.nc = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "vcc" } }, [_vm._v("VCC")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.vcc,
+                            expression: "vcc"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "vcc",
+                          placeholder: "VCC",
+                          name: "vcc",
+                          required: ""
+                        },
+                        domProps: { value: _vm.vcc },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.vcc = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "formapagamento" } }, [
+                        _vm._v("Selecione a forma de pagamento")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.forma,
+                              expression: "forma"
+                            }
+                          ],
+                          attrs: {
+                            id: "formapagamento",
+                            name: "formapagamento",
+                            required: ""
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.forma = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [_vm._v(" Crédito ")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v(" Débito  ")])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "datav" } }, [
+                        _vm._v("Data de validade")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.data,
+                            expression: "data"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "month",
+                          name: "datav",
+                          id: "datav",
+                          required: ""
+                        },
+                        domProps: { value: _vm.data },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.data = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(" Validar ")]
+                    )
+                  ]
+                )
+              ])
+            : _vm._e()
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "orbit-spinner" }, [
+      _c("div", { staticClass: "orbit" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "orbit" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "orbit" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -51855,9 +52340,34 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_buscaLocacao_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/buscaLocacao.vue */ "./resources/js/components/buscaLocacao.vue");
+/* harmony import */ var _components_confirmReserv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/confirmReserv */ "./resources/js/components/confirmReserv.vue");
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * <script src="js/dashboard.js"></script>
+ */
+// const files = require.context('./', true, /\.vue$/i);
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ *
+ */
 
 var app = new Vue({
   el: '#banner',
@@ -52082,19 +52592,105 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/confirmReserv.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/confirmReserv.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./confirmReserv.vue?vue&type=template&id=57672eee&scoped=true& */ "./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true&");
+/* harmony import */ var _confirmReserv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./confirmReserv.vue?vue&type=script&lang=js& */ "./resources/js/components/confirmReserv.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& */ "./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _confirmReserv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "57672eee",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/confirmReserv.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/confirmReserv.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/confirmReserv.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./confirmReserv.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--7-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/vue-loader/lib??vue-loader-options!./confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=style&index=0&id=57672eee&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_7_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_style_index_0_id_57672eee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./confirmReserv.vue?vue&type=template&id=57672eee&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/confirmReserv.vue?vue&type=template&id=57672eee&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirmReserv_vue_vue_type_template_id_57672eee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/locadora.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/locadora.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locadora_vue_vue_type_template_id_5eb72734_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locadora.vue?vue&type=template&id=5eb72734&scoped=true& */ "./resources/js/components/locadora.vue?vue&type=template&id=5eb72734&scoped=true&");
 /* harmony import */ var _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./locadora.vue?vue&type=script&lang=js& */ "./resources/js/components/locadora.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -52124,7 +52720,7 @@ component.options.__file = "resources/js/components/locadora.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/locadora.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

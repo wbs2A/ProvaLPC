@@ -1828,9 +1828,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CardCar",
-  props: ['car', 'user', 'id', 'quantDias']
+  props: ['car', 'user', 'id', 'quantDias', 'dataEntrega', 'dataRetirada', 'localRetirada', 'localEntrega'],
+  data: function data() {
+    return {
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  methods: {
+    doReserva: function doReserva(evt, user, quantDias, dataEntrega, dataRetirada, localRetirada, localEntrega) {
+      evt.preventDefault();
+      var v = 1;
+
+      if (quantDias) {
+        v = quantDias;
+      }
+
+      axios({
+        method: 'post',
+        // verbo http
+        url: '/api/efetuarReserva',
+        // url
+        data: {
+          usuario: user,
+          valor: this.car.carro.valor * v,
+          carro: this.car.carro,
+          dataentrega: dataEntrega,
+          dataretirada: dataRetirada,
+          localR: localRetirada,
+          localE: localEntrega
+        }
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -39808,38 +39856,99 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "div",
+                  {
+                    staticClass: "col",
+                    staticStyle: { "padding-top": "20px" }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          action: "/api/efetuarReserva/",
+                          method: "post"
+                        }
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrf }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "user" },
+                          domProps: { value: _vm.user }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "carro" },
+                          domProps: { value: _vm.car.carro.idcarro }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "valor" },
+                          domProps: {
+                            value: _vm.car.carro.valor * _vm.quantDias
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "quantdias" },
+                          domProps: { value: _vm.quantDias }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "imagens" },
+                          domProps: { value: _vm.car.imagens }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "dataentrega" },
+                          domProps: { value: _vm.dataEntrega }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "dataretirada" },
+                          domProps: { value: _vm.dataRetirada }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "localentrega" },
+                          domProps: { value: _vm.localEntrega }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "localretirada" },
+                          domProps: { value: _vm.localRetirada }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-dark",
+                            staticStyle: { width: "130px", height: "50px" },
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("Reserve aqui")]
+                        )
+                      ]
+                    )
+                  ]
+                )
               ])
             ])
           : _vm._e()
       ]),
       _vm._v(" "),
       !_vm.user
-        ? _c("div", { staticClass: "card-footer" }, [_vm._m(1)])
+        ? _c("div", { staticClass: "card-footer" }, [_vm._m(0)])
         : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col", staticStyle: { "padding-top": "20px" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-dark",
-            staticStyle: { width: "130px", height: "50px" }
-          },
-          [_vm._v("Reserve aqui")]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -52895,15 +53004,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./resources/js/components/locadora.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locadora_vue_vue_type_template_id_5eb72734_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locadora.vue?vue&type=template&id=5eb72734&scoped=true& */ "./resources/js/components/locadora.vue?vue&type=template&id=5eb72734&scoped=true&");
 /* harmony import */ var _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./locadora.vue?vue&type=script&lang=js& */ "./resources/js/components/locadora.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _locadora_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -52933,7 +53041,7 @@ component.options.__file = "resources/js/components/locadora.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/locadora.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
