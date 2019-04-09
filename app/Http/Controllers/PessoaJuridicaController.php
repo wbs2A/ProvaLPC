@@ -99,4 +99,14 @@ class PessoaJuridicaController extends Controller
         $p = PessoaJuridica::where('user_iduser', Auth::user()->iduser)->get();
         return $p[0]->idPJ;
     }
+    public function updateDados(Request $request, $cnpj){
+        $userJuridica = PessoaJuridica::find($cnpj);
+        $user = User::find($userJuridica->user_iduser);
+        $userJuridica->razaoSocial=$request->razaoSocial;
+        $user->name = $request->nome;
+        $user->telefone = $request->telefone;
+        $userJuridica->save();
+        $user->save();
+        return redirect()->route('perfil');
+    }
 }

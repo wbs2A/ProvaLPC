@@ -52,8 +52,7 @@
                             </div>
                             @if (Route::has('password.request'))
                                 <div class="col-auto">
-                                    <!-- {{ route('password.request') }} -->
-                                        <a class="btn col-auto btn-link" href="" style="color: #252525;">{{ __('Esqueceu sua senha?') }}</a>
+                                        <a class="btn col-auto btn-link" href="{{ route('password.request') }}" style="color: #252525;">{{ __('Esqueceu sua senha?') }}</a>
                                 </div>
                             @endif
                         </div>

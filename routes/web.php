@@ -30,7 +30,10 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('getPJuridica/', "PessoaJuridicaController@getPessoaSessao");
         Route::get('pfisica/{cpf}', "PessoaFisicaController@show");
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');
-        Route::post('updateDadosPessoais/{cpf}', 'PessoaFisicaController@updateDados');
+        Route::post('updateDadosPessoaisPessoaFisica/{cpf}', 'PessoaFisicaController@updateDados');
+        Route::post('updateDadosPessoaisPessoaJuridica/{cnpj}', 'PessoaJuridicaController@updateDados');
+        Route::post('updateDadosPessoaisEndereco/{id}', 'UserController@alteraEndereco');
+        Route::post('updateDadosPessoaisUser/{id}', 'UserController@alteraEmailSenha');
         Route::get('tipoUser/', "UserController@getTipo");
         Route::get('getpjuridica/{cnpj}', "PessoaJuridicaController@show");
         Route::get('getCar/{id}', 'LocadoraController@getCars');

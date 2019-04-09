@@ -126,6 +126,145 @@
                 </ul>
             </div>
         </div>
+        <div class="modal fade" id="updateDados" tabindex="-1" role="dialog" aria-labelledby="dadosLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="dadosLabel">Atualizar dados pessoais</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" :action="'api/updateDadosPessoaisPessoaJuridica/'+cnpj" id="formDados">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <div class="form-group row">
+                                    <div class="form-group col">
+                                        <label for="nome"> Nome</label>
+                                        <input type="text" class="form-control text-body" id="nome" name="nome" v-model="user.user_info.name" required/>
+                                    </div>
+                                </div>
+                                    <div class="form-group col">
+                                        <label for="telefone"> Telefone</label>
+                                        <input type="text" class="form-control text-body" id="telefone" name="telefone" v-model="user.user_info.telefone" required/>
+                                    </div>
+                                <div class="form-group col">
+                                    <label for="razaoSocial" class="form-control text-body" >Razão Social</label>
+                                    <input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="" v-model="user.p_info.razaoSocial">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-success" @click="submitItem($event, 'formDados')">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="updateEndereco" tabindex="-1" role="dialog" aria-labelledby="enderecoLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="enderecoLabel">Atualizar Endereço</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" :action="'api/updateDadosPessoaisEndereco/'+user.endereco_info.idEndereco" id="formDadosEndereco">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <div class="form-group row">
+                                    <buscacep :cep="user.endereco_info.cep"></buscacep>
+                                  <div class="col mb-3">
+                                    <label for="numero" class="col-form-label text-md-right">Numero</label>
+                                    <input type="number" class="form-control" id="numero" name="numero" placeholder="" v-model="user.endereco_info.numero">
+                                    <small id="numroHelp" class="form-text text-muted">Por favor, insira apenas numeros.</small>
+                                  </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                  <div class="col-4 mb-3">
+                                    <label for="bairro" class="col-form-label text-md-right">Bairro</label>
+                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" v-model="user.endereco_info.bairro">
+                                  </div>
+                                  <div class="col-4 mb-3">
+                                    <label for="rua" class="col-form-label text-md-right">Rua</label>
+                                    <input type="text" class="form-control" id="rua" name="rua" placeholder="" v-model="user.endereco_info.rua">
+                                  </div>
+                                    
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                  <div class="col-6 mb-3">
+                                    <label for="estado" class="col-form-label text-md-right">Estado</label>
+                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="" v-model="user.estado_info.nome">
+                                    <small id="estadoHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
+                                  </div>
+                                  <div class="col-6 mb-3">
+                                    <label for="cidade" class="col-form-label text-md-right">Cidade</label>
+                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" v-model="user.cidade_info.nome">
+                                    <small id="cidadeHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
+                                  </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-success" @click="submitItem($event, 'formDadosEndereco')">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="updateConta" tabindex="-1" role="dialog" aria-labelledby="contaLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="contaLabel">Atualizar dados da Conta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" :action="'api/updateDadosPessoaisUser/'+user.user_info.iduser" id="formUser">
+                                <input type="hidden" name="_token" :value="csrf">
+                                <div class="form-group input-group">
+                                    <div class="col">
+                                        <label for="email"> E-mail</label>
+                                        <input type="email" class="form-control text-body" id="email" name="email" v-model="user.user_info.email" required/>
+                                    </div>
+
+                                    <div class="input-fields row">
+                                        <div class="form-group col">
+                                            <label for="senha"> Senha</label>
+                                            <input type="password" v-validate="'required'" class="form-control" id="senha" ref="password" name="password" required placeholder="Insira sua nova senha"/>
+                                        </div>
+                                        <div class="form-group col">
+                                            <label for="confirmarsenha">Confirmar Senha</label>
+                                            <input type="password"  v-validate="'required|confirmed:password'" class="form-control" id="confirmarsenha" name="password_confirmation" data-vv-as="password"  placeholder="Insira a senha novamente"  required/>
+                                        </div>
+                                    </div>
+                                    <!-- ERRORS -->
+                                    <div class="alert alert-danger" v-show="errors.any()">
+                                        <div class="col" v-if="errors.has('password')">
+                                            O campo de senha é obrigatório!
+                                        </div>
+                                        <div class="col" v-if="errors.has('password_confirmation')">
+                                            As senhas não coincidem.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-success" @click="submitItem($event, 'formUser')">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <br>
         <div class="card col">
             <div class="card-header head">Minhas Locadoras<button type="button" class="btn btn-success edit" data-toggle="modal" data-target="#updateConta">
@@ -165,9 +304,14 @@
 
 <script>
     import bus from '../../../js/dashboard';
+    import BuscaCep from '../../../js/components/buscacep.vue';
 
     export default {
         name: "JuridicaHome",
+        components:{
+            buscacep : BuscaCep,
+
+        },
         data(){
             return {
                 loading: true,

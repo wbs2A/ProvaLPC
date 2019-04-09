@@ -25,10 +25,22 @@ class Endereco extends Model
     	return $endereco;
     }
     public static function select($id=null){
-    	if (is_null($nome)) {
+    	if (is_null($id)) {
     		return self::all();
     	}else{
     		return self::find($id);
     	}
+    }
+    public static function alterar($dados){
+        $estado= Estado::where('nome',$dados['estado'])->first();
+        $cidade=Cidade::where([['nome','=', $dados['cidade']],['Estado_idEstado','=',$estado->idEstado]])->first();
+        $endereco = Endereco::find($dados['idEndereco']);
+        $endereco->bairro=$dados['bairro'];
+        $endereco->rua=$dados['rua'];
+        $endereco->cep=$dados['cep'];
+        $endereco->numero=$dados['numero'];
+        $endereco->Cidade_idCidade=$cidade->idCidade;
+        $endereco->save();
+        return $endereco;
     }
 }
