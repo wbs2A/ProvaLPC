@@ -42,6 +42,6 @@ new Vue({
         'buscacep':BuscaCep,
         'buscacnpj': BuscaCnpj,
         'buscacpf': BuscaCpf,
-        'buscaestadoCNH': BuscaEstadoCNH
-    },
+        'buscaestadocnh': BuscaEstadoCNH
+    }
 });

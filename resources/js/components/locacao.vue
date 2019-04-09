@@ -58,7 +58,17 @@ export default {
    	},
    	created(){
    		this.acessorio= this.aces;
-   		this.dias=new Date(this.predados.datefim) - new Date(this.predados.dateinicio);
+      var dt1   = parseInt(this.predados.datefim.substring(0,2));
+      var mon1  = parseInt(this.predados.datefim.substring(3,5));
+      var yr1   = parseInt(this.predados.datefim.substring(6,10));
+      var dt2   = parseInt(this.predados.dateinicio.substring(0,2));
+      var mon2  = parseInt(this.predados.dateinicio.substring(3,5));
+      var yr2   = parseInt(this.predados.dateinicio.substring(6,10));
+      var umDiaMilissegundos = 1000*60*60*24;
+      var diferenca = new Date(yr1, mon1, dt1) - new Date(yr2, mon2, dt2);
+      var dia = diferenca/umDiaMilissegundos;
+   		this.dias= parseInt(dia);
+      console.log(this.dias);
    	},
    	methods:{
    		setAcessorio(acessorio){

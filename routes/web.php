@@ -32,7 +32,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('getCar/{id}', 'LocadoraController@getCars');
         Route::get('getLocadora/{categoria}', 'HomeController@getLocadora');
         Route::post('setCarLocacao', 'LocacaoController@setCarLocacao');
-        Route::post('getEstadoExist', 'PessoaFisicaController@verificaEstadoCNH');
+        Route::get('getEstadoExist/{estado}', 'PessoaFisicaController@verificaEstadoCNH');
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });

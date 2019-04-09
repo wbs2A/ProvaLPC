@@ -13,7 +13,6 @@
         methods: {
                 escolheu(){
                     console.log(this.escolhe);
-                    
                     if (this.escolhe == 'Fisica') {
                         $(".fisica").each(function(){
                             $(this).css('display','block');
@@ -34,13 +33,6 @@
                         });
                     }
                 }
-        },
-        created:function(){
-            console.log(this.old);
-            if(this.old){
-                this.escolhe=this.old;
-            }
-
         }
     }
 
@@ -48,8 +40,9 @@
 
 <template>
         <div class="col-2  mb-3">                            
-            <label for="tipo" class="col-form-label text-md-right">Tipo de conta</label>
-            <select id="tipo" type="tipo" class="form-control" name="tipo"  v-model="escolhe" @change="escolheu" required>
+            <label for="tipo" class="col-form-label text-md-right">Tipo de conta {{old}}</label>
+            <select id="tipo" type="tipo" class="form-control" name="tipo" v-model="escolhe" @change="escolheu" required>
+                <option value="" disabled selected hidden></option>
                 <option>Fisica</option>
                 <option>Jurídica</option>
             </select>

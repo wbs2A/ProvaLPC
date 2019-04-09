@@ -149,13 +149,11 @@
                                         }
                                     @endphp
                                     @if (old('estadoCNH'))
-                                        <buscaestadoCNH :estadoCNH="'{{$estadoCNH}}'"></buscaestadoCNH>
+                                        <buscaestadocnh :estadoCNH="'{{$estadoCNH}}'"></buscaestadocnh>
                                     @else
-                                        <buscaestadoCNH></buscaestadoCNH>    
+                                        <buscaestadocnh></buscaestadocnh>    
                                     @endif
-
                                     <small id="estadoCNHHelp" class="form-text text-muted">Por favor, o nome completo.</small>
-                                
                                         <span class="invalid-feedback" role="alert" style="display: none">
                                         <strong id="fisica-estadoCNH"></strong>
                                         </span>

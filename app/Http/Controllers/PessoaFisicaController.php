@@ -99,13 +99,14 @@ class PessoaFisicaController extends Controller
 
     }
 
-    public function verificaEstadoCNH(Request $request){
-        $data= $request->all();
-        $estado = Estado::where('nome', '=', $data['nome'])->get();
-        if ($estado) {
-            return [];
+    public function verificaEstadoCNH($estado){
+        $t = ['resposta' => 'Estado '.$estado.' não existe!'];
+        $est = Estado::where('nome', '=', $estado)->get();
+        if (count($est)) {
+            $t = ['resposta' => 'Estado '.$estado.' existe!'];
+            return $t;
         }else{
-            return ['resposta' => 'Estado não existe!'];
+            return $t;
         }
     }
 
