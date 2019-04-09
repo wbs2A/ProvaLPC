@@ -11,9 +11,9 @@
                         @csrf
                         @if(isset($data))
                             <input type="hidden" name="categoria" value="{{$data['categoria']}}">
-                            <input type="hidden" name="locadora-retirada" value="{{$data['locadora-retirada']}}">
+                            <input type="hidden" name="locadoraretirada" value="{{$data['locadoraretirada']}}">
                             <input type="hidden" name="dateinicio" value="{{$data['dateinicio']}}">
-                            <input type="hidden" name="locadora-entrega" value="{{$data['locadora-entrega']}}">
+                            <input type="hidden" name="locadoraentrega" value="{{$data['locadoraentrega']}}">
                             <input type="hidden" name="datefim" value="{{$data['datefim']}}">
                         @endif
                         <div class="form-group row justify-content-center">

@@ -57,9 +57,9 @@ class LoginController extends Controller
         {
             if (isset($data['categoria'])) {
                 $predados['categoria']=$data['categoria'];
-                $predados['locadora-retirada']=$data['locadora-retirada'];
+                $predados['locadoraretirada']=$data['locadoraretirada'];
                 $predados['dateinicio']=$data['dateinicio'];
-                $predados['locadora-entrega']=$data['locadora-entrega'];
+                $predados['locadoraentrega']=$data['locadoraentrega'];
                 $predados['datefim']=$data['datefim'];
                 return redirect()->route('locacao')->with(['data' => $predados]);
             }else{
