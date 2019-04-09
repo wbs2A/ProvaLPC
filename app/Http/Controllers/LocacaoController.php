@@ -28,7 +28,7 @@ class LocacaoController extends Controller
                 $request->session()->forget('data');
                 $acessorios=Acessorio::all();
                 $todos= Classificacao::todos();
-                $carros=Carros::where('locadora_idLocadora','=',$value['locadora-retirada'])->get();
+                $carros=Carros::where('locadora_idLocadora','=',$value['locadoraretirada'])->get();
                 $data = array();
                 $tmp = array();
                 foreach ($carros as $car){
@@ -129,7 +129,7 @@ class LocacaoController extends Controller
                 $q->on('carros_acessorio.carros_idcarro', '=', 'idcarro')
                 ->where('carros_acessorio.acessorio_idacessorio', '=', (int) $value['acessorio']);
             })
-            ->where('locadora_idLocadora','=',$value['predados']['locadora-retirada'])
+            ->where('locadora_idLocadora','=',$value['predados']['locadoraretirada'])
             ->get();
         $ret = array();
         $tmp = array();

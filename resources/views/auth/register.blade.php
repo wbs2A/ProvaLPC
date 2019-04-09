@@ -142,24 +142,33 @@
                                     @endif
                                 </div>
                                 <div class=" fisica col-4 p-0 mr-1 ml-1 mb-3" style="display: none">
-                                    <label for="estadoCNH" class="col-form-label text-md-right">Estado da CNH</label>
-                                    <input type="text" class="form-control" name="estadoCNH" id="estadoCNH" placeholder="" value="{{ old('estadoCNH') }}">
-                                    <small id="estadoCNHHelp" class="form-text text-muted">Por favor, o nome completo.</small>
-                                     @if ($errors->has('estadoCNH'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('estadoCNH') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="col juridica" style="display: none">
-                                     @php
-                                        if(old('cnpj')){
-                                            $canpj=old('canpj');
-                                            $canpj=preg_replace("/[^0-9]/", "", $canpj);
+                                    @php
+                                        if(old('estadoCNH')){
+                                            $estadoCNH=old('estadoCNH');
+                                            $estadoCNH=preg_replace("/[^0-9]/", "", $estadoCNH);
                                         }
                                     @endphp
-                                    @if (old('canpj'))
-                                        <buscacanpj :canpj="'{{$canpj}}'"></buscacpf>
+                                    @if (old('estadoCNH'))
+                                        <buscaestadoCNH :estadoCNH="'{{$estadoCNH}}'"></buscaestadoCNH>
+                                    @else
+                                        <buscaestadoCNH></buscaestadoCNH>    
+                                    @endif
+
+                                    <small id="estadoCNHHelp" class="form-text text-muted">Por favor, o nome completo.</small>
+                                
+                                        <span class="invalid-feedback" role="alert" style="display: none">
+                                        <strong id="fisica-estadoCNH"></strong>
+                                        </span>
+                                </div>
+                                <div class="col juridica" style="display: none">
+                                    @php
+                                        if(old('cnpj')){
+                                            $cnpj=old('cnpj');
+                                            $cnpj=preg_replace("/[^0-9]/", "", $cnpj);
+                                        }
+                                    @endphp
+                                    @if (old('cnpj'))
+                                        <buscacnpj :cnpj="'{{$cnpj}}'"></buscacnpj>
                                     @else
                                         <buscacnpj></buscacnpj>    
                                     @endif
@@ -183,7 +192,18 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-12">Endereço</label>
-                                  <buscacep></buscacep>
+                                    @php
+                                        if(old('cep')){
+                                            $cep=old('cep');
+                                            $cep=preg_replace("/[^0-9]/", "", $cep);
+                                        }
+                                    @endphp
+                                    @if (old('cep'))
+                                        <buscacep :cep="'{{$cep}}'"></buscacep>
+                                    @else
+                                        <buscacep></buscacep>    
+                                    @endif
+                                  
                                   <div class="col-2 mb-3">
                                     <label for="numero" class="col-form-label text-md-right">Numero</label>
                                     <input type="number" class="form-control" id="numero" name="numero" placeholder="" value="{{ old('numero') }}">

@@ -11,7 +11,7 @@
 			<div class="col-6 wrap-right">
 				<div class="input-group dates-wrap mb-3">
 					<label class="col-form-label text-md-right mb-1" for="dateinicio">Data de início</label>
-					<datepicker disabledDates="state.disabledDates" v-bind:input-class="{'col-7': true}" :value="dateNow1"  :readonly="true" format="DD/MM/YYYY" id="dateinicio" name="dateinicio" required></datepicker>
+					<datepicker v-bind:disabled-date="disabledDate" v-bind:input-class="{'col-7': true}" :value="dateNow1"  :readonly="true" format="DD/MM/YYYY" id="dateinicio" name="dateinicio" required></datepicker>
 				</div>
 			</div>
 		</div>
@@ -40,23 +40,9 @@
 	}
 </style>
 <script>
-
 import Classificacao from '../components/classificacao.vue';
 import Locadora from '../components/locadora.vue';
 import DatePicker from 'vue-date-picker';
-var state = {
-  disabledDates: {
-    to: new Date(), // Disable all dates up to specific date
-    customPredictor: function(date) {
-      // disables the date if it is a multiple of 5
-      if(date.getDate() % 5 == 0){
-        return true
-      }
-    }
-  }
-}
-
-
 export default {
 	props:['mycategorias'],
 	components: {
@@ -70,12 +56,7 @@ export default {
    			data:null,
    			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'), 
    			dateNow1: new Date().toLocaleDateString(),
-   			dateNow2: new Date().toLocaleDateString(),
-   			ObjectDate:{
-   				now(){
-   					console.log('teste');
-   				}
-   			}
+   			dateNow2: new Date().toLocaleDateString()
 		}
    	},
    	methods:{
@@ -83,6 +64,7 @@ export default {
    			axios.get('api/getLocadora/'+this.selectCategoria).then(
    				 res => {
    				 	this.data = res.data;
+   				 	console.log(this.data);
    				 },
    				 (error) => {
    				 	console.log(error);

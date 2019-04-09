@@ -39,7 +39,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::post('efetuarReserva/','LocadoraController@reserva');
         Route::post('setconta/', 'PessoaFisicaController@setConta');
         Route::post('generatePDF/', 'LocadoraController@generatePDF');
-
+        Route::post('getEstadoExist', 'PessoaFisicaController@verificaEstadoCNH');
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });

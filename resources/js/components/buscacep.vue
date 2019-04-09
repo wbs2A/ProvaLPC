@@ -1,5 +1,8 @@
 <script>
     export default{
+        props: {
+          cep: String
+      },
         methods: {
             onBlurCep(){
                 if(document.getElementById("cep").value){
@@ -25,7 +28,7 @@
 <template>
     <div class="col-2 mb-3">
         <label for="cep" class="col-form-label text-md-right">CEP</label>
-        <input type="text" class="form-control" data-mask="00000-000" id="cep" name="cep" @blur="onBlurCep" placeholder="">
+        <input type="text" class="form-control" v-bind:value="cep" data-mask="00000-000" id="cep" name="cep" @blur="onBlurCep" placeholder="">
     </div>
 </template>
 

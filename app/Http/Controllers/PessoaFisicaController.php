@@ -100,6 +100,16 @@ class PessoaFisicaController extends Controller
 
     }
 
+    public function verificaEstadoCNH(Request $request){
+        $data= $request->all();
+        $estado = Estado::where('nome', '=', $data['nome'])->get();
+        if ($estado) {
+            return [];
+        }else{
+            return ['resposta' => 'Estado não existe!'];
+        }
+    }
+
     public function updateDados(Request $request, $cpf){
         $userFisico = PessoaFisica::find($cpf);
         $user = User::find($userFisico->user_iduser);
