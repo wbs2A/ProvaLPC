@@ -8,8 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import buscaLocacao from './components/buscaLocacao.vue';
-import ConfirmReserv from './components/confirmReserv';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -29,9 +28,4 @@ import ConfirmReserv from './components/confirmReserv';
  *
  */
 
-const app = new Vue({
-    el: '#banner',
-    components:{
-        'buscalocacao': buscaLocacao,
-    }
-});
+const app = new Vue();

@@ -1,5 +1,4 @@
 <script>
-    import buscacpf from '../components/buscacpf';
     export default{
         props:['old'],
         components:{

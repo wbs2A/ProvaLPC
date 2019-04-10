@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/css/bootstrap.css": "/css/bootstrap.css",
     "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/buscaLocacao.js": "/js/buscaLocacao.js",
     "/js/dashboard.js": "/js/dashboard.js",
     "/js/jquery-2.2.4.min.js": "/js/jquery-2.2.4.min.js",
     "/js/jquery.mask.js": "/js/jquery.mask.js",

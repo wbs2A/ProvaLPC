@@ -7,6 +7,9 @@ use App\Model\Carros;
 use App\Model\Classificacao;
 use App\Model\Imagem;
 use App\Model\Locadora;
+use App\Model\Endereco;
+use App\Model\Cidade;
+use App\Model\Estado;
 use PDF;
 use Illuminate\Http\Request;
 
@@ -38,9 +41,12 @@ class LocadoraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $cnpj)
     {
-        //
+        $data=$request->all();
+        $data['id']=$cnpj;
+        $locadora = Locadora::inserir($data);
+        return redirect()->route('perfil');
     }
 
     /**
@@ -51,7 +57,18 @@ class LocadoraController extends Controller
      */
     public function show($id)
     {
-        //
+        $locadora = Locadora::find($id);
+        $endereco = Endereco::find($locadora->Endereco_idEndereco);
+        $cidade = Cidade::find($endereco->Cidade_idCidade);
+        $estado = Estado::find($cidade->Estado_idEstado);
+        $locadora['rua']= $endereco->rua;
+        $locadora['cep']= $endereco->cep;
+        $locadora['bairro']= $endereco->bairro;
+        $locadora['numero']= $endereco->numero;
+        $locadora['cidade']= $cidade->nome;
+        $locadora['estado']= $estado->nome;
+        return $locadora;
+
     }
 
     /**
@@ -72,9 +89,13 @@ class LocadoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $idEndereco)
     {
-        //
+        $data=$request->all();
+        $data['id']=$id;
+        $data['idEndereco']=$idEndereco;
+        $locadora=Locadora::alterar($data);
+        return redirect()->route('perfil');
     }
 
     /**
@@ -85,7 +106,8 @@ class LocadoraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Locadora::where('idLocadora',$id)->delete();
+        return redirect()->route('perfil');   
     }
 
     public function getCars($id){

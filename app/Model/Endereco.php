@@ -12,7 +12,7 @@ class Endereco extends Model
     protected $primaryKey = 'idEndereco';
     public $incrementing = true;
     public $timestamps = false;
-    public static function insert($dados){
+    public static function inserir($dados){
     	$estado= Estado::where('nome',$dados['estado'])->first();
     	$cidade=Cidade::where([['nome','=', $dados['cidade']],['Estado_idEstado','=',$estado->idEstado]])->first();
     	$endereco = new Endereco();

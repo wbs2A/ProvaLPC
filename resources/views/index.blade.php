@@ -72,5 +72,5 @@
             </div>
         </section>
     </div>
-    <script src="js/app.js"></script>
+    <script src="js/buscaLocacao.js"></script>
 @stop

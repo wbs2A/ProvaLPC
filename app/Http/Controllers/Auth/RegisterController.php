@@ -129,7 +129,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password'])
         ]);
         $data['user']=$user->iduser;
-        $endereco=Endereco::insert($data);
+        $endereco=Endereco::inserir($data);
         $data['endereco']=$endereco->idEndereco;
         if ($tipo) {
             PessoaJuridica::inserir($data);

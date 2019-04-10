@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/single_custom.js', 'public/js')
     .js('resources/js/dashboard.js', 'public/js')
+    .js('resources/js/buscaLocacao.js', 'public/js')
     .js('resources/js/jquery.mask.js', 'public/js')
     .js('resources/js/register.js', 'public/js')
     .js('resources/js/locacao.js', 'public/js')

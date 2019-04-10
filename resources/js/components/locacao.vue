@@ -33,11 +33,11 @@
 	</div>
 </template>
 <script>
-import Classificacao from '../components/classificacao.vue';
-import Locadora from '../components/locadora.vue';
-import Acessorios from '../components/acessorios.vue';
-import BuscaLocacao from '../components/buscaLocacao.vue';
-import Cars from '../../assets/js/views/CardCar.vue'
+import Classificacao from '../components/classificacao';
+import Locadora from '../components/locadora';
+import Acessorios from '../components/acessorios';
+import BuscaLocacao from '../components/buscaLocacao';
+import Cars from '../../assets/js/views/CardCar'
 export default {
 	props:['cars', 'aces', 'predados', 'categorias', 'usercpf'],
 	components: {

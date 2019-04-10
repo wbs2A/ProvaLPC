@@ -1,23 +1,38 @@
 <script>
     export default{
         props: {
-          cep: String
-      },
+          cep: String,
+          onde: String
+        },
         methods: {
             onBlurCep(){
-                if(document.getElementById("cep").value){
-                    var res = document.getElementById("cep").value.replace('.', "");
+                var a ='cep'+this.onde;
+                if(document.getElementById(a).value){
+                    var res = document.getElementById(a).value.replace('.', "");
                     res = res.replace('-', ""); 
                     res =res.replace('.', "");
-                    $.get('https://api.postmon.com.br/v1/cep/'+res, function(data){
-                        if (data) {
-                            $("#bairro").val(data.bairro);
-                            $("#cidade").val(data.cidade);
-                            $("#estado").val(data.estado_info.nome);
-                            $("#rua").val(data.logradouro);
-                    
+                    var dat;
+                    $.ajax({
+                        url:    'https://api.postmon.com.br/v1/cep/'+res,
+                        type:   "get",
+                        dataType:"json",
+                        async: false,
+                        success: function( data ){
+                            dat = data;           
                         }
                     });
+                    if (dat) {
+                        var b="#bairro"+this.onde;
+                        var c= "#cidade"+this.onde;
+                        var e= "#estado"+this.onde;
+                        var r= "#rua"+this.onde;
+                        console.log(this.onde);
+                        $(b).val(dat.bairro);
+                        $(c).val(dat.cidade);
+                        $(e).val(dat.estado_info.nome);
+                        $(r).val(dat.logradouro);
+                    
+                    }
                 }
             }
         }
@@ -28,7 +43,7 @@
 <template>
     <div class="col mb-3">
         <label for="cep" class="col-form-label text-md-right">CEP</label>
-        <input type="text" class="form-control" v-bind:value="cep" data-mask="00000-000" id="cep" name="cep" @blur="onBlurCep" placeholder="">
+        <input type="text" class="form-control" data-mask="00000-000" v-bind:value="cep" v-bind:id="'cep'+onde" name="cep" @blur="onBlurCep" placeholder="">
     </div>
 </template>
 

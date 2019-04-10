@@ -10,7 +10,11 @@ Route::group(['middleware'=>["web"]], function (){
 
     //Rotas do Dashboard
     Route::get('/perfil', function (){
-        return view('perfil');
+        if (Auth::check()) {
+            return view('perfil');
+        }else{
+            return redirect()->route('/');
+        }
     })->name('perfil');
     Route::get('/perfil/{any}', 'DashboardController@index')->where('any', '.*');
 
@@ -32,6 +36,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('userInsert/{tipo}/{id}', 'UserController@show');
         Route::post('updateDadosPessoaisPessoaFisica/{cpf}', 'PessoaFisicaController@updateDados');
         Route::post('updateDadosPessoaisPessoaJuridica/{cnpj}', 'PessoaJuridicaController@updateDados');
+        Route::post('addLocadora/{cnpj}', 'LocadoraController@store');
         Route::post('updateDadosPessoaisEndereco/{id}', 'UserController@alteraEndereco');
         Route::post('updateDadosPessoaisUser/{id}', 'UserController@alteraEmailSenha');
         Route::get('tipoUser/', "UserController@getTipo");
@@ -44,6 +49,9 @@ Route::group(['middleware'=>["web"]], function (){
         Route::post('setconta/', 'PessoaFisicaController@setConta');
         Route::post('generatePDF/', 'LocadoraController@generatePDF');
         Route::post('getEstadoExist', 'PessoaFisicaController@verificaEstadoCNH');
+        Route::get('getOneLocadora/{id}', 'LocadoraController@show');
+        Route::post('updateLocadora/{id}/{idEndereco}', 'LocadoraController@update');
+        Route::get('DeleteLocadora/{id}', 'LocadoraController@destroy');
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });

@@ -40,8 +40,8 @@
 	}
 </style>
 <script>
-import Classificacao from '../components/classificacao.vue';
-import Locadora from '../components/locadora.vue';
+import Classificacao from '../components/classificacao';
+import Locadora from '../components/locadora';
 import DatePicker from 'vue-date-picker';
 export default {
 	props:['mycategorias'],
