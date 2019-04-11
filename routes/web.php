@@ -24,6 +24,13 @@ Route::group(['middleware'=>["web"]], function (){
         return view('reserva',['dados'=>session('data')]);
     })->name('reserva');
 
+    Route::get('/finalizar', function (){
+        return view('finalizar');
+    })->name('finalizar');
+
+    Route::get('create', 'FileEntriesController@create');
+    Route::post('files/upload-file', 'FileEntriesController@uploadFile');
+
     //Rotas de Api
     Route::group(['prefix'=>'api/', 'middleware'=>'api'], function (){
         Route::get('getPFisica/', "PessoaFisicaController@getPessoaSessao");
@@ -48,6 +55,7 @@ Route::group(['middleware'=>["web"]], function (){
         Route::post('efetuarReserva/','LocadoraController@reserva');
         Route::post('setconta/', 'PessoaFisicaController@setConta');
         Route::post('generatePDF/', 'LocadoraController@generatePDF');
+        Route::get('getReservas/','LocadoraController@getReservas');
         Route::post('getEstadoExist', 'PessoaFisicaController@verificaEstadoCNH');
         Route::get('getOneLocadora/{id}', 'LocadoraController@show');
         Route::post('updateLocadora/{id}/{idEndereco}', 'LocadoraController@update');
