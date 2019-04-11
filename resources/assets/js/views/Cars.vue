@@ -20,11 +20,11 @@
             <div v-if="cars.length">
                 <ul id="example-1">
                     <li v-for="(item, id) in cars">
-                        <card-car :car="item" :id="id" :user="12345678911" :quant-dias="5" :data-entrega="'2019/04/08'" :local-entrega="1" :data-retirada="'2019/04/05'" :local-retirada="1"></card-car><br>
+                        <card-car :car="item" :id="id"></card-car><br>
                     </li>
                 </ul>
             </div>
-            <h2 v-else> Você ainda não inseriu nenhum carro </h2>
+            <h2 v-else> Você ainda não inseriu nenhum carro</h2>
         </div>
         <h2 v-else> Você não selecionou nenhuma locadora</h2>
     </div>
@@ -104,7 +104,6 @@
 
 .hollow-dots-spinner .dot:nth-child(3) {
     animation-delay: calc(300ms * 3);
-
 }
 
 @keyframes hollow-dots-spinner-animation {
@@ -116,4 +115,6 @@
         opacity: 0;
     }
 }
+
+    /*:user="12345678911" :quant-dias="5" :data-entrega="'2019/04/08'" :local-entrega="1" :data-retirada="'2019/04/05'" :local-retirada="1"*/
 </style>

@@ -93,7 +93,6 @@
         <div class="container-fluid" style="padding-top: 110px">
             @yield('content')
         </div>
-        <script src="js/jquery-2.2.4.min.js"></script>
         <script src="js/jquery.mask.js"></script>
         @yield('scripts')
         <script src="js/single_custom.js"></script>

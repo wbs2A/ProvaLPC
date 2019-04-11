@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use App\Model\Acessorio;
 use App\Model\Carros;
 use App\Model\Classificacao;
+use App\Model\FileEntry;
 use App\Model\Imagem;
+use App\Model\Locacao;
 use App\Model\Locadora;
+use App\Model\PessoaFisica;
+use App\Model\PessoaJuridica;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Model\Endereco;
 use App\Model\Cidade;
 use App\Model\Estado;
@@ -107,7 +116,7 @@ class LocadoraController extends Controller
     public function destroy($id)
     {
         Locadora::where('idLocadora',$id)->delete();
-        return redirect()->route('perfil');   
+        return redirect()->route('perfil');
     }
 
     public function getCars($id){
@@ -121,8 +130,8 @@ class LocadoraController extends Controller
                                     $q->on('carros_acessorio.acessorio_idacessorio', '=', 'acessorio.idacessorio')
                                         ->where('carros_acessorio.carros_idcarro', '=', "$car->idcarro");
                                  })->get();
-            $tmp["imagens"] = Imagem::join('carros_has_imagens', function($q) use ($car) {
-                                $q->on('carros_has_imagens.imagens_idimagens', '=', 'imagens.idimagens')
+            $tmp["imagens"] = FileEntry::join('carros_has_imagens', function($q) use ($car) {
+                                $q->on('carros_has_imagens.imagens_idimagens', '=', 'file_entries.id')
                                     ->where('carros_has_imagens.carros_idcarro', '=', "$car->idcarro");
                               })->get();
             array_push($ret,$tmp);
@@ -139,7 +148,7 @@ class LocadoraController extends Controller
         $retirada = Locadora::find($request->localentrega);
         $entrega = Locadora::find($request->localretirada);
         return redirect('reserva')->with(["imagens"       => $imagens,
-                                              "carro"         => $car->nome,
+                                              "carro"         => $car,
                                               "usuario"       => $request->user,
                                               "quantdias"     => $request->quantdias,
                                               "dataentrega"   => $request->dataentrega,
@@ -147,10 +156,75 @@ class LocadoraController extends Controller
                                               "localentrega"  => $entrega,
                                               "localretirada" => $retirada]);
     }
-    public function generatePDF(){
-        $data = ['title' => 'Welcome to HDTuto.com'];
-        $pdf = PDF::loadView('myPDF', $data);
+    public function generatePDF(Request $request){
+        $car = Carros::find($request->carroid);
+        $user = Auth::user();
 
-        return $pdf->download('itsolutionstuff.pdf');
+        $acessorios = Acessorio::join('carros_acessorio', function($q) use ($car) {
+            $q->on('carros_acessorio.acessorio_idacessorio', '=', 'acessorio.idacessorio')
+                ->where('carros_acessorio.carros_idcarro', '=', "$car->idcarro");
+        })->get();
+
+        $locadoraRet = Locadora::find($request->locadoraretid);
+        $pjRet = PessoaJuridica::find($locadoraRet->pessoaJuridica_idPJ);
+        $userpjret = User::find($pjRet->user_iduser);
+
+        $locadoraEnt = Locadora::find($request->locadoraentid);
+        $pjEnt = PessoaJuridica::find($locadoraEnt->pessoaJuridica_idPJ);
+        $userpjent = User::find($pjEnt->user_iduser);
+
+        $enderecoRet = Endereco::find($locadoraRet->Endereco_idEndereco);
+        $cidadeRet = Cidade::find($enderecoRet->Cidade_idCidade);
+
+        $enderecoEnt = Endereco::find($locadoraEnt->Endereco_idEndereco);
+        $cidadeEnt = Cidade::find($enderecoEnt->Cidade_idCidade);
+
+        $data = ['empresa' => 'LocadoraDAHORA',
+                 'codigoConfirmacao'=> Hash::make($request->cpf.Carbon::now()),
+                 'codigoSolicitacao'=> Hash::make($user->iduser.Carbon::now().$request->dias),
+                 'classificacao'=> Classificacao::find($car->idClassificacao),
+                 'acessorios'=>$acessorios,
+                 'carro'=> $car,
+                 'dias'=>$request->dias,
+                 'valorCarro'=>$car->valor,
+                 'nome'=>$user->name,
+                 'telefone'=>$user->telefone,
+                 'email'=>$user->email,
+                 'dataRet'=>$request->dataret,
+                 'localRet'=>$locadoraRet->nome,
+                 'enderecoRet'=>"Rua: ".$enderecoRet->rua.", Numero: ".$enderecoRet->numero.", Bairro: ".$enderecoRet->bairro.", CEP: ".$enderecoRet->cep.". Cidade: ".$cidadeRet->nome,
+                 'telefoneRet'=>$userpjret->telefone,
+                 'dataDev'=>$request->dataent,
+                 'localDev'=>$locadoraEnt->nome,
+                 'enderecoDev'=>"Rua: ".$enderecoEnt->rua.", Numero: ".$enderecoEnt->numero.", Bairro: ".$enderecoEnt->bairro.", CEP: ".$enderecoEnt->cep.". Cidade: ".$cidadeEnt->nome,
+                 'telefoneDev'=>$userpjent->telefone
+        ];
+
+        DB::table('locacao')->insert(array('carros_idcarro'=>$request->carroid,'idLocadora'=>$locadoraRet->idLocadora, 'idpessoaFisica'=>$request->cpf, 'dataEntrega'=>Carbon::parse($request->dataent), 'localEntrega'=>$locadoraEnt->idLocadora, 'valorTotal'=>$car->valor*$request->dias));
+
+        $pdf = PDF::setOptions(['images' => true, 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('myPDF', $data);
+
+        return $pdf->download('voucher.pdf');
+    }
+
+    public function getReservas(){
+        if (Auth::user()){
+            $pessoa = PessoaFisica::where('user_iduser','=',Auth::user()->iduser)->get();
+            $ret = DB::table('locacao')->where('idpessoaFisica',$pessoa[0]->idpessoaFisica)->get();
+            $retorno = array();
+            $tmp = array();
+            foreach ($ret as $v){
+                $tmp["carro"]=Carros::find($v->carros_idcarro);
+                $tmp["retiradoEm"]=Locadora::find($v->idLocadora);
+                $tmp["entregueEm"]=Locadora::find($v->localEntrega);
+                $tmp["valorTotal"]=$v->valorTotal;
+                $tmp["dataEntrega"]=$v->dataEntrega;
+                array_push($retorno,$tmp);
+            }
+            return $retorno;
+
+        }else{
+            return null;
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CarroSeed extends Seeder
 {
@@ -94,13 +95,13 @@ class CarroSeed extends Seeder
          		array('carros_idcarro' => 6, 'acessorio_idacessorio' => 16)
          	)
          );
-		DB::table('imagens')->insert(array(
-		    array('caminho'=>'images/cars/mobi1.png'),
-            array('caminho'=>'images/cars/mobi2.png'),
-            array('caminho'=>'images/cars/mobi3.png'),
-            array('caminho'=>'images/cars/logan1.jpg'),
-            array('caminho'=>'images/cars/logan2.jpg'),
-            array('caminho'=>'images/cars/logan3.jpg')
+		DB::table('file_entries')->insert(array(
+		    array('filename'=>'mobi1.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>77824),
+            array('filename'=>'mobi2.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>69632 ),
+            array('filename'=>'mobi3.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>36864),
+            array('filename'=>'logan1.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>28672),
+            array('filename'=>'logan2.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>90112),
+            array('filename'=>'logan3.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>57344)
         ));
 		DB::table('carros_has_imagens')->insert(array(
             array('carros_idcarro'=>1, 'imagens_idimagens'=>1),

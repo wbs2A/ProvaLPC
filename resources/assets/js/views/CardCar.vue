@@ -12,7 +12,7 @@
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                         <div class="carousel-item" v-for="(img,idx) in car.imagens" :class="{ active: idx==0 }">
-                            <img :src="'../../../'+img.caminho" alt="" class="img-fluid">
+                            <img :src="'/storage/'+img.filename" alt="" class="img-fluid">
                         </div>
                     </div>
 
@@ -27,7 +27,7 @@
                 </div>
                 <div v-else class="col">
                     <h5>Este veículo não tem imagens</h5>
-                    <button class="btn btn-success" v-if="!user"> <i class="fas fa-plus"></i> Inserir imagem</button>
+                    <button class="btn btn-success" v-if="!user" data-toggle="modal" :data-target="'#insertImg'+car.carro.idcarro"> <i class="fas fa-plus"></i> Inserir imagem</button>
                 </div>
                 <div id="acessorios" class="col offset-2">
                     <h5>Neste veículo você encontra:</h5>
@@ -72,13 +72,32 @@
             </div>
         </div>
 
+        <div class="modal fade" :id="'insertImg'+car.carro.idcarro" tabindex="-1" role="dialog" aria-labelledby="dadosLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dadosLabel">Adicionar Imagens</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <UploadFiles :car_id="car.carro.idcarro" :post_url="'files/upload-file'"></UploadFiles>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 
 <script>
+    import UploadFiles from '../../../js/components/UploadFiles'
     export default {
         name: "CardCar",
+        components: {
+            'UploadFiles': UploadFiles
+        },
         props: ['car','user', 'id', 'quantDias', 'dataEntrega', 'dataRetirada', 'localRetirada', 'localEntrega'],
         data: function(){
             return {

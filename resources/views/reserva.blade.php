@@ -5,7 +5,7 @@
         <div id="dashboard" class="container">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3> Você selecionou o {{ session('carro')}}</h3><br>
+                    <h3> Você selecionou o {{ session('carro')['nome']}}</h3><br>
                     <h6> Aqui estão as informações de seu pedido:</h6>
 
                 </div>
@@ -14,25 +14,28 @@
                         <form id="myform" action="/api/generatePDF" method='post'>
                             @csrf
                             <div class="col">
+                                <input type="hidden" name="locadoraretid" value="{{session('localretirada')['idLocadora']}}">
+                                <input type="hidden" name="locadoraentid" value="{{session('localentrega')['idLocadora']}}">
+                                <input type="hidden" name="carroid" value="{{ session('carro')['idcarro']}}">
+
                                 <label for="cpf">CPF do responsável:</label>
-                                <input class="form-control" id="cpf" disabled value="{{session('usuario')}}">
+                                <input class="form-control" id="cpf" name="cpf" value="{{session('usuario')}}">
                                 <small id="emailHelp" class="form-text text-muted">Nenhuma das informações aqui serão compartilhadas com terceiros</small><br>
 
-
                                 <label for="dias">Dias reservados:</label>
-                                <input class="form-control" id="dias" disabled value="{{session('quantdias')}}"><br>
+                                <input class="form-control" id="dias" name="dias" readonly value="{{session('quantdias')}}"><br>
 
                                 <label for="dataret">Data de retirada:</label>
-                                <input class="form-control" id="dataret" disabled value="{{session('dataretirada')}}"><br>
+                                <input class="form-control" id="dataret" name="dataret" readonly value="{{session('dataretirada')}}"><br>
 
                                 <label for="dataent"> Data de Entrega:</label>
-                                <input class="form-control" id="dataent" disabled value="{{session('dataentrega')}}"><br>
+                                <input class="form-control" id="dataent" name="dataent" readonly value="{{session('dataentrega')}}"><br>
 
                                 <label for="localret"> Locadora de retirada:</label>
-                                <input class="form-control" id="localret" disabled value="{{session('localretirada')['nome']}}"><br>
+                                <input class="form-control" id="localret" name="localret" readonly value="{{session('localretirada')['nome']}}"><br>
 
                                 <label for="localet">Locadora de entrega:</label>
-                                <input class="form-control" id="localet" disabled value="{{session('localentrega')['nome']}}">
+                                <input class="form-control" id="localet" name="localet" readonly value="{{session('localentrega')['nome']}}">
                             </div>
                         </form>
                         <div class="col-5">
@@ -81,7 +84,6 @@
         <script language="javascript" type="text/javascript ">
             function submitDetailsForm(){
                 $('#myform').submit();
-
             }
             function cancelForm(){
                 window.location='/';
