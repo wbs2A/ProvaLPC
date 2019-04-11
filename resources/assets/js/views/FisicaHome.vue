@@ -37,7 +37,7 @@
                             <li><b>Rua: </b>{{user['endereco_info']['rua'] | capitalize}}</li>
                             <li><b>Bairro: </b>{{user['endereco_info']['bairro'] | capitalize}}</li>
                             <li><b>Número: </b>{{user['endereco_info']['numero']}}</li>
-                            <li><b>CEP: </b>{{user['endereco_info']['cep']}}</li>
+                            <li><b>CEP: </b>{{user['endereco_info']['cep'] | formatCep}}</li>
                             <li><b>Cidade: </b>{{user['cidade_info']['nome']}}</li>
                             <li><b>Estado: </b>{{user['estado_info']['nome']}}</li>
                         </ul>

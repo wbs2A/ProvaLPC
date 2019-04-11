@@ -67,8 +67,10 @@ export default {
       var umDiaMilissegundos = 1000*60*60*24;
       var diferenca = new Date(yr1, mon1, dt1) - new Date(yr2, mon2, dt2);
       var dia = diferenca/umDiaMilissegundos;
-   		this.dias= parseInt(dia+1);
-      if (true) {}
+   		this.dias= parseInt(dia);
+      if(this.dias == 0){
+        this.dias=1;
+      }
       console.log(this.dias);
    	},
    	methods:{

@@ -28,6 +28,13 @@ Vue.filter('formatDate', function(value) {
     }
 });
 
+Vue.filter('formatCep', function(value) {
+    if (value) {
+        value = value.slice(0,5)+'-'+value.slice(5); 
+        console.log(value);
+        return value;
+    }
+});
 Vue.filter('formatTelefone', function(value) {
     if (value) {
         value = "("+value;

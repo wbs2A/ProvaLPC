@@ -32,7 +32,6 @@
         "moment": "^2.24.0",
         "vee-validate": "^2.2.0",
         "vue-clickaway": "^2.1.0",
-        "vue-date-picker": "^2.4.0",
         "vue-notifyjs": "^0.3.0",
         "vue-resource": "^1.5.1",
         "vue-router": "^3.0.1",
