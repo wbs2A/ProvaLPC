@@ -1,4 +1,13 @@
 <script>
+    import Vue2Filters from 'vue2-filters'
+
+    Vue.use(Vue2Filters);
+
+    Vue.filter('formatCep', function(value) {
+        if (value) {
+            return value.slice(0,5)+'-'+value.slice(5);
+        }
+    });
     export default{
         props: {
           cep: String,
@@ -43,7 +52,7 @@
 <template>
     <div class="col mb-3">
         <label for="cep" class="col-form-label text-md-right">CEP</label>
-        <input type="text" class="form-control" data-mask="00000-000" v-bind:value="cep" v-bind:id="'cep'+onde" name="cep" @blur="onBlurCep" placeholder="">
+        <input type="text" class="form-control" data-mask="00000-000" v-bind:value="cep | formatCep" v-bind:id="'cep'+onde" name="cep" @blur="onBlurCep" placeholder="">
     </div>
 </template>
 

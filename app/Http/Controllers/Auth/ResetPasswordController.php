@@ -26,7 +26,9 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = '/index';
-
+    protected function redirectTo(){
+        return  route('/');
+    }
     /**
      * Create a new controller instance.
      *

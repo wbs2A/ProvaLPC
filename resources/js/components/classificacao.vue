@@ -18,7 +18,7 @@
 <template>
      <div class="col-10  mb-3">
         <label for="categoria" class="col-form-label text-md-right">Selecione a categoria do seu carro</label>
-        <select class="custom-select" id="categoria" name="categoria"
+        <select class="custom-select" id="categoria" name="categoria" required
         v-model="mySelect"
         v-on:change="myChange"
         >

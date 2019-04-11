@@ -11,7 +11,7 @@
 			<div class="col-6 wrap-right">
 				<div class="input-group dates-wrap mb-3">
 					<label class="col-form-label text-md-right mb-1" for="dateinicio">Data de início</label>
-					<datepicker v-bind:disabled-date="disabledDate" v-bind:input-class="{'col-7': true}" :value="dateNow1"  :readonly="true" format="DD/MM/YYYY" id="dateinicio" name="dateinicio" required></datepicker>
+					<input type="date" id="dateinicio" name="dateinicio" v-model="dateNow1"  :min="minimo" @change="validaComOUm" required class="col-9">
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 			<div class="col-6 wrap-right mb-3">
 				<div class="input-group dates-wrap">
 					<label class="col-form-label text-md-right mb-1" for="datefim">Data de entrega</label>
-					<datepicker v-bind:input-class="{'col-7': true}" :value="dateNow2" :readonly="true" format="DD/MM/YYYY" id="datefim" name="datefim" required></datepicker>
+					<input type="date" id="datefim" name="datefim" v-model="dateNow2" :min="minimo" @change="validaComOUm" required class="col-9">
 				</div>
 			</div>
 		</div>
@@ -42,21 +42,29 @@
 <script>
 import Classificacao from '../components/classificacao';
 import Locadora from '../components/locadora';
-import DatePicker from 'vue-date-picker';
+
 export default {
 	props:['mycategorias'],
 	components: {
 		classificacao: Classificacao,
-		locadora: Locadora,
-		datepicker: DatePicker
+		locadora: Locadora
+   	},
+   	created(){
+   		var t = (new Date()).toJSON().length;
+   		var q=t-14;
+   		this.dateNow1= (new Date()).toJSON().substring(0,q);
+   		this.dateNow2= (new Date()).toJSON().substring(0,q);
+   		this.minimo= (new Date()).toJSON().substring(0,q);
    	},
    	data() {
    		return{
    			selectCategoria:'', 
    			data:null,
    			csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'), 
-   			dateNow1: new Date().toLocaleDateString(),
-   			dateNow2: new Date().toLocaleDateString()
+   			dateNow1: '',
+   			dateNow2: '',
+   			minimo: '',
+   			formato: 'DD/MM/YYYY'
 		}
    	},
    	methods:{
@@ -74,9 +82,16 @@ export default {
    			this.selectCategoria=mycategoria;
    			this.getLocadora();
    		},
-   		disabledDate (date) {
-   			console.log(date.getTime());
-	      	return date.getTime() < Date.now()
+   		customFormatter(date) {
+	      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+	    },
+	    validaComOUm(event){
+	    	if (new Date(this.dateNow2) < new Date(this.dateNow1)) {
+	    		this.dateNow2=this.dateNow1;
+	    	}
+	    	if (new Date(event.target.value) < new Date(this.minimo)) {
+	    		event.target.value=this.minimo;
+	    	}
 	    }
    	}
 }

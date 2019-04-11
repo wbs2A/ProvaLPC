@@ -34,6 +34,16 @@ import BuscaEstadoCNH from './components/buscaestadoCnh.vue';
  * or customize the JavaScript scaffolding to fit your unique needs.
  *
  */
+import Vue2Filters from 'vue2-filters'
+
+Vue.use(Vue2Filters);
+
+Vue.filter('formatCep', function(value) {
+    if (value) {
+    	value=value.slice(0,5)+'-'+value.slice(5)
+    	return value;
+    }
+});
 
 new Vue({
     el:"#register",

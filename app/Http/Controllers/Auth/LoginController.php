@@ -52,9 +52,8 @@ class LoginController extends Controller
         {
             return back()->with('errors', $validacao->errors());
         }
-        $remember = $request->input('remember_me');
-        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember))
-        {
+        $remember = $request->input('remember');
+        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember)){
             if (isset($data['categoria'])) {
                 $predados['categoria']=$data['categoria'];
                 $predados['locadoraretirada']=$data['locadoraretirada'];
@@ -66,9 +65,7 @@ class LoginController extends Controller
                 return redirect()->intended('/');
             }
 //            return redirect('/perfil');
-        }
-        else
-        {
+        }else{
             return back()->with('error', 'Email e/ou Senha invalido(s)');
         }
     }
@@ -82,5 +79,8 @@ class LoginController extends Controller
         // session()->remove('user');
         Auth::logout();
         return redirect('/');
+    }
+    protected function redirectTo(){
+        return  route('/');
     }
 }
