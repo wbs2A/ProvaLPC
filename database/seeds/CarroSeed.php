@@ -96,12 +96,12 @@ class CarroSeed extends Seeder
          	)
          );
 		DB::table('file_entries')->insert(array(
-		    array('filename'=>'mobi1.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>77824),
-            array('filename'=>'mobi2.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>69632 ),
-            array('filename'=>'mobi3.png', 'mime'=>'image/png', 'path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>36864),
-            array('filename'=>'logan1.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>28672),
-            array('filename'=>'logan2.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>90112),
-            array('filename'=>'logan3.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('uploads')->getAdapter()->getPathPrefix(),'size'=>57344)
+		    array('filename'=>'mobi1.png', 'mime'=>'image/png', 'path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>77824),
+            array('filename'=>'mobi2.png', 'mime'=>'image/png', 'path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>69632 ),
+            array('filename'=>'mobi3.png', 'mime'=>'image/png', 'path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>36864),
+            array('filename'=>'logan1.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>28672),
+            array('filename'=>'logan2.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>90112),
+            array('filename'=>'logan3.jpg', 'mime'=>'image/jpg','path'=>Storage::disk('public')->getAdapter()->getPathPrefix(),'size'=>57344)
         ));
 		DB::table('carros_has_imagens')->insert(array(
             array('carros_idcarro'=>1, 'imagens_idimagens'=>1),
