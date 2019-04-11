@@ -3,7 +3,7 @@
 
 Route::group(['middleware'=>["web"]], function (){
     Route::get('/', 'HomeController@index')->name('/');
-    // Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/contact', function (){
         return view('contato');
     })->name('contact');

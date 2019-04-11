@@ -19,12 +19,15 @@ class LocacaoController extends Controller
      */
     public function index(Request $request)
     {
-        $value = $request->session()->get('data');
+        if ($request->session()->has('data')) {
+            $value = $request->session()->get('data');
+           
+        }
         if (isset($value['locadoraretirada'])) {
             if (Auth::check()) {
                 $user = Auth::user();
                 $pessoa = PessoaFisica::where('user_iduser', $user->iduser)->get();
-                $cpf = $pessoa[0]->idpessoaFisica;
+                $cpf = $pessoa->idpessoaFisica;
                 $request->session()->forget('data');
                 $acessorios=Acessorio::all();
                 $todos= Classificacao::todos();

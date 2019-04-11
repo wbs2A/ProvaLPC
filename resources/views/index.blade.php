@@ -3,10 +3,14 @@
 @section('content')
     <div>
         <div id="banner" class="container-fluid">
+            @if((Auth::check() && Auth::user()->tipo == 0) || Auth::user() == null)
             <div class="col-lg-5 col-md-6 header-right ml-auto">
                 <h4 class="text-white pb-30">Alugue seu carro <b>agora</b>!</h4>
                 <buscalocacao :mycategorias='@json($categorias)'></buscalocacao>
             </div>
+            @else
+                <buscalocacaojuridica :cars='@json($carros)'></buscalocacaojuridica>
+            @endif
         </div>
         <!-- Area dos cards-->
         <section class="feature-area section-gap" id="service">
