@@ -1763,15 +1763,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_filters__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-filters */ "./node_modules/vue2-filters/dist/vue2-filters.js");
-/* harmony import */ var vue2_filters__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_filters__WEBPACK_IMPORTED_MODULE_0__);
-
-Vue.use(vue2_filters__WEBPACK_IMPORTED_MODULE_0___default.a);
-Vue.filter('formatCep', function (value) {
-  if (value) {
-    return value.slice(0, 5) + '-' + value.slice(5);
-  }
-});
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     cep: String,
@@ -1780,11 +1771,11 @@ Vue.filter('formatCep', function (value) {
   methods: {
     onBlurCep: function onBlurCep() {
       var a = 'cep' + this.onde;
+      console.log(document.getElementById(a).value);
 
       if (document.getElementById(a).value) {
-        var res = document.getElementById(a).value.replace('.', "");
-        res = res.replace('-', "");
-        res = res.replace('.', "");
+        var res = document.getElementById(a).value.replace('-', "");
+        console.log(res);
         var dat;
         $.ajax({
           url: 'https://api.postmon.com.br/v1/cep/' + res,
@@ -1795,6 +1786,7 @@ Vue.filter('formatCep', function (value) {
             dat = data;
           }
         });
+        console.log(dat);
 
         if (dat) {
           var b = "#bairro" + this.onde;
@@ -1985,9 +1977,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['old'],
-  components: {
-    buscacpf: buscacpf
-  },
   data: function data() {
     return {
       escolhe: ''
@@ -37891,7 +37880,7 @@ var render = function() {
     _c(
       "label",
       { staticClass: "col-form-label text-md-right", attrs: { for: "tipo" } },
-      [_vm._v("Tipo de conta " + _vm._s(_vm.old))]
+      [_vm._v("Tipo de conta ")]
     ),
     _vm._v(" "),
     _c(

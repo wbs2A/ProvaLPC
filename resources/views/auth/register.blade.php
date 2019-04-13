@@ -197,9 +197,9 @@
                                         }
                                     @endphp
                                     @if (old('cep'))
-                                        <buscacep :cep="'{{$cep}}'"></buscacep>
+                                        <buscacep :onde="'register'" :cep="'{{$cep}}'"></buscacep>
                                     @else
-                                        <buscacep></buscacep>    
+                                        <buscacep :onde="'register'"></buscacep>
                                     @endif
                                   
                                   <div class="col-2 mb-3">
@@ -209,21 +209,21 @@
                                   </div>
                                   <div class="col-4 mb-3">
                                     <label for="bairro" class="col-form-label text-md-right">Bairro</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" placeholder="" value="{{ old('bairro') }}">
+                                    <input type="text" class="form-control" id="bairroregister" name="bairro" placeholder="" value="{{ old('bairro') }}">
                                   </div>
                                   <div class="col-4 mb-3">
                                     <label for="rua" class="col-form-label text-md-right">Rua</label>
-                                    <input type="text" class="form-control" id="rua" name="rua" placeholder="" value="{{ old('rua') }}">
+                                    <input type="text" class="form-control" id="ruaregister" name="rua" placeholder="" value="{{ old('rua') }}">
                                   </div>
                                 
                                   <div class="col-6 mb-3">
                                     <label for="estado" class="col-form-label text-md-right">Estado</label>
-                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="" value="{{ old('estado') }}">
+                                    <input type="text" class="form-control" id="estadoregister" name="estado" placeholder="" value="{{ old('estado') }}">
                                     <small id="estadoHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
                                   </div>
                                   <div class="col-6 mb-3">
                                     <label for="cidade" class="col-form-label text-md-right">Cidade</label>
-                                    <input type="text" class="form-control" id="cidade" name="cidade" placeholder="" value="{{ old('cidade') }}">
+                                    <input type="text" class="form-control" id="cidaderegister" name="cidade" placeholder="" value="{{ old('cidade') }}">
                                     <small id="cidadeHelp" class="form-text text-muted">Por favor, insira o nome completo.</small>
                                   </div>
                         </div>

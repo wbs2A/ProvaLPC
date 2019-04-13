@@ -60,6 +60,10 @@ Route::group(['middleware'=>["web"]], function (){
         Route::get('getOneLocadora/{id}', 'LocadoraController@show');
         Route::post('updateLocadora/{id}/{idEndereco}', 'LocadoraController@update');
         Route::get('DeleteLocadora/{id}', 'LocadoraController@destroy');
+        Route::get('getClassificacaoAcess/', 'LocadoraController@getClassificacaoAcess');
+        Route::post('insertCarro/', 'LocadoraController@insertCarro');
+        Route::get('deleteCar/{id}','LocadoraController@deleteCarro');
+        Route::post('updateCarro/{id}', 'LocadoraController@updateCarro');
     });
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });

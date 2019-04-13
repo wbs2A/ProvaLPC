@@ -1,13 +1,4 @@
 <script>
-    import Vue2Filters from 'vue2-filters'
-
-    Vue.use(Vue2Filters);
-
-    Vue.filter('formatCep', function(value) {
-        if (value) {
-            return value.slice(0,5)+'-'+value.slice(5);
-        }
-    });
     export default{
         props: {
           cep: String,
@@ -16,10 +7,10 @@
         methods: {
             onBlurCep(){
                 var a ='cep'+this.onde;
+                console.log(document.getElementById(a).value);
                 if(document.getElementById(a).value){
-                    var res = document.getElementById(a).value.replace('.', "");
-                    res = res.replace('-', ""); 
-                    res =res.replace('.', "");
+                    var res = document.getElementById(a).value.replace('-', "");
+                    console.log(res);
                     var dat;
                     $.ajax({
                         url:    'https://api.postmon.com.br/v1/cep/'+res,
@@ -30,6 +21,7 @@
                             dat = data;           
                         }
                     });
+                    console.log(dat);
                     if (dat) {
                         var b="#bairro"+this.onde;
                         var c= "#cidade"+this.onde;

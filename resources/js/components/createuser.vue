@@ -1,9 +1,6 @@
 <script>
     export default{
         props:['old'],
-        components:{
-            buscacpf
-        },
         data(){
             return{
                 escolhe:''
@@ -39,7 +36,7 @@
 
 <template>
         <div class="col-2  mb-3">                            
-            <label for="tipo" class="col-form-label text-md-right">Tipo de conta {{old}}</label>
+            <label for="tipo" class="col-form-label text-md-right">Tipo de conta </label>
             <select id="tipo" type="tipo" class="form-control" name="tipo" v-model="escolhe" @change="escolheu" required>
                 <option value="" disabled selected hidden></option>
                 <option>Fisica</option>

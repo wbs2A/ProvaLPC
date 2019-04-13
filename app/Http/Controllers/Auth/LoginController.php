@@ -54,7 +54,7 @@ class LoginController extends Controller
         }
         $remember = $request->input('remember');
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']], $remember)){
-            dd($data);
+
             if (isset($data['categoria'])) {
                 $predados['categoria']=$data['categoria'];
                 $predados['locadoraretirada']=$data['locadoraretirada'];

@@ -68,9 +68,95 @@
                 </div>
             </div>
             <div class="card-footer" v-if="!user">
-                <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i>Editar</a>
+                <button class="btn btn-primary"  data-toggle="modal" :data-target="'#updateCar'+id"><i class="fas fa-edit"></i>Editar</button> <a class="btn btn-danger text-white" @click="confirmDelete($event, car.carro.nome, car.carro.idcarro)"><i class="fas fa-times"></i>&nbsp Excluir</a>
             </div>
         </div>
+
+
+
+             <div class="modal fade" :id="'updateCar'+id" tabindex="-1" role="dialog" aria-labelledby="contaLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                             <div class="modal-header">
+                             <h5 class="modal-title" id="contaLabel">Atualizar dados do Carro</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                         </div>
+                         <div class="modal-body">
+                             <form method="post" :action="'/api/updateCarro/'+car.carro.idcarro" id="editCar">
+                                 <input type="hidden" name="_token" :value="csrf"/>
+                                     <div class="form-group">
+                                         <label for="nomeCarro">Nome do carro</label>
+                                         <input type="text" class="form-control" id="nomeCarro" name="nome" v-model="car.carro.nome">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="placa">Placa</label>
+                                         <input type="text" class="form-control" id="placa" name="placa" v-model="car.carro.placa">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="modelo">Modelo</label>
+                                         <input type="text" class="form-control" id="modelo" name="modelo" v-model="car.carro.modelo">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="valor">Valor</label>
+                                         <input type="text" class="form-control" id="valor" name="valor" v-model="car.carro.valor">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="consumo">Consumo</label>
+                                         <input type="text" class="form-control" id="consumo" name="consumo" v-model="car.carro.consumo">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="marca">Marca</label>
+                                         <input type="text" class="form-control" id="marca" name="marca" v-model="car.carro.marca">
+                                     </div>
+                                     <div class="row">
+                                         <div class="col form-group">
+                                             <label for="direcao">Tipo de direção</label>
+                                             <select class="form-control" id="direcao" name="direcao">
+                                                 <option :selected="car.carro.direcao === 'Hidráulica'">Hidráulica</option>
+                                                 <option :selected="car.carro.direcao === 'Elétrica'">Elétrica</option>
+                                                 <option :selected="car.carro.direcao === 'Mecânica'" >Mecânica</option>
+                                             </select>
+                                         </div>
+                                         <div class="col form-group">
+                                             <label for="cambio">Tipo de câmbio</label>
+                                             <select class="form-control" id="cambio" name="cambio">
+                                                 <option :selected="car.carro.cambio === 'Manual'">Manual</option>
+                                                 <option :selected="car.carro.cambio === 'Automático'">Automático</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="passageiros">Nº de Passageiros</label>
+                                         <input type="text" class="form-control" id="passageiros" name="passageiros" v-model="car.carro.passageiros">
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="classificacao">Classificação</label>
+                                         <select class="form-control" name="classificacao" id="classificacao">
+                                             <option v-for="item in this.classificacao" :value="item.idclassificacao" :selected="car.classificacao.idclassificacao === item.idclassificacao">
+                                                 {{ item.tipo}}
+                                             </option>
+                                         </select>
+                                     </div>
+                                     <div class="form-group">
+                                         <label>Itens deste Carro</label>
+                                         <div id='example-3'>
+                                             <div v-for="(item, id) in acessorios">
+                                                 <input type="checkbox" name="acessorios[]" v-bind:checked="checkAcessorio(item.nome, id)" :id="car.carro.idcarro+'_'+id" :value="item.idacessorio">
+                                                 <label :for="id">{{item.nome}}</label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button> <button class="btn btn-success" type="submit"> Enviar </button>
+
+                                    </div>
+                                 </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
 
         <div class="modal fade" :id="'insertImg'+car.carro.idcarro" tabindex="-1" role="dialog" aria-labelledby="dadosLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -99,9 +185,18 @@
             'UploadFiles': UploadFiles
         },
         props: ['car','user', 'id', 'quantDias', 'dataEntrega', 'dataRetirada', 'localRetirada', 'localEntrega'],
+        mounted(){
+                axios.get('/api/getClassificacaoAcess/').then(response=>{
+                this.classificacao = response.data.classificacao;
+                this.acessorios = response.data.acessorios;
+            });
+        },
         data: function(){
             return {
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                classificacao: '',
+                acessorios: '',
+                selectedAcess: [],
             }
         },
         methods:{
@@ -131,6 +226,26 @@
                     .catch(error => {
                         console.log(error)
                     });
+            },
+            confirmDelete(event, car, id){
+                if(confirm("Você tem certeza que deseja excluir o "+car)){
+                    axios.get('/api/deleteCar/'+id).then(
+                        (response)=>{
+                            if(response.data){
+                                window.location='/perfil'
+                            }
+                        }
+                    )
+                }
+            },
+            //acessorio a
+            checkAcessorio: function(a, id){
+                for(var i=0; i< this.car.acessorios.length; i++){
+                    if(this.car.acessorios[i].nome === a) {
+                        return true
+                        //document.getElementById((this.car.carro.idcarro + '_' + id)).checked = true;
+                    }
+                }
             }
         }
     }

@@ -23,15 +23,15 @@ class LocacaoController extends Controller
             $value = $request->session()->get('data');
            
         }
-        if (isset($value['locadoraretirada'])) {
+        if (((Auth::check() && Auth::user()->tipo == 0) || Auth::user() == null) && isset($value['locadoraretirada'])) {
             if (Auth::check()) {
                 $user = Auth::user();
                 $pessoa = PessoaFisica::where('user_iduser', $user->iduser)->get();
-                $cpf = $pessoa->idpessoaFisica;
+                $cpf = $pessoa[0]->idpessoaFisica;
                 $request->session()->forget('data');
                 $acessorios=Acessorio::all();
                 $todos= Classificacao::todos();
-                $carros=Carros::where('locadora_idLocadora','=',$value['locadoraretirada'])->get();
+                $carros=Carros::where('locadora_idLocadora','=',$value['locadoraretirada'])->where('locado','=',null)->get();
                 $data = array();
                 $tmp = array();
                 foreach ($carros as $car){

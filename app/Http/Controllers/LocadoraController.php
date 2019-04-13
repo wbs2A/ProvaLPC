@@ -199,7 +199,7 @@ class LocadoraController extends Controller
                  'enderecoDev'=>"Rua: ".$enderecoEnt->rua.", Numero: ".$enderecoEnt->numero.", Bairro: ".$enderecoEnt->bairro.", CEP: ".$enderecoEnt->cep.". Cidade: ".$cidadeEnt->nome,
                  'telefoneDev'=>$userpjent->telefone
         ];
-
+        DB::table('carros')->where('idcarro','=',$request->carroid)->update(['locado'=>1]);
         DB::table('locacao')->insert(array('carros_idcarro'=>$request->carroid,'idLocadora'=>$locadoraRet->idLocadora, 'idpessoaFisica'=>$request->cpf, 'dataEntrega'=>Carbon::parse($request->dataent), 'localEntrega'=>$locadoraEnt->idLocadora, 'valorTotal'=>$car->valor*$request->dias));
 
         $pdf = PDF::setOptions(['images' => true, 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('myPDF', $data);
@@ -225,6 +225,42 @@ class LocadoraController extends Controller
 
         }else{
             return null;
+        }
+    }
+
+    public function getClassificacaoAcess(){
+        return array("classificacao"=>Classificacao::all(), "acessorios"=>Acessorio::all());
+    }
+
+    public function insertCarro(Request $request){
+        $i=0;
+        $id = DB::table('carros')->insertGetId(array("placa"=>$request->placa, "locadora_idLocadora"=>$request->locadoraid, "nome"=>$request->nome, "modelo"=>$request->modelo, "consumo"=>$request->consumo, "marca"=>$request->marca, "direcao"=>$request->direcao, "cambio"=>$request->cambio, "passageiros"=>$request->passageiros, "idClassificacao"=>$request->classificacao));
+        foreach ($request->acessorios as $item) {
+            DB::table('carros_acessorio')->insert(array("carros_idcarro"=>$id, "acessorio_idacessorio"=>$item));
+        }
+        return view('perfil');
+    }
+
+    public function deleteCarro($id){
+        if($id){
+            $res = Carros::where('idcarro',$id)->delete();
+            if($res){
+                return response("Excluído com sucesso", 200);
+            }
+        }
+        return response('o ID deve ser inserido', 404);
+    }
+
+    public function updateCarro(Request $request, $id){
+        if($id){
+            DB::table('carros')->update(array("placa"=>$request->placa, "valor"=>$request->valor, "nome"=>$request->nome, "modelo"=>$request->modelo, "consumo"=>$request->consumo, "marca"=>$request->marca, "direcao"=>$request->direcao, "cambio"=>$request->cambio, "passageiros"=>$request->passageiros, "idClassificacao"=>$request->classificacao));
+            foreach ($request->acessorios as $item) {
+                $has = DB::table('carros_acessorio')->where('carros_idcarro','=',$id)->where('acessorio_idacessorio','=',$item)->count();
+                if (!$has){
+                    DB::table('carros_acessorio')->insert(array("carros_idcarro"=>$id, "acessorio_idacessorio"=>$item));
+                }
+            }
+            return view('perfil');
         }
     }
 }
