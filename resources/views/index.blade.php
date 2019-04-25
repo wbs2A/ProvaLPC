@@ -77,4 +77,5 @@
         </section>
     </div>
     <script src="js/buscaLocacao.js"></script>
+    <script src='js/botwidget.js'></script>
 @stop

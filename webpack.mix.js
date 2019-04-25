@@ -21,6 +21,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/jquery-2.2.4.min.js', 'public/js')
     .js('resources/js/bootstrap.js', 'public/js')
     .js('resources/js/bootstrap-confirmation.js', 'public/js')
+    .js('resources/js/botwidget.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.sass('resources/sass/bootstrap.scss', 'public/css');

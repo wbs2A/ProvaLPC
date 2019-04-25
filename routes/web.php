@@ -68,3 +68,5 @@ Route::group(['middleware'=>["web"]], function (){
     Route::get('/locacao','LocacaoController@index')->name('locacao');
 });
 Auth::routes();
+Route::match(['get', 'post'], '/botman', 'BotManController@handle');
+Route::get('/botman/tinker', 'BotManController@tinker');
