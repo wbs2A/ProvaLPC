@@ -1130,7 +1130,7 @@
                 height: n ? "94%" : "100%",
                 frameBorder: "0",
                 allowTransparency: !0,
-                style: "background-color:transparent"
+                style: "background-color:write"
             })
         }, e
     }(o.a)
@@ -1385,20 +1385,21 @@
         return o
     });
     var o = {
+        frameEndpoint: 'chat.blade.php',
+        introMessage: 'Oi, eu sou um Chatbot',
         chatServer: "/botman",
-        frameEndpoint: "/botman/chat",
+        title: "BotMan Widget",
+        mainColor: "#33dfc1",
+        bubbleBackground: "#589145",
+        frameEndpoint: "/botman/tinker",
         timeFormat: "HH:MM",
         dateTimeFormat: "m/d/yy HH:MM",
-        title: "BotMan Widget",
         cookieValidInDays: 1,
-        introMessage: "",
         placeholderText: "Enviar uma mensagem...",
         displayMessageTime: !0,
         sendWidgetOpenedEvent: !1,
         widgetOpenedEventData: "",
-        mainColor: "#33dfc1",
         headerTextColor: "#333",
-        bubbleBackground: "#589145",
         bubbleAvatarUrl: "",
         desktopHeight: 450,
         desktopWidth: 370,
@@ -1410,5 +1411,5 @@
         chatId: "",
         userId: "",
         alwaysUseFloatingButton: !1
-    }
+    };
 }]);
